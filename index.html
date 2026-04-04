@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rodrigo Guillot — Escritura & Análisis Político</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f5f0e8;
+    --accent: #8b1a1a;
+    --accent-light: #c4443a;
+    --muted: #6b6560;
+    --line: #d4cdc4;
+    --card-bg: #fdfaf5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* LANGUAGE TOGGLE */
+  .lang-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .lang-btn {
+    background: none;
+    border: 1px solid var(--muted);
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .lang-btn.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+  }
+
+  .lang-btn:hover:not(.active) {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+
+  /* HEADER */
+  header {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-left {
+    padding: 6rem 4rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .header-right {
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.02) 2px,
+      rgba(255,255,255,0.02) 4px
+    );
+  }
+
+  .header-right-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4rem;
+  }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .name-last {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .header-tagline {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-top: 2rem;
+    max-width: 380px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .header-links {
+    margin-top: 3rem;
+    display: flex;
+    gap: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .header-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+
+  .header-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+  .right-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: rgba(245,240,232,0.6);
+    line-height: 1.5;
+    border-left: 2px solid var(--accent);
+    padding-left: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
+  }
+
+  .right-langs {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.2s;
+  }
+
+  .lang-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    border: 1px solid rgba(245,240,232,0.15);
+    padding: 0.3rem 0.7rem;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--muted);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.4s;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 0;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--line);
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text p:first-child {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-top: 1rem;
+  }
+
+  .stat-item {
+    border-left: 2px solid var(--accent);
+    padding-left: 1.5rem;
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  /* PUBLICATIONS */
+  .publications-section {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .publications-section .section-title { color: var(--paper); }
+  .publications-section .section-number { color: rgba(245,240,232,0.1); }
+  .publications-section .section-header { border-color: rgba(245,240,232,0.1); }
+
+  .pub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: rgba(245,240,232,0.05);
+  }
+
+  .pub-card {
+    background: var(--ink);
+    padding: 2.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pub-card::after {
+    content: '↗';
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1rem;
+    color: rgba(245,240,232,0.2);
+    transition: all 0.3s;
+  }
+
+  .pub-card:hover {
+    background: rgba(139,26,26,0.15);
+  }
+
+  .pub-card:hover::after {
+    color: var(--accent-light);
+    transform: translate(2px, -2px);
+  }
+
+  .pub-outlet {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+  }
+
+  .pub-lang-badge {
+    display: inline-flex;
+    gap: 0.4rem;
+    margin-left: 0.8rem;
+  }
+
+  .pub-lang {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    border: 1px solid rgba(245,240,232,0.2);
+    padding: 0.1rem 0.4rem;
+    color: rgba(245,240,232,0.4);
+  }
+
+  .pub-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--paper);
+  }
+
+  .pub-desc {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+
+  .pub-meta {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(245,240,232,0.08);
+  }
+
+  .pub-year {
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.3);
+    letter-spacing: 0.1em;
+  }
+
+  .pub-read {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-left: auto;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .pub-card:hover .pub-read { opacity: 1; }
+
+  /* COLUMNIST */
+  .columnist-section {
+    background: var(--card-bg);
+  }
+
+  .columnist-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .col-card {
+    border: 1px solid var(--line);
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .col-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  }
+
+  .col-outlet {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .col-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  .col-year {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: auto;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    border-top: 1px solid var(--line);
+  }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .contact-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+
+  .contact-text em {
+    color: var(--ink);
+    font-style: normal;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .contact-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .contact-value {
+    font-size: 1rem;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+    width: fit-content;
+  }
+
+  .contact-value:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    header { grid-template-columns: 1fr; min-height: auto; }
+    .header-right { min-height: 40vh; }
+    .header-left { padding: 5rem 2rem 3rem; }
+    .header-right-content { padding: 2rem; }
+    .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .pub-grid { grid-template-columns: 1fr; }
+    .columnist-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 2rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Language Toggle -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('es')" id="btn-es">ES</button>
+  <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-left">
+    <p class="eyebrow" data-es="Escritura & Análisis Político" data-en="Political Writing & Analysis">Escritura & Análisis Político</p>
+    <h1>Rodrigo<br><span class="name-last">Guillot</span></h1>
+    <p class="header-tagline" data-es="Comunicación política, análisis sociopolítico y relaciones internacionales. Ciudad de México." data-en="Political communication, sociopolitical analysis, and international relations. Mexico City.">
+      Comunicación política, análisis sociopolítico y relaciones internacionales. Ciudad de México.
+    </p>
+    <div class="header-links">
+      <a href="https://linkedin.com/in/rodrigoguillot" target="_blank">LinkedIn</a>
+      <a href="mailto:rodrigoguillot@politicas.unam.mx" data-es="Contacto" data-en="Contact">Contacto</a>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="header-right-content">
+      <p class="right-quote" data-es="La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas." data-en="Political communication is the daily work of reading society, understanding its shifts, and building a solid connection between institutions, leaders, and the people they serve.">
+        La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.
+      </p>
+      <div class="right-langs">
+        <span class="lang-tag">Español</span>
+        <span class="lang-tag">English</span>
+        <span class="lang-tag">Français</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span data-es="Explorar" data-en="Explore">Explorar</span>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-number">01</span>
+      <h2 class="section-title" data-es="Sobre el autor" data-en="About the author">Sobre el autor</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p data-es="Licenciado en Relaciones Internacionales por la UNAM, con especialización en política exterior mexicana y estudios latinoamericanos." data-en="Bachelor's degree in International Relations from UNAM, with a specialization in Mexican foreign policy and Latin American studies.">
+          Licenciado en Relaciones Internacionales por la UNAM, con especialización en política exterior mexicana y estudios latinoamericanos.
+        </p>
+        <p data-es="Especialista en comunicación política e institucional con más de cinco años de experiencia en entornos gubernamentales, legislativos y de salud pública en México. Ha asesorado procesos legislativos en el Senado de la República, coordinado estrategias de comunicación en el Congreso de la Ciudad de México y dirigido campañas electorales." data-en="Political and institutional communication specialist with over five years of experience across governmental, legislative, and public health environments in Mexico. Has advised legislative processes in the Mexican Senate, coordinated communication strategies at the Mexico City Legislature, and directed electoral campaigns.">
+          Especialista en comunicación política e institucional con más de cinco años de experiencia en entornos gubernamentales, legislativos y de salud pública en México. Ha asesorado procesos legislativos en el Senado de la República, coordinado estrategias de comunicación en el Congreso de la Ciudad de México y dirigido campañas electorales.
+        </p>
+        <p data-es="Sus textos han sido publicados en revistas académicas y medios especializados de México, América Latina y Europa." data-en="His writing has been published in academic journals and specialized media across Mexico, Latin America, and Europe.">
+          Sus textos han sido publicados en revistas académicas y medios especializados de México, América Latina y Europa.
+        </p>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-item">
+          <div class="stat-number">5+</div>
+          <div class="stat-label" data-es="Años de experiencia" data-en="Years of experience">Años de experiencia</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3</div>
+          <div class="stat-label" data-es="Idiomas de publicación" data-en="Publication languages">Idiomas de publicación</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">15+</div>
+          <div class="stat-label" data-es="Textos publicados" data-en="Published pieces">Textos publicados</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="publications-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-number">02</span>
+      <h2 class="section-title" data-es="Publicaciones académicas" data-en="Academic publications">Publicaciones académicas</h2>
+    </div>
+    <div class="pub-grid">
+
+      <a class="pub-card reveal" href="https://revistamemoria.mx" target="_blank">
+        <div>
+          <span class="pub-outlet">Revista Memoria — CEMOS</span>
+          <span class="pub-lang-badge"><span class="pub-lang">ES</span></span>
+        </div>
+        <h3 class="pub-title" data-es="Revolución de las conciencias: pueblo, partido, Estado" data-en="Revolution of Consciousness: People, Party, State">
+          Revolución de las conciencias: pueblo, partido, Estado
+        </h3>
+        <p class="pub-desc" data-es="Análisis de la relación entre conciencia colectiva, organización política y aparato de Estado en el contexto de la Cuarta Transformación mexicana, a partir del pensamiento de Marx y Gramsci." data-en="Analysis of the relationship between collective consciousness, political organization, and the state apparatus in the context of Mexico's Fourth Transformation, drawing on Marx and Gramsci.">
+          Análisis de la relación entre conciencia colectiva, organización política y aparato de Estado en el contexto de la Cuarta Transformación mexicana, a partir del pensamiento de Marx y Gramsci.
+        </p>
+        <div class="pub-meta">
+          <span class="pub-year">2025 · No. 298</span>
+          <span class="pub-read" data-es="Leer artículo" data-en="Read article">Leer artículo</span>
+        </div>
+      </a>
+
+      <a class="pub-card reveal" href="https://thetricontinental.org/es/boletin-na-genz-fascismo-mexico/" target="_blank">
+        <div>
+          <span class="pub-outlet">Instituto Tricontinental de Investigación Social</span>
+          <span class="pub-lang-badge"><span class="pub-lang">ES</span><span class="pub-lang">EN</span></span>
+        </div>
+        <h3 class="pub-title" data-es="La falsa GenZ y el fascismo mexicano" data-en="The False GenZ and Mexican Fascism">
+          La falsa GenZ y el fascismo mexicano
+        </h3>
+        <p class="pub-desc" data-es="Análisis del viraje de la derecha mexicana hacia posiciones fascistas, a partir de las protestas de noviembre de 2025 convocadas bajo la imagen del anime One Piece." data-en="Analysis of the Mexican right's shift toward fascist positions, examining the November 2025 protests organized under the banner of the anime One Piece.">
+          Análisis del viraje de la derecha mexicana hacia posiciones fascistas, a partir de las protestas de noviembre de 2025 convocadas bajo la imagen del anime One Piece.
+        </p>
+        <div class="pub-meta">
+          <span class="pub-year">2025 · Boletín Nuestra América</span>
+          <span class="pub-read" data-es="Leer artículo" data-en="Read article">Leer artículo</span>
+        </div>
+      </a>
+
+      <a class="pub-card reveal" href="https://peoplesdispatch.org/2022/06/29/the-era-of-northern-hegemony-over-mexico-is-coming-to-an-end/" target="_blank">
+        <div>
+          <span class="pub-outlet">People's Dispatch</span>
+          <span class="pub-lang-badge"><span class="pub-lang">EN</span></span>
+        </div>
+        <h3 class="pub-title" data-es="La era de la hegemonía del norte sobre México llega a su fin" data-en="The era of Northern hegemony over Mexico is coming to an end">
+          The era of Northern hegemony over Mexico is coming to an end
+        </h3>
+        <p class="pub-desc" data-es="Análisis del nuevo posicionamiento de México frente a Estados Unidos bajo el gobierno de López Obrador y su impacto en las relaciones hemisféricas." data-en="Analysis of Mexico's new positioning vis-à-vis the United States under López Obrador and its impact on hemispheric relations.">
+          Analysis of Mexico's new positioning vis-à-vis the United States under López Obrador and its impact on hemispheric relations.
+        </p>
+        <div class="pub-meta">
+          <span class="pub-year">2022</span>
+          <span class="pub-read" data-es="Leer artículo" data-en="Read article">Read article</span>
+        </div>
+      </a>
+
+      <a class="pub-card reveal" href="https://peoplesdispatch.org/2022/07/27/mexicos-president-gives-joe-biden-a-big-history-lesson/" target="_blank">
+        <div>
+          <span class="pub-outlet">People's Dispatch</span>
+          <span class="pub-lang-badge"><span class="pub-lang">EN</span></span>
+        </div>
+        <h3 class="pub-title" data-es="El presidente de México le da a Joe Biden una gran lección de historia" data-en="Mexico's President gives Joe Biden a big history lesson">
+          Mexico's President gives Joe Biden a big history lesson
+        </h3>
+        <p class="pub-desc" data-es="Análisis de las cinco propuestas de AMLO a Biden durante su visita a Washington en julio de 2022 y su significado en el contexto de la crisis económica estadounidense." data-en="Analysis of AMLO's five proposals to Biden during his July 2022 Washington visit, read against the backdrop of the United States' economic crisis.">
+          Analysis of AMLO's five proposals to Biden during his July 2022 Washington visit, read against the backdrop of the United States' economic crisis.
+        </p>
+        <div class="pub-meta">
+          <span class="pub-year">2022</span>
+          <span class="pub-read" data-es="Leer artículo" data-en="Read article">Read article</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- COLUMNIST -->
+<section class="columnist-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-number">03</span>
+      <h2 class="section-title" data-es="Columnista" data-en="Columnist">Columnista</h2>
+    </div>
+    <div class="columnist-grid">
+
+      <a class="col-card reveal" href="https://www.sprinforma.mx/buscar?q=rodrigo+guillot" target="_blank">
+        <span class="col-outlet">SPR Informa</span>
+        <h3 class="col-title" data-es="El tsunami progresista y la advertencia de las nuevas derechas" data-en="The progressive tsunami and the warning of the new right">El tsunami progresista y la advertencia de las nuevas derechas</h3>
+        <span class="col-year">2022 – <span data-es="presente" data-en="present">presente</span> · 7 <span data-es="artículos" data-en="articles">artículos</span></span>
+      </a>
+
+      <a class="col-card reveal" href="https://www.sprinforma.mx/noticia/la-razon-y-la-historia-asisten-a-lopez-obrador-en-washington" target="_blank">
+        <span class="col-outlet">SPR Informa</span>
+        <h3 class="col-title" data-es="La razón y la historia asisten a López Obrador en Washington" data-en="Reason and history are on López Obrador's side in Washington">La razón y la historia asisten a López Obrador en Washington</h3>
+        <span class="col-year">2022</span>
+      </a>
+
+      <a class="col-card reveal" href="https://www.sprinforma.mx/noticia/el-genocidio-woke-del-estado-de-israel" target="_blank">
+        <span class="col-outlet">SPR Informa</span>
+        <h3 class="col-title" data-es="El genocidio woke del Estado de Israel" data-en="The woke genocide of the State of Israel">El genocidio woke del Estado de Israel</h3>
+        <span class="col-year">2023</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-inner reveal">
+      <p class="contact-text" data-es="Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación." data-en="For <em>collaborations</em>, <em>consultancy</em>, or simply a conversation.">
+        Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación.
+      </p>
+      <div class="contact-links">
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <a class="contact-value" href="mailto:rodrigoguillot@politicas.unam.mx">rodrigoguillot@politicas.unam.mx</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">LinkedIn</span>
+          <a class="contact-value" href="https://linkedin.com/in/rodrigoguillot" target="_blank">linkedin.com/in/rodrigoguillot</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">GitHub</span>
+          <a class="contact-value" href="https://github.com/Rodrigo-Guillot" target="_blank">github.com/Rodrigo-Guillot</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Rodrigo Guillot López</span>
+  <span data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</span>
+</footer>
+
+<script>
+  // Language toggle
+  function setLang(lang) {
+    document.querySelectorAll('[data-es]').forEach(el => {
+      if (lang === 'es') {
+        if (el.tagName === 'A' && el.dataset.es) el.textContent = el.dataset.es;
+        else if (el.dataset.es) {
+          if (el.dataset.es.includes('<')) el.innerHTML = el.dataset.es;
+          else el.textContent = el.dataset.es;
+        }
+      } else {
+        if (el.tagName === 'A' && el.dataset.en) el.textContent = el.dataset.en;
+        else if (el.dataset.en) {
+          if (el.dataset.en.includes('<')) el.innerHTML = el.dataset.en;
+          else el.textContent = el.dataset.en;
+        }
+      }
+    });
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
