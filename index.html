@@ -27,12 +27,12 @@ body { background: var(--cream-light); color: var(--ink); font-family: 'DM Sans'
 .lang-btn.active { background: var(--ink); border-color: var(--ink); color: var(--cream-light); }
 
 /* ── HEADER ── */
-header { min-height: auto; display: block; background: var(--cream-light); }
-.header-single { padding: 5rem 0 4rem; }
-.header-single h1 { margin-bottom: 1.5rem; }
+.header-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; }
+.header-left { background: var(--cream-light); padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
+.header-right { background: var(--ink); position: relative; }
+.header-right-inner { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 4rem; gap: 2rem; }
 .header-left { padding: 6rem 4rem 4rem; display: flex; flex-direction: column; justify-content: center; background: var(--cream-light); }
-.header-right { background: var(--cream-dark); position: relative; }
-.header-right-inner { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 4rem; gap: 3.5rem; }
+
 .quote-band { background: var(--ink); padding: 4rem 0; }
 .quote-band-inner { display: flex; align-items: center; gap: 4rem; }
 .quote-band-photo { flex-shrink: 0; }
@@ -52,7 +52,7 @@ h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5.5rem)
 .profile-photo { width: 280px; height: 280px; border-radius: 50%; object-fit: cover; border: 2px solid var(--wine); }
 .profile-photo-placeholder { width: 280px; height: 280px; border-radius: 50%; border: 2px dashed var(--line); display: flex; align-items: center; justify-content: center; }
 .profile-photo-placeholder span { font-size: 0.6rem; color: var(--muted); text-align: center; padding: 0.5rem; }
-.right-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1rem, 1.6vw, 1.3rem); color: var(--wine); line-height: 1.5; border-left: 2px solid var(--red); padding-left: 1.5rem; }
+.right-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1rem, 1.6vw, 1.3rem); color: var(--cream-light); line-height: 1.5; border-left: 2px solid var(--red); padding-left: 1.5rem; }
 .right-langs { display: flex; gap: 0.8rem; flex-wrap: wrap; }
 .qlang { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); padding: 0.3rem 0.7rem; background: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
 .qlang:hover { color: var(--red); border-color: var(--red); }
@@ -128,8 +128,8 @@ footer { padding: 2rem 4rem; border-top: 1px solid var(--line); display: flex; j
 </div>
 
 <!-- HEADER -->
-<header class="header-single">
-  <div class="container">
+<header class="header-split">
+  <div class="header-left">
     <h1>Rodrigo<br><span class="name-last">Guillot</span></h1>
     <p class="header-abstract" data-es="Rodrigo Guillot es especialista en comunicación política e institucional con más de cinco años de experiencia en entornos gubernamentales, legislativos y de salud pública en México. Ha asesorado procesos legislativos en el Senado de la República, coordinado estrategias de comunicación en el Congreso de la Ciudad de México y dirigido campañas electorales. Licenciado en Relaciones Internacionales por la UNAM. Sus textos han sido publicados en Revista Memoria, el Instituto Tricontinental de Investigación Social, People's Dispatch, SPR Informa y SDP Noticias." data-en="Rodrigo Guillot is a political and institutional communication specialist with over five years of experience across governmental, legislative, and public health environments in Mexico. He has advised legislative processes at the Mexican Senate, coordinated communication strategies at the Mexico City Legislature, and directed electoral campaigns. He holds a Bachelor's degree in International Relations from UNAM. His writing has been published in Revista Memoria, the Tricontinental Institute for Social Research, People's Dispatch, SPR Informa, and SDP Noticias.">Rodrigo Guillot es especialista en comunicación política e institucional con más de cinco años de experiencia en entornos gubernamentales, legislativos y de salud pública en México. Ha asesorado procesos legislativos en el Senado de la República, coordinado estrategias de comunicación en el Congreso de la Ciudad de México y dirigido campañas electorales. Licenciado en Relaciones Internacionales por la UNAM. Sus textos han sido publicados en Revista Memoria, el Instituto Tricontinental de Investigación Social, People's Dispatch, SPR Informa y SDP Noticias.</p>
     <div class="header-links">
@@ -137,18 +137,17 @@ footer { padding: 2rem 4rem; border-top: 1px solid var(--line); display: flex; j
       <a href="mailto:rodrigoguillot@politicas.unam.mx" data-es="Contacto" data-en="Contact">Contacto</a>
     </div>
   </div>
-</header>
-
-<!-- FRASE + FOTO -->
-<div class="quote-band">
-  <div class="container quote-band-inner">
-    <div class="quote-band-photo">
+  <div class="header-right">
+    <div class="header-right-inner">
       <img src="fotografia-rodrigoguillot.jpg" alt="Rodrigo Guillot" class="profile-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="profile-photo-placeholder" style="display:none"><span>foto próximamente</span></div>
+      <div style="height: 2rem;"></div>
+      <p class="right-quote">La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.</p>
     </div>
-    <p class="quote-main">La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.</p>
   </div>
-</div>
+</header>
+
+
 
 <!-- PUBLICACIONES HEADER -->
 <div class="publications-header">
@@ -169,7 +168,7 @@ footer { padding: 2rem 4rem; border-top: 1px solid var(--line); display: flex; j
     </button>
     <div style="border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;"></div>
     <div class="section-body open">
-    <a class="thesis-card" href="https://tesiunam.dgb.unam.mx/F/7NLTPPYUUK45SILCQYSNCECMF2U783U26UH4G4MH714Y3D9X9U-00286?func=full-set-set&set_number=065562&set_entry=000001&format=999" target="_blank">
+    <a class="thesis-card" href="https://tesiunam.dgb.unam.mx/F/SC4EAPK5NKTG26UBYKQGHDJXTJFNDD2MJ1Q8RLPLUJNM6LDMKT-07750?func=full-set-set&set_number=003710&set_entry=000001&format=999" target="_blank">
       <span class="thesis-label" data-es="Tesis de licenciatura — FCPyS, UNAM · 2022" data-en="Bachelor's Thesis — FCPyS, UNAM · 2022">Tesis de licenciatura — FCPyS, UNAM · 2022</span>
       <h3 class="thesis-title" data-es="La política exterior del Estado mexicano ante el golpe de Estado en Bolivia (2019-2020) y el posicionamiento de la Cuarta Transformación ante la coyuntura latinoamericana" data-en="Mexican Foreign Policy in Response to the Coup d'État in Bolivia (2019-2020) and the Fourth Transformation's Position on the Latin American Conjuncture">La política exterior del Estado mexicano ante el golpe de Estado en Bolivia (2019-2020) y el posicionamiento de la Cuarta Transformación ante la coyuntura latinoamericana</h3>
       <p class="thesis-meta" data-es="Rodrigo Guillot López · Especialización en Política Exterior Mexicana" data-en="Rodrigo Guillot López · Specialization in Mexican Foreign Policy">Rodrigo Guillot López · Especialización en Política Exterior Mexicana</p>
@@ -211,26 +210,6 @@ footer { padding: 2rem 4rem; border-top: 1px solid var(--line); display: flex; j
         <div class="card-footer">
           <span class="card-date">Nov 2025 · No. 298</span>
           <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
-        </div>
-      </a>
-
-      <a class="card" href="https://peoplesdispatch.org/2022/07/27/mexicos-president-gives-joe-biden-a-big-history-lesson/" target="_blank">
-        <span class="card-outlet">People's Dispatch</span>
-        <h3 class="card-title">Mexico's President gives Joe Biden a big history lesson</h3>
-        <p class="card-excerpt">Mexico's President Andrés Manuel López Obrador visited the United States on July 12 and offered five proposals to US President Joe Biden. These proposals are based on AMLO's in-depth knowledge of Mexican history and his reading of the economic crisis in the United States, which seems to be losing its edge as a global leader...</p>
-        <div class="card-footer">
-          <span class="card-date">Jul 2022</span>
-          <span class="card-cta">Read original article →</span>
-        </div>
-      </a>
-
-      <a class="card" href="https://peoplesdispatch.org/2022/06/29/the-era-of-northern-hegemony-over-mexico-is-coming-to-an-end/" target="_blank">
-        <span class="card-outlet">People's Dispatch</span>
-        <h3 class="card-title">The era of Northern hegemony over Mexico is coming to an end</h3>
-        <p class="card-excerpt">In 2010, Cuba's former President Fidel Castro said: "López Obrador will be the person with the most moral and political authority in Mexico when the system collapses and, with it, the empire." Despite the wide lead he had in all the polls before the elections, Obrador's victory in 2018 took almost everyone by surprise...</p>
-        <div class="card-footer">
-          <span class="card-date">Jun 2022</span>
-          <span class="card-cta">Read original article →</span>
         </div>
       </a>
 
@@ -420,12 +399,52 @@ footer { padding: 2rem 4rem; border-top: 1px solid var(--line); display: flex; j
   </div>
 </section>
 
-<!-- 05 SIN LÍNEA MX -->
-<section class="section-dark">
+<!-- 05 PEOPLE'S DISPATCH -->
+<section class="section-light">
   <div class="container">
     <button class="section-toggle" onclick="toggleSection(this)">
       <div class="section-header" style="margin-bottom:0; border-bottom:none; padding-bottom:0; flex:1;">
         <span class="section-number">05</span>
+        <h2 class="section-title" data-es="Columnista — People's Dispatch" data-en="Columnist — People's Dispatch">Columnista — People's Dispatch</h2>
+      </div>
+      <span class="toggle-icon">↓</span>
+    </button>
+    <div style="border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;"></div>
+    <div class="section-body">
+    <p class="section-note" data-es="2 artículos · 2022" data-en="2 articles · 2022">2 artículos · 2022</p>
+    <div class="grid-3">
+
+      <a class="card" href="https://peoplesdispatch.org/2022/07/27/mexicos-president-gives-joe-biden-a-big-history-lesson/" target="_blank">
+        <span class="card-outlet">People's Dispatch</span>
+        <h3 class="card-title">Mexico's President gives Joe Biden a big history lesson</h3>
+        <p class="card-excerpt">Mexico's President Andrés Manuel López Obrador visited the United States on July 12 and offered five proposals to US President Joe Biden. These proposals are based on AMLO's in-depth knowledge of Mexican history and his reading of the economic crisis in the United States, which seems to be losing its edge as a global leader...</p>
+        <div class="card-footer">
+          <span class="card-date">Jul 2022</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Read original article →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://peoplesdispatch.org/2022/06/29/the-era-of-northern-hegemony-over-mexico-is-coming-to-an-end/" target="_blank">
+        <span class="card-outlet">People's Dispatch</span>
+        <h3 class="card-title">The era of Northern hegemony over Mexico is coming to an end</h3>
+        <p class="card-excerpt">In 2010, Cuba's former President Fidel Castro said: "López Obrador will be the person with the most moral and political authority in Mexico when the system collapses and, with it, the empire." Despite the wide lead he had in all the polls before the elections, Obrador's victory in 2018 took almost everyone by surprise...</p>
+        <div class="card-footer">
+          <span class="card-date">Jun 2022</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Read original article →</span>
+        </div>
+      </a>
+
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 SIN LÍNEA MX -->
+<section class="section-dark">
+  <div class="container">
+    <button class="section-toggle" onclick="toggleSection(this)">
+      <div class="section-header" style="margin-bottom:0; border-bottom:none; padding-bottom:0; flex:1;">
+        <span class="section-number">06</span>
         <h2 class="section-title" data-es="Columnista — Sin Línea Mx" data-en="Columnist — Sin Línea Mx">Columnista — Sin Línea Mx</h2>
       </div>
       <span class="toggle-icon">↓</span>
