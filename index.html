@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rodrigo Guillot — Archivo de Publicaciones</title>
+<title>Rodrigo Guillot López — Archivo de Publicaciones</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -27,11 +27,17 @@ body { background: var(--cream-light); color: var(--ink); font-family: 'DM Sans'
 .lang-btn.active { background: var(--ink); border-color: var(--ink); color: var(--cream-light); }
 
 /* ── HEADER ── */
-header { min-height: 80vh; display: grid; grid-template-columns: 1fr 1fr; }
+header { min-height: auto; display: block; background: var(--cream-light); }
+.header-single { padding: 5rem 0 4rem; }
+.header-single h1 { margin-bottom: 1.5rem; }
 .header-left { padding: 6rem 4rem 4rem; display: flex; flex-direction: column; justify-content: center; background: var(--cream-light); }
 .header-right { background: var(--cream-dark); position: relative; }
 .header-right-inner { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 4rem; gap: 3.5rem; }
-.quote-band { background: var(--ink); padding: 5rem 0; }
+.quote-band { background: var(--ink); padding: 4rem 0; }
+.quote-band-inner { display: flex; align-items: center; gap: 4rem; }
+.quote-band-photo { flex-shrink: 0; }
+.publications-header { background: var(--cream-dark); padding: 3rem 0 0; }
+.publications-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
 .quote-main { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1.6rem, 2.8vw, 2.6rem); color: var(--cream-light); line-height: 1.5; border-left: 3px solid var(--red); padding-left: 2rem; margin-bottom: 3rem; max-width: 860px; }
 .quote-band .right-langs { padding-left: 2rem; margin-top: 2rem; }
 .quote-band .qlang { color: rgba(253,250,245,0.5); border-color: rgba(253,250,245,0.2); }
@@ -53,10 +59,10 @@ h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5.5rem)
 .qlang.active { color: var(--white); border-color: var(--red); background: var(--red); }
 
 /* ── SECTIONS ── */
-.section-light { background: var(--cream-light); padding: 6rem 0; }
-.section-dark { background: var(--cream-dark); padding: 6rem 0; }
+.section-light { background: var(--cream-dark); padding: 2rem 0; }
+.section-dark { background: var(--cream-dark); padding: 2rem 0; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
-.section-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 4rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+.section-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
 .section-number { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--line); line-height: 1; font-weight: 400; }
 .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; }
 .section-note { font-size: 0.85rem; color: var(--muted); margin-bottom: 2.5rem; }
@@ -85,13 +91,21 @@ h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5.5rem)
 
 /* ── CONTACT ── */
 .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-.contact-text { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 400; font-style: italic; line-height: 1.5; color: var(--muted); }
-.contact-text em { color: var(--red); font-style: normal; }
+.contact-text { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 400; font-style: italic; line-height: 1.5; color: var(--cream-light); }
+.contact-text em { color: #C0392B; font-style: normal; font-weight: 500; }
 .contact-links { display: flex; flex-direction: column; gap: 1.5rem; }
 .contact-item { display: flex; flex-direction: column; gap: 0.2rem; }
-.contact-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
-.contact-value { font-size: 1rem; color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; width: fit-content; transition: color 0.2s, border-color 0.2s; }
+.contact-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(253,250,245,0.4); }
+.contact-value { font-size: 1rem; color: var(--cream-light); text-decoration: none; border-bottom: 1px solid transparent; width: fit-content; transition: color 0.2s, border-color 0.2s; }
 .contact-value:hover { color: var(--red); border-color: var(--red); }
+
+.section-toggle { display: flex; align-items: center; gap: 1rem; background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; width: 100%; text-align: left; }
+.section-toggle:hover .toggle-icon { color: var(--red); }
+.toggle-icon { font-size: 1.2rem; color: var(--muted); transition: transform 0.3s, color 0.2s; margin-left: auto; }
+.toggle-icon.open { transform: rotate(180deg); }
+.section-body { overflow: hidden; transition: max-height 0.5s ease, opacity 0.4s ease; max-height: 0; opacity: 0; }
+.section-body.open { max-height: 9999px; opacity: 1; padding-top: 1.5rem; }
+.band-publications { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; color: var(--cream-light); margin-top: 3rem; letter-spacing: -0.02em; }
 
 footer { padding: 2rem 4rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); background: var(--cream-light); }
 
@@ -114,33 +128,47 @@ footer { padding: 2rem 4rem; border-top: 1px solid var(--line); display: flex; j
 </div>
 
 <!-- HEADER -->
-<header>
-  <div class="header-left">
-<h1>Rodrigo<br><span class="name-last">Guillot</span></h1>
+<header class="header-single">
+  <div class="container">
+    <h1>Rodrigo<br><span class="name-last">Guillot</span></h1>
     <p class="header-abstract" data-es="Rodrigo Guillot es especialista en comunicación política e institucional con más de cinco años de experiencia en entornos gubernamentales, legislativos y de salud pública en México. Ha asesorado procesos legislativos en el Senado de la República, coordinado estrategias de comunicación en el Congreso de la Ciudad de México y dirigido campañas electorales. Licenciado en Relaciones Internacionales por la UNAM. Sus textos han sido publicados en Revista Memoria, el Instituto Tricontinental de Investigación Social, People's Dispatch, SPR Informa y SDP Noticias." data-en="Rodrigo Guillot is a political and institutional communication specialist with over five years of experience across governmental, legislative, and public health environments in Mexico. He has advised legislative processes at the Mexican Senate, coordinated communication strategies at the Mexico City Legislature, and directed electoral campaigns. He holds a Bachelor's degree in International Relations from UNAM. His writing has been published in Revista Memoria, the Tricontinental Institute for Social Research, People's Dispatch, SPR Informa, and SDP Noticias.">Rodrigo Guillot es especialista en comunicación política e institucional con más de cinco años de experiencia en entornos gubernamentales, legislativos y de salud pública en México. Ha asesorado procesos legislativos en el Senado de la República, coordinado estrategias de comunicación en el Congreso de la Ciudad de México y dirigido campañas electorales. Licenciado en Relaciones Internacionales por la UNAM. Sus textos han sido publicados en Revista Memoria, el Instituto Tricontinental de Investigación Social, People's Dispatch, SPR Informa y SDP Noticias.</p>
     <div class="header-links">
       <a href="https://linkedin.com/in/rodrigoguillot" target="_blank">LinkedIn</a>
       <a href="mailto:rodrigoguillot@politicas.unam.mx" data-es="Contacto" data-en="Contact">Contacto</a>
     </div>
   </div>
-  <div class="header-right">
-    <div class="header-right-inner">
-      <div>
-        <img src="fotografia-rodrigoguillot.jpg" alt="Rodrigo Guillot" class="profile-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="profile-photo-placeholder" style="display:none"><span>foto próximamente</span></div>
-      <div style="height: 2rem;"></div>
-      <p class="right-quote" data-es="La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas." data-en="Political communication is the daily work of reading society, understanding its shifts, and building a solid connection between institutions, leaders, and the people they serve.">La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.</p>
-    </div>
-  </div>
 </header>
+
+<!-- FRASE + FOTO -->
+<div class="quote-band">
+  <div class="container quote-band-inner">
+    <div class="quote-band-photo">
+      <img src="fotografia-rodrigoguillot.jpg" alt="Rodrigo Guillot" class="profile-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="profile-photo-placeholder" style="display:none"><span>foto próximamente</span></div>
+    </div>
+    <p class="quote-main">La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.</p>
+  </div>
+</div>
+
+<!-- PUBLICACIONES HEADER -->
+<div class="publications-header">
+  <div class="container">
+    <h2 class="publications-title" data-es="Publicaciones" data-en="Publications">Publicaciones</h2>
+  </div>
+</div>
 
 <!-- 01 INVESTIGACIÓN ACADÉMICA -->
 <section class="section-dark">
   <div class="container">
-    <div class="section-header">
-      <span class="section-number">01</span>
-      <h2 class="section-title" data-es="Investigación académica" data-en="Academic research">Investigación académica</h2>
-    </div>
+    <button class="section-toggle" onclick="toggleSection(this)">
+      <div class="section-header" style="margin-bottom:0; border-bottom:none; padding-bottom:0; flex:1;">
+        <span class="section-number">01</span>
+        <h2 class="section-title" data-es="Investigación académica" data-en="Academic research">Investigación académica</h2>
+      </div>
+      <span class="toggle-icon open">↓</span>
+    </button>
+    <div style="border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;"></div>
+    <div class="section-body open">
     <a class="thesis-card" href="https://tesiunam.dgb.unam.mx/F/7NLTPPYUUK45SILCQYSNCECMF2U783U26UH4G4MH714Y3D9X9U-00286?func=full-set-set&set_number=065562&set_entry=000001&format=999" target="_blank">
       <span class="thesis-label" data-es="Tesis de licenciatura — FCPyS, UNAM · 2022" data-en="Bachelor's Thesis — FCPyS, UNAM · 2022">Tesis de licenciatura — FCPyS, UNAM · 2022</span>
       <h3 class="thesis-title" data-es="La política exterior del Estado mexicano ante el golpe de Estado en Bolivia (2019-2020) y el posicionamiento de la Cuarta Transformación ante la coyuntura latinoamericana" data-en="Mexican Foreign Policy in Response to the Coup d'État in Bolivia (2019-2020) and the Fourth Transformation's Position on the Latin American Conjuncture">La política exterior del Estado mexicano ante el golpe de Estado en Bolivia (2019-2020) y el posicionamiento de la Cuarta Transformación ante la coyuntura latinoamericana</h3>
@@ -148,16 +176,22 @@ footer { padding: 2rem 4rem; border-top: 1px solid var(--line); display: flex; j
       <p class="thesis-desc" data-es="Investigación sobre el posicionamiento diplomático de México ante el golpe de Estado en Bolivia de 2019, analizado en el marco de la política exterior de la Cuarta Transformación y la segunda ola progresista en América Latina." data-en="Research on Mexico's diplomatic positioning in response to the 2019 coup d'état in Bolivia, analyzed within the framework of the Fourth Transformation's foreign policy and the second progressive wave in Latin America.">Investigación sobre el posicionamiento diplomático de México ante el golpe de Estado en Bolivia de 2019, analizado en el marco de la política exterior de la Cuarta Transformación y la segunda ola progresista en América Latina.</p>
       <span class="thesis-link" data-es="Consultar en repositorio UNAM →" data-en="View in UNAM repository →">Consultar en repositorio UNAM →</span>
     </a>
+    </div>
   </div>
 </section>
 
 <!-- 02 PUBLICACIONES ACADÉMICAS -->
 <section class="section-light">
   <div class="container">
-    <div class="section-header">
-      <span class="section-number">02</span>
-      <h2 class="section-title" data-es="Publicaciones académicas" data-en="Academic publications">Publicaciones académicas</h2>
-    </div>
+    <button class="section-toggle" onclick="toggleSection(this)">
+      <div class="section-header" style="margin-bottom:0; border-bottom:none; padding-bottom:0; flex:1;">
+        <span class="section-number">02</span>
+        <h2 class="section-title" data-es="Publicaciones académicas" data-en="Academic publications">Publicaciones académicas</h2>
+      </div>
+      <span class="toggle-icon">↓</span>
+    </button>
+    <div style="border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;"></div>
+    <div class="section-body">
     <div class="grid-3">
 
       <a class="card" href="https://thetricontinental.org/es/boletin-na-genz-fascismo-mexico/" target="_blank">
@@ -201,16 +235,23 @@ footer { padding: 2rem 4rem; border-top: 1px solid var(--line); display: flex; j
       </a>
 
     </div>
+    </div>
+    </div>
   </div>
 </section>
 
 <!-- 03 SPR INFORMA -->
 <section class="section-dark">
   <div class="container">
-    <div class="section-header">
-      <span class="section-number">03</span>
-      <h2 class="section-title" data-es="Columnista — SPR Informa" data-en="Columnist — SPR Informa">Columnista — SPR Informa</h2>
-    </div>
+    <button class="section-toggle" onclick="toggleSection(this)">
+      <div class="section-header" style="margin-bottom:0; border-bottom:none; padding-bottom:0; flex:1;">
+        <span class="section-number">03</span>
+        <h2 class="section-title" data-es="Columnista — SPR Informa" data-en="Columnist — SPR Informa">Columnista — SPR Informa</h2>
+      </div>
+      <span class="toggle-icon">↓</span>
+    </button>
+    <div style="border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;"></div>
+    <div class="section-body">
     <p class="section-note" data-es="Medio de difusión del Gobierno de México · 7 artículos · 2022–2023" data-en="Official media outlet of the Government of Mexico · 7 articles · 2022–2023">Medio de difusión del Gobierno de México · 7 artículos · 2022–2023</p>
     <div class="grid-3">
 
@@ -285,16 +326,22 @@ footer { padding: 2rem 4rem; border-top: 1px solid var(--line); display: flex; j
       </a>
 
     </div>
+    </div>
   </div>
 </section>
 
 <!-- 04 SDP NOTICIAS -->
 <section class="section-light">
   <div class="container">
-    <div class="section-header">
-      <span class="section-number">04</span>
-      <h2 class="section-title" data-es="Columnista — SDP Noticias" data-en="Columnist — SDP Noticias">Columnista — SDP Noticias</h2>
-    </div>
+    <button class="section-toggle" onclick="toggleSection(this)">
+      <div class="section-header" style="margin-bottom:0; border-bottom:none; padding-bottom:0; flex:1;">
+        <span class="section-number">04</span>
+        <h2 class="section-title" data-es="Columnista — SDP Noticias" data-en="Columnist — SDP Noticias">Columnista — SDP Noticias</h2>
+      </div>
+      <span class="toggle-icon">↓</span>
+    </button>
+    <div style="border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;"></div>
+    <div class="section-body">
     <p class="section-note" data-es="7 artículos · 2020–2021" data-en="7 articles · 2020–2021">7 artículos · 2020–2021</p>
     <div class="grid-3">
 
@@ -369,16 +416,22 @@ footer { padding: 2rem 4rem; border-top: 1px solid var(--line); display: flex; j
       </a>
 
     </div>
+    </div>
   </div>
 </section>
 
 <!-- 05 SIN LÍNEA MX -->
 <section class="section-dark">
   <div class="container">
-    <div class="section-header">
-      <span class="section-number">05</span>
-      <h2 class="section-title" data-es="Columnista — Sin Línea Mx" data-en="Columnist — Sin Línea Mx">Columnista — Sin Línea Mx</h2>
-    </div>
+    <button class="section-toggle" onclick="toggleSection(this)">
+      <div class="section-header" style="margin-bottom:0; border-bottom:none; padding-bottom:0; flex:1;">
+        <span class="section-number">05</span>
+        <h2 class="section-title" data-es="Columnista — Sin Línea Mx" data-en="Columnist — Sin Línea Mx">Columnista — Sin Línea Mx</h2>
+      </div>
+      <span class="toggle-icon">↓</span>
+    </button>
+    <div style="border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;"></div>
+    <div class="section-body">
     <p class="section-note" data-es="Selección de 10 artículos · más de 25 publicados · 2019–2022" data-en="Selection of 10 articles · over 25 published · 2019–2022">Selección de 10 artículos · más de 25 publicados · 2019–2022</p>
     <div class="grid-3">
 
@@ -483,11 +536,12 @@ footer { padding: 2rem 4rem; border-top: 1px solid var(--line); display: flex; j
       </a>
 
     </div>
+    </div>
   </div>
 </section>
 
 <!-- CONTACTO -->
-<section class="section-light" style="border-top: 1px solid var(--line);">
+<section style="background: var(--ink); padding: 6rem 0;">
   <div class="container">
     <div class="contact-inner">
       <p class="contact-text" data-es="Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación." data-en="For <em>collaborations</em>, <em>consultancy</em>, or simply a conversation.">Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación.</p>
@@ -525,6 +579,13 @@ function setQuote(lang, btn) {
   document.getElementById('quote-text').textContent = quotes[lang];
   document.querySelectorAll('.qlang').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+}
+
+function toggleSection(btn) {
+  const icon = btn.querySelector('.toggle-icon');
+  const body = btn.parentElement.querySelector('.section-body');
+  icon.classList.toggle('open');
+  body.classList.toggle('open');
 }
 
 function setLang(lang) {
