@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rodrigo Guillot López — especialista en comunicación política e institucional. Asesor legislativo en el Senado de la República, la Cámara de Diputados y el Congreso de la Ciudad de México, director de campañas electorales y analista político. Licenciado en Relaciones Internacionales por la UNAM. Publicaciones en Revista Memoria, Instituto Tricontinental y People's Dispatch.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231A1A1A'/><text y='.9em' font-size='80' x='10'>♞</text><style>text{fill:%23C0392B}</style></svg>">
+<title>Rodrigo Guillot López — Archivo de Publicaciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream-light: #FDFAF5;
+  --cream-dark: #F0EBE3;
+  --ink: #1A1A1A;
+  --red: #C0392B;
+  --wine: #7B1A2A;
+  --muted: #7A6E65;
+  --line: #DDD6CC;
+  --white: #FFFFFF;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--cream-light); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+/* ── LANG BAR ── */
+.lang-bar { position: fixed; top: 0; right: 0; z-index: 200; padding: 1rem 2rem; display: flex; gap: 1rem; }
+.lang-btn { background: none; border: 1px solid var(--muted); color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.8rem; cursor: pointer; transition: all 0.2s; }
+.lang-btn.active { background: var(--ink); border-color: var(--ink); color: var(--cream-light); }
+
+/* ── HEADER ── */
+.header-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; }
+.header-left { background: var(--cream-light); padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
+.header-right { background: var(--ink); position: relative; }
+.header-right-inner { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 4rem; gap: 2rem; }
+.header-left { padding: 6rem 4rem 4rem; display: flex; flex-direction: column; justify-content: center; background: var(--cream-light); }
+
+.quote-band { background: var(--ink); padding: 4rem 0; }
+.quote-band-inner { display: flex; align-items: center; gap: 4rem; }
+.quote-band-photo { flex-shrink: 0; }
+.publications-header { background: var(--cream-dark); padding: 3rem 0 0; }
+.publications-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+.quote-main { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1.6rem, 2.8vw, 2.6rem); color: var(--cream-light); line-height: 1.5; border-left: 3px solid var(--red); padding-left: 2rem; margin-bottom: 3rem; max-width: 860px; }
+.quote-band .right-langs { padding-left: 2rem; margin-top: 2rem; }
+.quote-band .qlang { color: rgba(253,250,245,0.5); border-color: rgba(253,250,245,0.2); }
+.quote-band .qlang:hover { color: var(--cream-light); border-color: var(--red); }
+.quote-band .qlang.active { color: var(--cream-light); border-color: var(--red); background: var(--red); }
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 700; line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+.name-last { color: var(--red); font-style: italic; font-weight: 400; }
+.header-abstract { font-size: 1.1rem; color: var(--muted); max-width: 460px; line-height: 1.8; }
+.header-links { margin-top: 2rem; display: flex; gap: 2rem; }
+.header-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px; transition: color 0.2s; }
+.header-links a:hover { color: var(--red); border-color: var(--red); }
+.profile-photo { width: 280px; height: 280px; border-radius: 50%; object-fit: cover; border: 2px solid var(--wine); }
+.profile-photo-placeholder { width: 280px; height: 280px; border-radius: 50%; border: 2px dashed var(--line); display: flex; align-items: center; justify-content: center; }
+.profile-photo-placeholder span { font-size: 0.6rem; color: var(--muted); text-align: center; padding: 0.5rem; }
+.right-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1rem, 1.6vw, 1.3rem); color: var(--cream-light); line-height: 1.5; border-left: 2px solid var(--red); padding-left: 1.5rem; }
+.right-langs { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.qlang { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); padding: 0.3rem 0.7rem; background: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
+.qlang:hover { color: var(--red); border-color: var(--red); }
+.qlang.active { color: var(--white); border-color: var(--red); background: var(--red); }
+
+/* ── SECTIONS ── */
+.section-light { background: var(--cream-dark); padding: 2rem 0; }
+.section-dark { background: var(--cream-dark); padding: 2rem 0; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+.section-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
+.section-number { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--line); line-height: 1; font-weight: 400; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; }
+.section-note { font-size: 0.85rem; color: var(--muted); margin-bottom: 2.5rem; }
+
+/* ── THESIS ── */
+.thesis-card { display: block; text-decoration: none; color: inherit; border: 1px solid var(--line); padding: 2.5rem; background: var(--white); transition: border-color 0.3s; }
+.thesis-card:hover { border-color: var(--red); }
+.thesis-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 1rem; }
+.thesis-title { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 700; line-height: 1.3; color: var(--ink); margin-bottom: 0.75rem; }
+.thesis-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+.thesis-desc { font-size: 0.9rem; color: var(--ink); line-height: 1.7; margin-bottom: 1.25rem; }
+.thesis-link { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); border-bottom: 1px solid var(--red); padding-bottom: 1px; }
+
+/* ── GRID ── */
+.grid-3 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+/* ── CARD ── */
+.card { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--white); border: 1px solid var(--line); padding: 1.75rem; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
+.card:hover { border-color: var(--red); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+.card-outlet { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem; }
+.card-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; line-height: 1.4; color: var(--ink); margin-bottom: 0.75rem; }
+.card-excerpt { font-size: 0.85rem; color: var(--muted); line-height: 1.65; flex-grow: 1; margin-bottom: 1.25rem; }
+.card-footer { border-top: 1px solid var(--line); padding-top: 0.9rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.card-date { font-size: 0.75rem; color: var(--wine); }
+.card-cta { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); text-decoration: none; width: fit-content; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+
+/* ── CONTACT ── */
+.contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.contact-text { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 400; font-style: italic; line-height: 1.5; color: var(--cream-light); }
+.contact-text em { color: #C0392B; font-style: normal; font-weight: 500; }
+.contact-links { display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-item { display: flex; flex-direction: column; gap: 0.2rem; }
+.contact-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(253,250,245,0.4); }
+.contact-value { font-size: 1rem; color: var(--cream-light); text-decoration: none; border-bottom: 1px solid transparent; width: fit-content; transition: color 0.2s, border-color 0.2s; }
+.contact-value:hover { color: var(--red); border-color: var(--red); }
+
+.section-toggle { display: flex; align-items: center; gap: 1rem; background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; width: 100%; text-align: left; }
+.section-toggle:hover .toggle-icon { color: var(--red); }
+.toggle-icon { font-size: 1.2rem; color: var(--muted); transition: transform 0.3s, color 0.2s; margin-left: auto; }
+.toggle-icon.open { transform: rotate(180deg); }
+.section-body { overflow: hidden; transition: max-height 0.5s ease, opacity 0.4s ease; max-height: 0; opacity: 0; }
+.section-body.open { max-height: 9999px; opacity: 1; padding-top: 1.5rem; }
+.band-publications { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; color: var(--cream-light); margin-top: 3rem; letter-spacing: -0.02em; }
+
+footer { padding: 2rem 4rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); background: var(--cream-light); }
+
+@media (max-width: 768px) {
+  header { grid-template-columns: 1fr; min-height: auto; }
+  .header-right { min-height: 50vh; }
+  .header-left, .header-right-inner { padding: 3rem 2rem; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .container { padding: 0 2rem; }
+  footer { flex-direction: column; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+  <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- HEADER -->
+<header class="header-split">
+  <div class="header-left">
+    <h1>Rodrigo<br><span class="name-last">Guillot</span></h1>
+    <p class="header-abstract" data-es="Rodrigo Guillot es especialista en comunicación política e institucional con más de cinco años de experiencia en entornos gubernamentales, legislativos y de salud pública en México. Ha asesorado procesos legislativos en el Senado de la República, coordinado estrategias de comunicación en el Congreso de la Ciudad de México y dirigido campañas electorales. Licenciado en Relaciones Internacionales por la UNAM. Sus textos han sido publicados en Revista Memoria, el Instituto Tricontinental de Investigación Social, People's Dispatch, SPR Informa y SDP Noticias." data-en="Rodrigo Guillot is a political and institutional communication specialist with over five years of experience across governmental, legislative, and public health environments in Mexico. He has advised legislative processes at the Mexican Senate, coordinated communication strategies at the Mexico City Legislature, and directed electoral campaigns. He holds a Bachelor's degree in International Relations from UNAM. His writing has been published in Revista Memoria, the Tricontinental Institute for Social Research, People's Dispatch, SPR Informa, and SDP Noticias.">Rodrigo Guillot es especialista en comunicación política e institucional con más de cinco años de experiencia en entornos gubernamentales, legislativos y de salud pública en México. Ha asesorado procesos legislativos en el Senado de la República, coordinado estrategias de comunicación en el Congreso de la Ciudad de México y dirigido campañas electorales. Licenciado en Relaciones Internacionales por la UNAM. Sus textos han sido publicados en Revista Memoria, el Instituto Tricontinental de Investigación Social, People's Dispatch, SPR Informa y SDP Noticias.</p>
+    <div class="header-links">
+      <a href="https://linkedin.com/in/rodrigoguillot" target="_blank">LinkedIn</a>
+      <a href="mailto:rodrigoguillot@politicas.unam.mx" data-es="Contacto" data-en="Contact">Contacto</a>
+      <a href="https://rodrigo-guillot.github.io/onepager.html" target="_blank" data-es="Servicios de Consultoría" data-en="Consulting Services">Servicios de Consultoría</a>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="header-right-inner">
+      <img src="fotografia-rodrigoguillot.jpg" alt="Rodrigo Guillot" class="profile-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="profile-photo-placeholder" style="display:none"><span>foto próximamente</span></div>
+      <div style="height: 2rem;"></div>
+      <p class="right-quote">La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.</p>
+    </div>
+  </div>
+</header>
+
+
+
+<!-- PUBLICACIONES HEADER -->
+<div class="publications-header">
+  <div class="container">
+    <h2 class="publications-title" data-es="Publicaciones" data-en="Publications">Publicaciones</h2>
+  </div>
+</div>
+
+<!-- 01 INVESTIGACIÓN ACADÉMICA -->
+<section class="section-dark">
+  <div class="container">
+    <button class="section-toggle" onclick="toggleSection(this)">
+      <div class="section-header" style="margin-bottom:0; border-bottom:none; padding-bottom:0; flex:1;">
+        <span class="section-number">01</span>
+        <h2 class="section-title" data-es="Investigación académica" data-en="Academic research">Investigación académica</h2>
+      </div>
+      <span class="toggle-icon open">↓</span>
+    </button>
+    <div style="border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;"></div>
+    <div class="section-body open">
+    <a class="thesis-card" href="https://tesiunam.dgb.unam.mx/F/SC4EAPK5NKTG26UBYKQGHDJXTJFNDD2MJ1Q8RLPLUJNM6LDMKT-07750?func=full-set-set&set_number=003710&set_entry=000001&format=999" target="_blank">
+      <span class="thesis-label" data-es="Tesis de licenciatura — FCPyS, UNAM · 2022" data-en="Bachelor's Thesis — FCPyS, UNAM · 2022">Tesis de licenciatura — FCPyS, UNAM · 2022</span>
+      <h3 class="thesis-title" data-es="La política exterior del Estado mexicano ante el golpe de Estado en Bolivia (2019-2020) y el posicionamiento de la Cuarta Transformación ante la coyuntura latinoamericana" data-en="Mexican Foreign Policy in Response to the Coup d'État in Bolivia (2019-2020) and the Fourth Transformation's Position on the Latin American Conjuncture">La política exterior del Estado mexicano ante el golpe de Estado en Bolivia (2019-2020) y el posicionamiento de la Cuarta Transformación ante la coyuntura latinoamericana</h3>
+      <p class="thesis-meta" data-es="Rodrigo Guillot López · Especialización en Política Exterior Mexicana" data-en="Rodrigo Guillot López · Specialization in Mexican Foreign Policy">Rodrigo Guillot López · Especialización en Política Exterior Mexicana</p>
+      <p class="thesis-desc" data-es="Investigación sobre el posicionamiento diplomático de México ante el golpe de Estado en Bolivia de 2019, analizado en el marco de la política exterior de la Cuarta Transformación y la segunda ola progresista en América Latina." data-en="Research on Mexico's diplomatic positioning in response to the 2019 coup d'état in Bolivia, analyzed within the framework of the Fourth Transformation's foreign policy and the second progressive wave in Latin America.">Investigación sobre el posicionamiento diplomático de México ante el golpe de Estado en Bolivia de 2019, analizado en el marco de la política exterior de la Cuarta Transformación y la segunda ola progresista en América Latina.</p>
+      <span class="thesis-link" data-es="Consultar en repositorio UNAM →" data-en="View in UNAM repository →">Consultar en repositorio UNAM →</span>
+    </a>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PUBLICACIONES ACADÉMICAS -->
+<section class="section-light">
+  <div class="container">
+    <button class="section-toggle" onclick="toggleSection(this)">
+      <div class="section-header" style="margin-bottom:0; border-bottom:none; padding-bottom:0; flex:1;">
+        <span class="section-number">02</span>
+        <h2 class="section-title" data-es="Publicaciones académicas" data-en="Academic publications">Publicaciones académicas</h2>
+      </div>
+      <span class="toggle-icon">↓</span>
+    </button>
+    <div style="border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;"></div>
+    <div class="section-body">
+    <div class="grid-3">
+
+      <a class="card" href="https://thetricontinental.org/es/boletin-na-genz-fascismo-mexico/" target="_blank">
+        <span class="card-outlet">Instituto Tricontinental de Investigación Social</span>
+        <h3 class="card-title">La falsa GenZ y el fascismo mexicano</h3>
+        <p class="card-excerpt">En noviembre del 2025, la derecha mexicana convocó a una marcha simultánea en todas las ciudades capitales de México, bajo la bandera del anime One Piece, que fue usada en el pasado reciente por manifestantes nepalíes, mayoritariamente jóvenes, para protestar contra medidas restrictivas de su gobierno. La apuesta por una imagen extranjera y descontextualizada de la realidad mexicana parece bizarra porque lo es...</p>
+        <div class="card-footer">
+          <span class="card-date">Dic 2025 · Boletín Nuestra América</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://revistamemoria.mx/?p=4580" target="_blank">
+        <span class="card-outlet">Revista Memoria — CEMOS</span>
+        <h3 class="card-title">Revolución de las conciencias: pueblo, partido, Estado</h3>
+        <p class="card-excerpt">Uno de los conceptos fundamentales que Andrés Manuel acuñó durante su gesta política para construir, defender y caracterizar el proceso que hoy conocemos como la Cuarta Transformación es el de la revolución de las conciencias. Con él, el expresidente solía hacer referencia al proceso mediante el cuál la mayoría popular logró identificar, señalar, combatir organizadamente y derrotar por la vía de las elecciones al régimen neoliberal...</p>
+        <div class="card-footer">
+          <span class="card-date">Nov 2025 · No. 298</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+    </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 SPR INFORMA -->
+<section class="section-dark">
+  <div class="container">
+    <button class="section-toggle" onclick="toggleSection(this)">
+      <div class="section-header" style="margin-bottom:0; border-bottom:none; padding-bottom:0; flex:1;">
+        <span class="section-number">03</span>
+        <h2 class="section-title" data-es="Columnista — SPR Informa" data-en="Columnist — SPR Informa">Columnista — SPR Informa</h2>
+      </div>
+      <span class="toggle-icon">↓</span>
+    </button>
+    <div style="border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;"></div>
+    <div class="section-body">
+    <p class="section-note" data-es="Medio de difusión del Gobierno de México · 7 artículos · 2022–2023" data-en="Official media outlet of the Government of Mexico · 7 articles · 2022–2023">Medio de difusión del Gobierno de México · 7 artículos · 2022–2023</p>
+    <div class="grid-3">
+
+      <a class="card" href="https://www.sprinforma.mx/noticia/el-genocidio-woke-del-estado-de-israel" target="_blank">
+        <span class="card-outlet">SPR Informa</span>
+        <h3 class="card-title">El genocidio woke del Estado de Israel</h3>
+        <p class="card-excerpt">La generalidad de los medios corporativos nacionales e internacionales se han sumado al operativo de desinformación contra la población global, defendiendo al régimen de limpieza étnica que Israel lleva a cabo en contra del pueblo palestino. No solamente porque al mencionar los ataques de Hamás omiten describir las varias décadas de desplazamiento forzoso...</p>
+        <div class="card-footer">
+          <span class="card-date">Oct 2023</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.sprinforma.mx/noticia/advierten-academicos-condiciones-para-lawfare-en-mexico" target="_blank">
+        <span class="card-outlet">SPR Informa</span>
+        <h3 class="card-title">Advierten académicos condiciones para Lawfare en México</h3>
+        <p class="card-excerpt">Durante el cierre del Seminario "Lawfare en América Latina: características, impacto y proyección" de la UACM del Valle, los académicos Georgette Ramírez Kuri y Aníbal García Fernández advirtieron que en México se construyen condiciones para ejecutar lawfare en contra de la Cuarta Transformación...</p>
+        <div class="card-footer">
+          <span class="card-date">Oct 2023</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.sprinforma.mx/noticia/lula-y-la-ultraderecha-latinoamericana" target="_blank">
+        <span class="card-outlet">SPR Informa</span>
+        <h3 class="card-title">Lula y la ultraderecha latinoamericana</h3>
+        <p class="card-excerpt">El pequeño margen con que Lula da Silva será presidente de Brasil nos alerta sobre una situación repetida en diferentes países de América Latina. Si bien, desde el 2018, las fuerzas progresistas tienden a ganar las elecciones en nuestro continente, las derechas violentas, radicales, fascistas, acrecientan su presencia en el escenario político...</p>
+        <div class="card-footer">
+          <span class="card-date">Nov 2022</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.sprinforma.mx/noticia/las-encuestas-indican-que-brasil-debera-ir-a-segunda-vuelta" target="_blank">
+        <span class="card-outlet">SPR Informa</span>
+        <h3 class="card-title">Las encuestas indican que Brasil deberá ir a segunda vuelta</h3>
+        <p class="card-excerpt">De confirmarse las tendencias, el próximo domingo 2 de octubre Lula da Silva será declarado como el primer lugar de la primera vuelta en las elecciones presidenciales brasileñas. No obstante, después de la jornada electoral, Brasil no habrá declarado a su presidente aún...</p>
+        <div class="card-footer">
+          <span class="card-date">Sep 2022</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.sprinforma.mx/noticia/el-lawfare-contra-cristina" target="_blank">
+        <span class="card-outlet">SPR Informa</span>
+        <h3 class="card-title">El lawfare contra Cristina</h3>
+        <p class="card-excerpt">Cristina Fernández, ex-presidenta y actual vicepresidenta de Argentina es víctima, como ya lo había sido, de una campaña de lawfare. Dos fiscales argentinos piden que se le encarcele por doce años, y se le inhabilite políticamente de por vida. Este ha sido el último paso de una campaña que inició en 2019...</p>
+        <div class="card-footer">
+          <span class="card-date">Ago 2022</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.sprinforma.mx/noticia/la-razon-y-la-historia-asisten-a-lopez-obrador-en-washington" target="_blank">
+        <span class="card-outlet">SPR Informa</span>
+        <h3 class="card-title">La razón y la historia asisten a López Obrador en Washington</h3>
+        <p class="card-excerpt">Conocedor de la complejidad de la historia de México, y de sus relaciones con Estados Unidos, López Obrador usó la historia para demostrar que sus propuestas a Joe Biden, además de corresponder a la actual crisis económica de Estados Unidos, ponen en el centro la soberanía mexicana...</p>
+        <div class="card-footer">
+          <span class="card-date">Jul 2022</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.sprinforma.mx/noticia/el-tsunami-progresista-y-la-advertencia-de-las-nuevas-derechas" target="_blank">
+        <span class="card-outlet">SPR Informa</span>
+        <h3 class="card-title">El tsunami progresista y la advertencia de las nuevas derechas</h3>
+        <p class="card-excerpt">La ola progresista que comenzó con la victoria de López Obrador en México ha llegado a romper límites históricos para nuestra región. Al inicio del sexenio en México, Morena encontró una región casi completamente a la derecha. Argentina gobernada por Macri y Brasil por Bolsonaro...</p>
+        <div class="card-footer">
+          <span class="card-date">Jun 2022</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 SDP NOTICIAS -->
+<section class="section-light">
+  <div class="container">
+    <button class="section-toggle" onclick="toggleSection(this)">
+      <div class="section-header" style="margin-bottom:0; border-bottom:none; padding-bottom:0; flex:1;">
+        <span class="section-number">04</span>
+        <h2 class="section-title" data-es="Columnista — SDP Noticias" data-en="Columnist — SDP Noticias">Columnista — SDP Noticias</h2>
+      </div>
+      <span class="toggle-icon">↓</span>
+    </button>
+    <div style="border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;"></div>
+    <div class="section-body">
+    <p class="section-note" data-es="7 artículos · 2020–2021" data-en="7 articles · 2020–2021">7 artículos · 2020–2021</p>
+    <div class="grid-3">
+
+      <a class="card" href="https://www.sdpnoticias.com/columnas/capitolio-golpe-de-estado-donald-trump-protesta-eleccion-eu.html" target="_blank">
+        <span class="card-outlet">SDP Noticias</span>
+        <h3 class="card-title">¿Golpe de estado en el Capitolio?</h3>
+        <p class="card-excerpt">La invasión del Capitolio —sede del Congreso estadounidense— por parte de grupos abiertamente fascistas que defienden a Trump contra el alegado fraude electoral es un intento de la ultraderecha estadounidense de retener el poder o al menos conseguir mejores condiciones para encabezar la oposición al reconocido como presidente electo Joe Biden...</p>
+        <div class="card-footer">
+          <span class="card-date">Ene 2021</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.sdpnoticias.com/columnas/andres-manuel-y-su-movimiento-la-muerte-del-padre.html" target="_blank">
+        <span class="card-outlet">SDP Noticias</span>
+        <h3 class="card-title">Andrés Manuel y su movimiento: la muerte del Padre</h3>
+        <p class="card-excerpt">El Movimiento Regeneración Nacional necesita institucionalizarse. Esta necesidad es ante todo un asunto estratégico; un movimiento es un conjunto de fuerzas sin organización central, y por ello no puede alcanzar los objetivos que unen a sus miembros. Los movimientos necesitan organización para fluir o detenerse según sea necesario...</p>
+        <div class="card-footer">
+          <span class="card-date">Sep 2020</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.sdpnoticias.com/columnas/ojala-que-alejandro-encinas-ponga-paz-en-morena.html" target="_blank">
+        <span class="card-outlet">SDP Noticias</span>
+        <h3 class="card-title">Ojalá que Alejandro Encinas ponga paz en Morena</h3>
+        <p class="card-excerpt">Sin pretender esbozar una crítica personalizada, usaré sus nombres para esquematizar mi pensamiento. Me refiero a las dos personalidades más sonadas para contender en la encuesta por la presidencia de Morena. Ninguno de los dos —Bertha Luján y Mario Delgado— logró satisfactoriamente hacerse elegible por mayoría amplia entre la militancia...</p>
+        <div class="card-footer">
+          <span class="card-date">Ago 2020</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.sdpnoticias.com/columnas/la-etica-del-presidente-deslindarse-de-su-familia.html" target="_blank">
+        <span class="card-outlet">SDP Noticias</span>
+        <h3 class="card-title">La ética del presidente: deslindarse de su familia</h3>
+        <p class="card-excerpt">La actitud ética del político de nuestro siglo debe llevarlo a deslindarse de su familia y de sus actos. Sin erradicar la herencia de poder e impunidad, no se puede construir una ciudadanía igualitaria para todas las personas. Aunque en la historia de México hay excepciones, la regla parece ser clara y contundente...</p>
+        <div class="card-footer">
+          <span class="card-date">Ago 2020</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.sdpnoticias.com/columnas/protestas-en-estados-unidos-un-significado-en-disputa.html" target="_blank">
+        <span class="card-outlet">SDP Noticias</span>
+        <h3 class="card-title">Protestas en Estados Unidos: un significado en disputa</h3>
+        <p class="card-excerpt">Lo verdaderamente relevante de las movilizaciones políticas no es la emocionalidad vivida por los manifestantes en el espacio público, ni los momentos de éxtasis compartidos por las multitudes; la efervescencia es más bien un vehículo que permite condensar en un corto periodo de espacio-tiempo toda una serie de valores, ideologías, deseos y consignas...</p>
+        <div class="card-footer">
+          <span class="card-date">Jun 2020</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.sdpnoticias.com/columnas/el-coronavirus-como-crisis-del-capitalismo-global-ii-el-aislamiento-social-como-acontecimiento-politico.html" target="_blank">
+        <span class="card-outlet">SDP Noticias</span>
+        <h3 class="card-title">El coronavirus como crisis del capitalismo global (II): el aislamiento social como acontecimiento político</h3>
+        <p class="card-excerpt">Otro pensador que analiza la situación originada por el COVID-19 como crisis del capitalismo es Giorgio Agamben, que se dice sorprendido por la facilidad con la que la gente dejó su cotidianeidad para aislarse en cuarentena. El italiano lanza la hipótesis de que las condiciones de vida de las personas se habían vuelto intolerables, como una plaga...</p>
+        <div class="card-footer">
+          <span class="card-date">Abr 2020</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.sdpnoticias.com/columnas/el-coronavirus-como-crisis-del-capitalismo-global-explicacion-a-byung-chul-han-de-lo-que-zizek-dijo-en-realidad.html" target="_blank">
+        <span class="card-outlet">SDP Noticias</span>
+        <h3 class="card-title">El coronavirus como crisis del capitalismo global: explicación a Byung-Chul Han de lo que Zizek dijo en realidad</h3>
+        <p class="card-excerpt">La crisis del COVID-19, al menos en la historia contemporánea, no tiene punto de comparación. Vivimos un momento agudo y peligroso que saca a relucir la esencia de las personas, como cualquier coyuntura. En otros espacios he dicho que la pandemia contiene dentro de sí misma el potencial de que a partir de ella surja una crítica profunda al capitalismo global...</p>
+        <div class="card-footer">
+          <span class="card-date">Abr 2020</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 PEOPLE'S DISPATCH -->
+<section class="section-light">
+  <div class="container">
+    <button class="section-toggle" onclick="toggleSection(this)">
+      <div class="section-header" style="margin-bottom:0; border-bottom:none; padding-bottom:0; flex:1;">
+        <span class="section-number">05</span>
+        <h2 class="section-title" data-es="Columnista — People's Dispatch" data-en="Columnist — People's Dispatch">Columnista — People's Dispatch</h2>
+      </div>
+      <span class="toggle-icon">↓</span>
+    </button>
+    <div style="border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;"></div>
+    <div class="section-body">
+    <p class="section-note" data-es="2 artículos · 2022" data-en="2 articles · 2022">2 artículos · 2022</p>
+    <div class="grid-3">
+
+      <a class="card" href="https://peoplesdispatch.org/2022/07/27/mexicos-president-gives-joe-biden-a-big-history-lesson/" target="_blank">
+        <span class="card-outlet">People's Dispatch</span>
+        <h3 class="card-title">Mexico's President gives Joe Biden a big history lesson</h3>
+        <p class="card-excerpt">Mexico's President Andrés Manuel López Obrador visited the United States on July 12 and offered five proposals to US President Joe Biden. These proposals are based on AMLO's in-depth knowledge of Mexican history and his reading of the economic crisis in the United States, which seems to be losing its edge as a global leader...</p>
+        <div class="card-footer">
+          <span class="card-date">Jul 2022</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Read original article →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://peoplesdispatch.org/2022/06/29/the-era-of-northern-hegemony-over-mexico-is-coming-to-an-end/" target="_blank">
+        <span class="card-outlet">People's Dispatch</span>
+        <h3 class="card-title">The era of Northern hegemony over Mexico is coming to an end</h3>
+        <p class="card-excerpt">In 2010, Cuba's former President Fidel Castro said: "López Obrador will be the person with the most moral and political authority in Mexico when the system collapses and, with it, the empire." Despite the wide lead he had in all the polls before the elections, Obrador's victory in 2018 took almost everyone by surprise...</p>
+        <div class="card-footer">
+          <span class="card-date">Jun 2022</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Read original article →</span>
+        </div>
+      </a>
+
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 SIN LÍNEA MX -->
+<section class="section-dark">
+  <div class="container">
+    <button class="section-toggle" onclick="toggleSection(this)">
+      <div class="section-header" style="margin-bottom:0; border-bottom:none; padding-bottom:0; flex:1;">
+        <span class="section-number">06</span>
+        <h2 class="section-title" data-es="Columnista — Sin Línea Mx" data-en="Columnist — Sin Línea Mx">Columnista — Sin Línea Mx</h2>
+      </div>
+      <span class="toggle-icon">↓</span>
+    </button>
+    <div style="border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;"></div>
+    <div class="section-body">
+    <p class="section-note" data-es="Selección de 10 artículos · más de 25 publicados · 2019–2022" data-en="Selection of 10 articles · over 25 published · 2019–2022">Selección de 10 artículos · más de 25 publicados · 2019–2022</p>
+    <div class="grid-3">
+
+      <a class="card" href="https://sinlineamx.com/la-victoria-en-colombia-y-las-ultraderechas-que-amenazan-nuestra-region/" target="_blank">
+        <span class="card-outlet">Sin Línea Mx</span>
+        <h3 class="card-title">La victoria en Colombia y las ultraderechas que amenazan nuestra región</h3>
+        <p class="card-excerpt">La nueva ola progresista, que comenzó en México con la victoria del presidente López Obrador, ha conquistado fronteras consideradas infranqueables. Cuando entró al poder, Morena encontró una región dominada por la derecha. Hoy, un poco más allá de la mitad del sexenio lopezobradorista, el panorama latinoamericano es completamente distinto...</p>
+        <div class="card-footer">
+          <span class="card-date">Jun 2022</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://sinlineamx.com/11-de-septiembre-de-chile-a-afganistan/" target="_blank">
+        <span class="card-outlet">Sin Línea Mx</span>
+        <h3 class="card-title">11 de septiembre: de Chile a Afganistán</h3>
+        <p class="card-excerpt">Tanto el asesinato del presidente chileno Salvador Allende en 1973 como el ataque a las torres gemelas de Nueva York en 2001 son eventos que marcan el inicio de una época para el mundo. Una casualidad macabra sitúa ambos sucesos el mismo día, un 11 de septiembre...</p>
+        <div class="card-footer">
+          <span class="card-date">Sep 2021</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://sinlineamx.com/la-oposicion-de-ultraizquierda-o-del-marxismo-dresseriano/" target="_blank">
+        <span class="card-outlet">Sin Línea Mx</span>
+        <h3 class="card-title">La oposición de ultraizquierda (o del marxismo-dresseriano)</h3>
+        <p class="card-excerpt">En México, como en el resto de América Latina, los movimientos sociales de izquierda mantienen un constante debate abierto sobre las mejores formas de luchar para construir un mundo diferente. Pero, ¿qué pasa cuando, disfrazado de crítica, el discurso y la práctica política de algún sector favorece sistemáticamente a la derecha más reaccionaria?...</p>
+        <div class="card-footer">
+          <span class="card-date">Abr 2021</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://sinlineamx.com/de-latinus-a-articulo-19-financiamientos-oscuros-y-ongs-intervencionistas/" target="_blank">
+        <span class="card-outlet">Sin Línea Mx</span>
+        <h3 class="card-title">De Latinus a Artículo 19: financiamientos oscuros y ONGs intervencionistas</h3>
+        <p class="card-excerpt">Conforme las elecciones federales de este año se acercan, el bloque conservador aumenta sus esfuerzos por descarrilar el proceso de la Cuarta Transformación. Uno a uno, sus intentos se desnudan como movimientos desesperados, coletazos de la antigua maquinaria dinosaurica que se quedó sin aceite...</p>
+        <div class="card-footer">
+          <span class="card-date">Abr 2021</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://sinlineamx.com/joe-biden-genocidio-politicamente-correcto/" target="_blank">
+        <span class="card-outlet">Sin Línea Mx</span>
+        <h3 class="card-title">Joe Biden: genocidio políticamente correcto</h3>
+        <p class="card-excerpt">El bombardeo del ejército gringo a la alianza Siria-Irán solamente sorprendió a los ingenuos. Tampoco es sorpresa que los medios de comunicación y activistas de la llamada sociedad civil escondieron la noticia y no le dedicaron un análisis más meritorio...</p>
+        <div class="card-footer">
+          <span class="card-date">Feb 2021</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://sinlineamx.com/una-victoria-en-bolivia-y-una-leccion-para-mexico/" target="_blank">
+        <span class="card-outlet">Sin Línea Mx</span>
+        <h3 class="card-title">Una victoria para Bolivia, una lección para México</h3>
+        <p class="card-excerpt">Lo que vimos ayer en Bolivia es un hecho histórico. El pueblo resistió prácticamente un año, desde que el ejército y los grupos de la derecha más reaccionaria del país diera un golpe de estado contra el compañero Evo Morales. La dictadura golpista impuso un régimen de represión a los movimientos desde el día uno...</p>
+        <div class="card-footer">
+          <span class="card-date">Oct 2020</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://sinlineamx.com/petroleo-y-medicina-la-politica-exterior-de-mexico-en-tiempos-del-covid-19/" target="_blank">
+        <span class="card-outlet">Sin Línea Mx</span>
+        <h3 class="card-title">Petróleo y medicina: la política exterior de México en tiempos del COVID-19</h3>
+        <p class="card-excerpt">El conflicto internacional es una ventana de oportunidad para que México construya relaciones sólidas con la comunidad internacional. Nuestra política exterior es una de las más paradigmáticas en el mundo: como parte de la región de Norteamérica, mantenemos relaciones económicas y políticas con nuestro vecino del Norte...</p>
+        <div class="card-footer">
+          <span class="card-date">Abr 2020</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://sinlineamx.com/sigue-viva-la-guerra-fria/" target="_blank">
+        <span class="card-outlet">Sin Línea Mx</span>
+        <h3 class="card-title">¿Sigue viva la guerra fría?</h3>
+        <p class="card-excerpt">Durante la guerra fría, las potencias hegemónicas de la URSS y Estados Unidos se enfrentaron entre sí disputándose la dominancia del sistema internacional. Ambos países aplicaron diferentes estrategias para, siempre de manera indirecta, combatir a su homólogo y buscar ampliar su influencia en diferentes regiones del mundo...</p>
+        <div class="card-footer">
+          <span class="card-date">Nov 2019</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://sinlineamx.com/mexico-al-csonu-liderazgo-regional-en-america-latina-y-el-caribe/" target="_blank">
+        <span class="card-outlet">Sin Línea Mx</span>
+        <h3 class="card-title">México al CSONU: liderazgo regional en América Latina y El Caribe</h3>
+        <p class="card-excerpt">Contrario a las predicciones de la oposición mexicana, la política exterior del nuevo gobierno ha rendido frutos positivos para México; así lo demuestra el apoyo anunciado por Andrés Manuel, del lado de Juan Ramón de la Fuente, con el que México buscará un espacio en el Consejo de Seguridad de la ONU...</p>
+        <div class="card-footer">
+          <span class="card-date">Jul 2019</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://sinlineamx.com/amlo-con-bloomberg-ganchos-al-higado-del-sistema-neoliberal/" target="_blank">
+        <span class="card-outlet">Sin Línea Mx</span>
+        <h3 class="card-title">AMLO con Bloomberg: ganchos al hígado del sistema neoliberal</h3>
+        <p class="card-excerpt">La entrevista del presidente con el editor en jefe de Bloomberg permitió que Andrés se dirigiera a los poderes económicos internacionales, pero también a la opinión pública dentro de Estados Unidos y a los diferentes actores de la vida interna del vecino del norte...</p>
+        <div class="card-footer">
+          <span class="card-date">Jul 2019</span>
+          <span class="card-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
+        </div>
+      </a>
+
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section style="background: var(--ink); padding: 6rem 0;">
+  <div class="container">
+    <div class="contact-inner">
+      <p class="contact-text" data-es="Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación." data-en="For <em>collaborations</em>, <em>consultancy</em>, or simply a conversation.">Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación.</p>
+      <div class="contact-links">
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <a class="contact-value" href="mailto:rodrigoguillot@politicas.unam.mx">rodrigoguillot@politicas.unam.mx</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">LinkedIn</span>
+          <a class="contact-value" href="https://linkedin.com/in/rodrigoguillot" target="_blank">linkedin.com/in/rodrigoguillot</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">GitHub</span>
+          <a class="contact-value" href="https://github.com/Rodrigo-Guillot" target="_blank">github.com/Rodrigo-Guillot</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label" data-es="Consultoría" data-en="Consulting">Consultoría</span>
+          <a class="contact-value" href="https://rodrigo-guillot.github.io/onepager.html" target="_blank" data-es="Servicios de Consultoría" data-en="Consulting Services">Servicios de Consultoría</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Rodrigo Guillot López</span>
+  <span data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</span>
+</footer>
+
+<script>
+const quotes = {
+  es: 'La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.',
+  en: 'Political communication is the daily work of reading society, understanding its shifts, and building a solid connection between institutions, leaders, and the people they serve.',
+  fr: 'La communication politique est le travail quotidien de compréhension de la société et de ses changements pour construire un lien solide entre les institutions, les dirigeants et les personnes qu\'ils servent.'
+};
+
+function setQuote(lang, btn) {
+  document.getElementById('quote-text').textContent = quotes[lang];
+  document.querySelectorAll('.qlang').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function toggleSection(btn) {
+  const icon = btn.querySelector('.toggle-icon');
+  const body = btn.parentElement.querySelector('.section-body');
+  icon.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
+function setLang(lang) {
+  document.querySelectorAll('[data-es]').forEach(el => {
+    const val = lang === 'es' ? el.dataset.es : el.dataset.en;
+    if (!val) return;
+    if (val.includes('<em>')) el.innerHTML = val;
+    else el.textContent = val;
+  });
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+</script>
+</body>
+</html>
