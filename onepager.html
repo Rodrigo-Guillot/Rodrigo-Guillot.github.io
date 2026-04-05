@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rodrigo Guillot López — Servicios de Consultoría</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A1A;
+    --cream: #FDFAF5;
+    --cream-dark: #F0EBE3;
+    --red: #C0392B;
+    --wine: #7B1A2A;
+    --muted: #7A6E65;
+    --line: #DDD6CC;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #e8e0d5;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  .lang-switch {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 100;
+  }
+  .lang-switch button {
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .lang-switch button.active { opacity: 1; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 82mm 1fr;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  }
+
+  /* LEFT COLUMN */
+  .left {
+    background: var(--ink);
+    padding: 10mm 8mm;
+    display: flex;
+    flex-direction: column;
+    gap: 8mm;
+  }
+
+  .photo-wrap {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--wine);
+    background: #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-wrap .no-photo {
+    font-size: 0.6rem;
+    color: rgba(253,250,245,0.3);
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .left-name {
+    border-top: 1px solid rgba(253,250,245,0.1);
+    padding-top: 6mm;
+  }
+  .left-name h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .left-name .surname {
+    color: var(--red);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .left-name .title {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(253,250,245,0.75);
+    margin-top: 3mm;
+    line-height: 1.5;
+  }
+
+  .left-section { border-top: 1px solid rgba(253,250,245,0.1); padding-top: 5mm; }
+  .left-section-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 3mm;
+  }
+  .left-section p, .left-section a {
+    font-size: 0.72rem;
+    color: var(--cream);
+    line-height: 1.6;
+    text-decoration: none;
+    display: block;
+  }
+  .left-section a:hover { color: var(--cream); }
+
+  .quote-block {
+    border-top: 1px solid rgba(253,250,245,0.1);
+    padding-top: 5mm;
+  }
+  .quote-block p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.75rem;
+    color: var(--cream);
+    line-height: 1.6;
+    border-left: 2px solid var(--red);
+    padding-left: 3mm;
+  }
+
+  /* RIGHT COLUMN */
+  .right {
+    padding: 10mm 9mm;
+    display: flex;
+    flex-direction: column;
+    gap: 7mm;
+  }
+
+  .right-header {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 4mm;
+  }
+  .right-header .eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 2mm;
+  }
+  .right-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .intro-text {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .service-block { display: flex; flex-direction: column; gap: 2.5mm; }
+  .service-block + .service-block { border-top: 1px solid var(--line); padding-top: 6mm; }
+
+  .service-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    color: var(--line);
+    letter-spacing: 0.1em;
+  }
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .service-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5mm;
+    margin-top: 2mm;
+  }
+  .service-item {
+    font-size: 0.78rem;
+    color: var(--muted);
+    padding-left: 3mm;
+    position: relative;
+    line-height: 1.6;
+  }
+  .service-item::before {
+    content: "•";
+    color: var(--red);
+    position: absolute;
+    left: 0;
+    font-size: 0.7rem;
+  }
+
+  .bottom-bar {
+    margin-top: auto;
+    background: var(--cream-dark);
+    margin-left: -9mm;
+    margin-right: -9mm;
+    margin-bottom: -10mm;
+    padding: 4mm 9mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .bottom-bar .url {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .bottom-bar .url span { color: var(--red); }
+
+  .closing-line {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: left;
+    margin-top: auto;
+    padding-bottom: 3mm;
+    letter-spacing: -0.01em;
+  }
+  @media print {
+    body { background: none; padding: 0; }
+    .lang-switch { display: none; }
+    .page { box-shadow: none; width: 100%; min-height: 100vh; }
+  }
+</style>
+</head>
+<body>
+
+<div class="lang-switch">
+  <button class="active" onclick="setLang('es', this)">ES</button>
+  <button onclick="setLang('en', this)">EN</button>
+</div>
+
+<div class="page">
+
+  <!-- LEFT -->
+  <div class="left">
+    <div class="photo-wrap">
+      <img src="fotografia-rodrigoguillot.jpg" alt="Rodrigo Guillot"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="no-photo" style="display:none">foto próximamente</span>
+    </div>
+
+    <div class="left-name">
+      <h1>Rodrigo<br><span class="surname">Guillot López</span></h1>
+      <p class="title" data-es="Especialista en comunicación política · Internacionalista · Autor" data-en="Political communication specialist · Internationalist · Author">Especialista en comunicación política · Internacionalista · Autor</p>
+    </div>
+
+    <div class="quote-block">
+      <p data-es="La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas." data-en="Political communication is the daily work of reading society, understanding its shifts, and building a solid connection between institutions, leaders, and the people they serve.">La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.</p>
+    </div>
+
+    <div class="left-section">
+      <p class="left-section-label" data-es="Formación" data-en="Education">Formación</p>
+      <p data-es="Licenciado en Relaciones Internacionales — UNAM" data-en="B.A. International Relations — UNAM">Licenciado en Relaciones Internacionales — UNAM</p>
+      <p data-es="Diplomado en Marketing Político — ACP" data-en="Diploma in Political Marketing — ACP">Diplomado en Marketing Político — ACP</p>
+      <p data-es="Diplomado Superior en Formación Política — CLACSO" data-en="Advanced Diploma in Political Studies — CLACSO">Diplomado Superior en Formación Política — CLACSO</p>
+    </div>
+
+    <div class="left-section">
+      <p class="left-section-label" data-es="Experiencia" data-en="Experience">Experiencia</p>
+      <p data-es="Senado de la República" data-en="Mexican Senate">Senado de la República</p>
+      <p data-es="Cámara de Diputados" data-en="Chamber of Deputies">Cámara de Diputados</p>
+      <p data-es="Congreso de la Ciudad de México" data-en="Mexico City Legislature">Congreso de la Ciudad de México</p>
+      <p data-es="Servicios de Salud Pública CDMX" data-en="Mexico City Public Health Services">Servicios de Salud Pública CDMX</p>
+      <p data-es="Campañas electorales" data-en="Electoral campaigns">Campañas electorales</p>
+    </div>
+
+    <div class="left-section">
+      <a class="left-section-label" href="https://rodrigo-guillot.github.io" target="_blank" style="text-decoration:none;" data-es="Publicaciones" data-en="Publications">Publicaciones</a>
+      <a href="https://revistamemoria.mx/?p=4580" target="_blank">Revista Memoria — CEMOS</a>
+      <a href="https://thetricontinental.org/es/boletin-na-genz-fascismo-mexico/" target="_blank">Instituto Tricontinental de Investigación Social</a>
+      <a href="https://peoplesdispatch.org/author/rodrigo-guillot/" target="_blank">People's Dispatch</a>
+      <a href="https://sprinforma.mx/buscar?q=rodrigo+guillot" target="_blank">SPR Informa</a>
+      <a href="https://www.sdpnoticias.com/autor/rodrigo-guillot/" target="_blank">SDP Noticias</a>
+    </div>
+
+    <div class="left-section">
+      <p class="left-section-label">Contacto</p>
+      <a href="mailto:rodrigoguillot@politicas.unam.mx">rodrigoguillot@politicas.unam.mx</a>
+      <a href="https://rodrigo-guillot.github.io">rodrigo-guillot.github.io</a>
+      <a href="https://linkedin.com/in/rodrigoguillot">linkedin.com/in/rodrigoguillot</a>
+    </div>
+
+
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+
+    <div class="right-header">
+      <p class="eyebrow" data-es="Servicios de consultoría" data-en="Consulting services">Servicios de consultoría</p>
+      <h2 data-es="Estrategia, narrativa y análisis para liderazgos, instituciones y campañas políticas." data-en="Strategy, narrative and analysis for political leaders, institutions and campaigns.">Estrategia, narrativa y análisis para liderazgos, instituciones y campañas políticas.</h2>
+    </div>
+
+    <p class="intro-text" data-es="Más de cinco años de experiencia en entornos gubernamentales, legislativos y electorales en México. Asesoría sustentada en análisis riguroso, trayectoria institucional y publicación académica internacional." data-en="Over five years of experience in governmental, legislative, and electoral environments in Mexico. Advisory grounded in rigorous analysis, institutional track record, and international academic publication.">Más de cinco años de experiencia en entornos gubernamentales, legislativos y electorales en México. Asesoría sustentada en análisis riguroso, trayectoria institucional y publicación académica internacional.</p>
+
+    <!-- SERVICE 1 -->
+    <div class="service-block">
+      <h3 class="service-title" data-es="Asesoría en comunicación política e institucional" data-en="Political & institutional communication advisory">Asesoría en comunicación política e institucional</h3>
+      <div class="service-items">
+        <span class="service-item" data-es="Arquitectura del mensaje público" data-en="Public message architecture">Arquitectura del mensaje público</span>
+        <span class="service-item" data-es="Estrategia narrativa institucional" data-en="Institutional narrative strategy">Estrategia narrativa institucional</span>
+        <span class="service-item" data-es="Posicionamiento gubernamental" data-en="Government positioning">Posicionamiento gubernamental</span>
+      </div>
+    </div>
+
+    <!-- SERVICE 2 -->
+    <div class="service-block">
+      <h3 class="service-title" data-es="Estrategia de comunicación legislativa" data-en="Legislative communication strategy">Estrategia de comunicación legislativa</h3>
+      <div class="service-items">
+        <span class="service-item" data-es="Comunicación legislativa" data-en="Legislative communication">Comunicación legislativa</span>
+        <span class="service-item" data-es="Narrativa parlamentaria" data-en="Parliamentary narrative">Narrativa parlamentaria</span>
+        <span class="service-item" data-es="Imagen territorializada" data-en="Territorial image">Imagen territorializada</span>
+      </div>
+    </div>
+
+    <!-- SERVICE 3 -->
+    <div class="service-block">
+      <h3 class="service-title" data-es="Análisis político y coyuntural" data-en="Political & conjunctural analysis">Análisis político y coyuntural</h3>
+      <div class="service-items">
+        <span class="service-item" data-es="Inteligencia política" data-en="Political intelligence">Inteligencia política</span>
+        <span class="service-item" data-es="Diagnóstico de coyuntura" data-en="Conjunctural diagnosis">Diagnóstico de coyuntura</span>
+        <span class="service-item" data-es="Análisis de ecosistema político" data-en="Political ecosystem analysis">Análisis de ecosistema político</span>
+      </div>
+    </div>
+
+    <!-- SERVICE 4 -->
+    <div class="service-block">
+      <h3 class="service-title" data-es="Comunicación de campaña" data-en="Campaign communication">Comunicación de campaña</h3>
+      <div class="service-items">
+        <span class="service-item" data-es="Estrategia electoral" data-en="Electoral strategy">Estrategia electoral</span>
+        <span class="service-item" data-es="Campaña y territorio" data-en="Campaign & territory">Campaña y territorio</span>
+        <span class="service-item" data-es="Comunicación en procesos electorales" data-en="Electoral process communication">Comunicación en procesos electorales</span>
+        <span class="service-item" data-es="Capacitación para brigadas y redes" data-en="Brigade & social media training">Capacitación para brigadas y redes</span>
+      </div>
+    </div>
+
+    <!-- SERVICE 5 -->
+    <div class="service-block">
+      <h3 class="service-title" data-es="Contenido editorial y análisis para medios" data-en="Editorial content & media analysis">Contenido editorial y análisis para medios</h3>
+      <div class="service-items">
+        <span class="service-item" data-es="Vocería pública" data-en="Public spokesmanship">Vocería pública</span>
+        <span class="service-item" data-es="Posicionamiento editorial" data-en="Editorial positioning">Posicionamiento editorial</span>
+        <span class="service-item" data-es="Construcción de voz pública" data-en="Public voice building">Construcción de voz pública</span>
+      </div>
+    </div>
+
+    <p class="closing-line" data-es="Disponible para proyectos en México y América Latina." data-en="Available for projects in Mexico and Latin America.">Disponible para proyectos en México y América Latina.</p>
+    <div class="bottom-bar">
+      <a class="url" href="https://rodrigo-guillot.github.io">rodrigo-guillot.<span>github.io</span></a>
+      <a class="url" href="mailto:rodrigoguillot@politicas.unam.mx">rodrigoguillot@<span>politicas.unam.mx</span></a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function setLang(lang, btn) {
+  document.querySelectorAll('[data-es]').forEach(el => {
+    const val = lang === 'es' ? el.dataset.es : el.dataset.en;
+    if (!val) return;
+    if (val.includes('<br>')) el.innerHTML = val;
+    else el.textContent = val;
+  });
+  document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.documentElement.lang = lang;
+}
+</script>
+</body>
+</html>
