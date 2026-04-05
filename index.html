@@ -96,7 +96,7 @@
   .pub-lang-badge { display: inline-flex; gap: 0.4rem; margin-left: 0.8rem; }
   .pub-lang { font-size: 0.6rem; letter-spacing: 0.1em; border: 1px solid rgba(245,240,232,0.2); padding: 0.1rem 0.4rem; color: rgba(245,240,232,0.4); }
   .pub-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 400; line-height: 1.4; color: var(--paper); }
-  .pub-desc { font-size: 0.85rem; color: rgba(245,240,232,0.5); line-height: 1.6; flex-grow: 1; }
+  .pub-desc { font-size: 0.85rem; color: rgba(245,240,232,0.5); line-height: 1.6; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   .pub-meta { display: flex; gap: 1.5rem; align-items: center; margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(245,240,232,0.08); }
   .pub-year { font-size: 0.75rem; color: rgba(245,240,232,0.3); letter-spacing: 0.1em; }
   .pub-read { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-light); margin-left: auto; opacity: 0; transition: opacity 0.3s; }
@@ -107,23 +107,8 @@
   .col-card { border: 1px solid var(--line); padding: 2rem; text-decoration: none; color: inherit; transition: all 0.3s; display: flex; flex-direction: column; gap: 0.8rem; cursor: pointer; }
   .col-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
   .col-outlet { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
-  .col-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 400; line-height: 1.4; color: var(--ink); }
+  .col-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 400; line-height: 1.4; color: var(--ink); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   .col-year { font-size: 0.75rem; color: var(--muted); margin-top: auto; }
-
-  /* MODAL */
-  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,26,26,0.92); z-index: 300; overflow-y: auto; padding: 2rem; }
-  .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
-  .modal { background: var(--paper); max-width: 720px; width: 100%; margin: 2rem auto; padding: 3.5rem; position: relative; }
-  .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--muted); line-height: 1; transition: color 0.2s; }
-  .modal-close:hover { color: var(--accent); }
-  .modal-outlet { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-  .modal-title { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
-  .modal-meta { font-size: 0.8rem; color: var(--muted); margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
-  .modal-body { font-size: 1rem; line-height: 1.85; color: var(--ink); }
-  .modal-body p { margin-bottom: 1.2rem; }
-  .modal-footer { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 1.5rem; }
-  .modal-original { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px; transition: opacity 0.2s; }
-  .modal-original:hover { opacity: 0.7; }
 
   /* CONTACT */
   .contact-section { border-top: 1px solid var(--line); }
@@ -202,33 +187,33 @@
     </div>
     <div class="pub-grid">
 
-      <div class="pub-card reveal" onclick="openModal('memoria')">
+      <a class="pub-card reveal" href="https://revistamemoria.mx/?p=4580" target="_blank">
         <div><span class="pub-outlet">Revista Memoria — CEMOS</span><span class="pub-lang-badge"><span class="pub-lang">ES</span></span></div>
         <h3 class="pub-title" data-es="Revolución de las conciencias: pueblo, partido, Estado" data-en="Revolution of Consciousness: People, Party, State">Revolución de las conciencias: pueblo, partido, Estado</h3>
         <p class="pub-desc" data-es="Análisis de la relación entre conciencia colectiva, organización política y aparato de Estado en el contexto de la Cuarta Transformación, a partir del pensamiento de Marx y Gramsci." data-en="Analysis of the relationship between collective consciousness, political organization, and the state apparatus in Mexico's Fourth Transformation, drawing on Marx and Gramsci.">Análisis de la relación entre conciencia colectiva, organización política y aparato de Estado en el contexto de la Cuarta Transformación, a partir del pensamiento de Marx y Gramsci.</p>
         <div class="pub-meta"><span class="pub-year">2025 · No. 298</span><span class="pub-read" data-es="Leer artículo" data-en="Read article">Leer artículo</span></div>
-      </div>
+      </a>
 
-      <div class="pub-card reveal" onclick="openModal('tricontinental')">
+      <a class="pub-card reveal" href="https://thetricontinental.org/es/boletin-na-genz-fascismo-mexico/" target="_blank">
         <div><span class="pub-outlet">Instituto Tricontinental de Investigación Social</span><span class="pub-lang-badge"><span class="pub-lang">ES</span><span class="pub-lang">EN</span></span></div>
         <h3 class="pub-title" data-es="La falsa GenZ y el fascismo mexicano" data-en="The False GenZ and Mexican Fascism">La falsa GenZ y el fascismo mexicano</h3>
         <p class="pub-desc" data-es="Análisis del viraje de la derecha mexicana hacia posiciones fascistas, a partir de las protestas de noviembre de 2025." data-en="Analysis of the Mexican right's shift toward fascist positions, examining the November 2025 protests.">Análisis del viraje de la derecha mexicana hacia posiciones fascistas, a partir de las protestas de noviembre de 2025.</p>
         <div class="pub-meta"><span class="pub-year">2025 · Boletín Nuestra América</span><span class="pub-read" data-es="Leer artículo" data-en="Read article">Leer artículo</span></div>
-      </div>
+      </a>
 
-      <div class="pub-card reveal" onclick="openModal('pd1')">
+      <a class="pub-card reveal" href="https://peoplesdispatch.org/2022/06/29/the-era-of-northern-hegemony-over-mexico-is-coming-to-an-end/" target="_blank">
         <div><span class="pub-outlet">People's Dispatch</span><span class="pub-lang-badge"><span class="pub-lang">EN</span></span></div>
         <h3 class="pub-title">The era of Northern hegemony over Mexico is coming to an end</h3>
         <p class="pub-desc">Analysis of Mexico's new positioning vis-à-vis the United States under López Obrador and its impact on hemispheric relations.</p>
-        <div class="pub-meta"><span class="pub-year">2022</span><span class="pub-read">Read article</span></div>
-      </div>
+        <div class="pub-meta"><span class="pub-year">2022</span><span class="pub-read">Leer artículo</span></div>
+      </a>
 
-      <div class="pub-card reveal" onclick="openModal('pd2')">
+      <a class="pub-card reveal" href="https://peoplesdispatch.org/2022/07/27/mexicos-president-gives-joe-biden-a-big-history-lesson/" target="_blank">
         <div><span class="pub-outlet">People's Dispatch</span><span class="pub-lang-badge"><span class="pub-lang">EN</span></span></div>
         <h3 class="pub-title">Mexico's President gives Joe Biden a big history lesson</h3>
         <p class="pub-desc">Analysis of AMLO's proposals to Biden during his July 2022 Washington visit and their significance amid the US economic crisis.</p>
         <div class="pub-meta"><span class="pub-year">2022</span><span class="pub-read">Read article</span></div>
-      </div>
+      </a>
 
     </div>
   </div>
@@ -243,13 +228,13 @@
     </div>
     <p class="section-intro reveal" data-es="Medio de difusión del Gobierno de México · 7 artículos · 2022–2023" data-en="Official media outlet of the Government of Mexico · 7 articles · 2022–2023">Medio de difusión del Gobierno de México · 7 artículos · 2022–2023</p>
     <div class="col-grid">
-      <div class="col-card reveal" onclick="openModal('spr1')"><span class="col-outlet">SPR Informa</span><h3 class="col-title">El tsunami progresista y la advertencia de las nuevas derechas</h3><span class="col-year">2022</span></div>
-      <div class="col-card reveal" onclick="openModal('spr2')"><span class="col-outlet">SPR Informa</span><h3 class="col-title">La razón y la historia asisten a López Obrador en Washington</h3><span class="col-year">2022</span></div>
-      <div class="col-card reveal" onclick="openModal('spr3')"><span class="col-outlet">SPR Informa</span><h3 class="col-title">El lawfare contra Cristina</h3><span class="col-year">2022</span></div>
-      <div class="col-card reveal" onclick="openModal('spr4')"><span class="col-outlet">SPR Informa</span><h3 class="col-title">Las encuestas indican que Brasil deberá ir a segunda vuelta</h3><span class="col-year">2022</span></div>
-      <div class="col-card reveal" onclick="openModal('spr5')"><span class="col-outlet">SPR Informa</span><h3 class="col-title">Lula y la ultraderecha latinoamericana</h3><span class="col-year">2022</span></div>
-      <div class="col-card reveal" onclick="openModal('spr6')"><span class="col-outlet">SPR Informa</span><h3 class="col-title">El genocidio woke del Estado de Israel</h3><span class="col-year">2023</span></div>
-      <div class="col-card reveal" onclick="openModal('spr7')"><span class="col-outlet">SPR Informa</span><h3 class="col-title">Advierten académicos condiciones para Lawfare en México</h3><span class="col-year">2022</span></div>
+      <a class="col-card reveal" href="https://www.sprinforma.mx/noticia/el-tsunami-progresista-y-la-advertencia-de-las-nuevas-derechas" target="_blank"><span class="col-outlet">SPR Informa</span><h3 class="col-title">El tsunami progresista y la advertencia de las nuevas derechas</h3><span class="col-year">2022</span></a>
+      <a class="col-card reveal" href="https://www.sprinforma.mx/noticia/la-razon-y-la-historia-asisten-a-lopez-obrador-en-washington" target="_blank"><span class="col-outlet">SPR Informa</span><h3 class="col-title">La razón y la historia asisten a López Obrador en Washington</h3><span class="col-year">2022</span></a>
+      <a class="col-card reveal" href="https://www.sprinforma.mx/noticia/el-lawfare-contra-cristina" target="_blank"><span class="col-outlet">SPR Informa</span><h3 class="col-title">El lawfare contra Cristina</h3><span class="col-year">2022</span></a>
+      <a class="col-card reveal" href="https://www.sprinforma.mx/noticia/las-encuestas-indican-que-brasil-debera-ir-a-segunda-vuelta" target="_blank"><span class="col-outlet">SPR Informa</span><h3 class="col-title">Las encuestas indican que Brasil deberá ir a segunda vuelta</h3><span class="col-year">2022</span></a>
+      <a class="col-card reveal" href="https://www.sprinforma.mx/noticia/lula-y-la-ultraderecha-latinoamericana" target="_blank"><span class="col-outlet">SPR Informa</span><h3 class="col-title">Lula y la ultraderecha latinoamericana</h3><span class="col-year">2022</span></a>
+      <a class="col-card reveal" href="https://www.sprinforma.mx/noticia/el-genocidio-woke-del-estado-de-israel" target="_blank"><span class="col-outlet">SPR Informa</span><h3 class="col-title">El genocidio woke del Estado de Israel</h3><span class="col-year">2023</span></a>
+      <a class="col-card reveal" href="https://www.sprinforma.mx/noticia/advierten-academicos-condiciones-para-lawfare-en-mexico" target="_blank"><span class="col-outlet">SPR Informa</span><h3 class="col-title">Advierten académicos condiciones para Lawfare en México</h3><span class="col-year">2022</span></a>
     </div>
   </div>
 </section>
@@ -263,13 +248,13 @@
     </div>
     <p class="section-intro reveal" data-es="7 artículos · 2020–2021" data-en="7 articles · 2020–2021">7 artículos · 2020–2021</p>
     <div class="col-grid">
-      <div class="col-card reveal" onclick="openModal('sdp1')"><span class="col-outlet">SDP Noticias</span><h3 class="col-title">La ética del presidente: deslindarse de su familia</h3><span class="col-year">2020</span></div>
-      <div class="col-card reveal" onclick="openModal('sdp2')"><span class="col-outlet">SDP Noticias</span><h3 class="col-title">Protestas en Estados Unidos: un significado en disputa</h3><span class="col-year">2020</span></div>
-      <div class="col-card reveal" onclick="openModal('sdp3')"><span class="col-outlet">SDP Noticias</span><h3 class="col-title">¿Golpe de estado en el Capitolio?</h3><span class="col-year">2021</span></div>
-      <div class="col-card reveal" onclick="openModal('sdp4')"><span class="col-outlet">SDP Noticias</span><h3 class="col-title">Andrés Manuel y su movimiento: la muerte del Padre</h3><span class="col-year">2020</span></div>
-      <div class="col-card reveal" onclick="openModal('sdp5')"><span class="col-outlet">SDP Noticias</span><h3 class="col-title">Ojalá que Alejandro Encinas ponga paz en Morena</h3><span class="col-year">2020</span></div>
-      <div class="col-card reveal" onclick="openModal('sdp6')"><span class="col-outlet">SDP Noticias</span><h3 class="col-title">El coronavirus como crisis del capitalismo global: explicación a Byung-Chul Han de lo que Zizek dijo en realidad</h3><span class="col-year">2020</span></div>
-      <div class="col-card reveal" onclick="openModal('sdp7')"><span class="col-outlet">SDP Noticias</span><h3 class="col-title">El coronavirus como crisis del capitalismo global (II): el aislamiento social como acontecimiento político</h3><span class="col-year">2020</span></div>
+      <a class="col-card reveal" href="https://www.sdpnoticias.com/columnas/la-etica-del-presidente-deslindarse-de-su-familia.html" target="_blank"><span class="col-outlet">SDP Noticias</span><h3 class="col-title">La ética del presidente: deslindarse de su familia</h3><span class="col-year">2020</span></a>
+      <a class="col-card reveal" href="https://www.sdpnoticias.com/columnas/protestas-en-estados-unidos-un-significado-en-disputa.html" target="_blank"><span class="col-outlet">SDP Noticias</span><h3 class="col-title">Protestas en Estados Unidos: un significado en disputa</h3><span class="col-year">2020</span></a>
+      <a class="col-card reveal" href="https://www.sdpnoticias.com/columnas/capitolio-golpe-de-estado-donald-trump-protesta-eleccion-eu.html" target="_blank"><span class="col-outlet">SDP Noticias</span><h3 class="col-title">¿Golpe de estado en el Capitolio?</h3><span class="col-year">2021</span></a>
+      <a class="col-card reveal" href="https://www.sdpnoticias.com/columnas/andres-manuel-y-su-movimiento-la-muerte-del-padre.html" target="_blank"><span class="col-outlet">SDP Noticias</span><h3 class="col-title">Andrés Manuel y su movimiento: la muerte del Padre</h3><span class="col-year">2020</span></a>
+      <a class="col-card reveal" href="https://www.sdpnoticias.com/columnas/ojala-que-alejandro-encinas-ponga-paz-en-morena.html" target="_blank"><span class="col-outlet">SDP Noticias</span><h3 class="col-title">Ojalá que Alejandro Encinas ponga paz en Morena</h3><span class="col-year">2020</span></a>
+      <a class="col-card reveal" href="https://www.sdpnoticias.com/columnas/el-coronavirus-como-crisis-del-capitalismo-global-explicacion-a-byung-chul-han-de-lo-que-zizek-dijo-en-realidad.html" target="_blank"><span class="col-outlet">SDP Noticias</span><h3 class="col-title">El coronavirus como crisis del capitalismo global: explicación a Byung-Chul Han de lo que Zizek dijo en realidad</h3><span class="col-year">2020</span></a>
+      <a class="col-card reveal" href="https://www.sdpnoticias.com/columnas/el-coronavirus-como-crisis-del-capitalismo-global-ii-el-aislamiento-social-como-acontecimiento-politico.html" target="_blank"><span class="col-outlet">SDP Noticias</span><h3 class="col-title">El coronavirus como crisis del capitalismo global (II): el aislamiento social como acontecimiento político</h3><span class="col-year">2020</span></a>
     </div>
   </div>
 </section>
@@ -292,20 +277,6 @@
   <span>© 2026 Rodrigo Guillot López</span>
   <span data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</span>
 </footer>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">×</button>
-    <div class="modal-outlet" id="modal-outlet"></div>
-    <h2 class="modal-title" id="modal-title"></h2>
-    <div class="modal-meta" id="modal-meta"></div>
-    <div class="modal-body" id="modal-body"></div>
-    <div class="modal-footer">
-      <a class="modal-original" id="modal-link" href="#" target="_blank" data-es="Ver artículo original" data-en="View original article">Ver artículo original</a>
-    </div>
-  </div>
-</div>
 
 <script>
 const quotes = {
@@ -330,234 +301,7 @@ function setLang(lang) {
   document.getElementById('btn-es').classList.toggle('active', lang === 'es');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   document.documentElement.lang = lang;
-  const link = document.getElementById('modal-link');
-  if (link) link.textContent = lang === 'es' ? 'Ver artículo original' : 'View original article';
 }
-
-const articles = {
-  memoria: {
-    outlet: 'Revista Memoria — CEMOS',
-    title: 'Revolución de las conciencias: pueblo, partido, Estado',
-    meta: 'Rodrigo Guillot · 2025 · Revista Memoria, No. 298',
-    url: 'https://revistamemoria.mx',
-    body: `<p>Uno de los conceptos fundamentales que Andrés Manuel acuñó durante su gesta política para construir, defender y caracterizar el proceso que hoy conocemos como la Cuarta Transformación es el de la revolución de las conciencias. Con él, el expresidente solía hacer referencia al proceso mediante el cuál la mayoría popular logró identificar, señalar, combatir organizadamente y derrotar por la vía de las elecciones al régimen neoliberal, que como parte de su política producía activa y deliberadamente una subjetividad de la impotencia en la población, manteniéndola alejada de la política.</p>
-    <p>Aunque breve, el fragmento de López Obrador nos enseña la importancia central que el expresidente brinda a la subjetividad de la población. El triunfo electoral del obradorismo solo fue posible gracias a ese proceso de toma de conciencia de las mayorías sociales, en que la masa agraviada por el sistema de relaciones económicas, sociales y políticas implementado por el neoliberalismo se constituyó en un sujeto político dotado de iniciativa, autonomía y proyecto propios: el pueblo.</p>
-    <p>Es el pueblo quien otorga, a través del voto, un mandato al gobierno. El dirigente tiene la misión de utilizar el aparato del Estado para modificar las relaciones sociales que suceden en un momento determinado de la historia, y que dieron origen a la conciencia popular sobre la necesidad de asumir el poder.</p>
-    <p>Este texto busca explorar la relación entre los tres agentes principales de la política en México durante la Cuarta Transformación: el pueblo, el Estado y el partido. Se busca entender, a través de la idea de la revolución de las conciencias, la manera en que estos tres elementos se interrelacionan y construyen mecanismos de consenso que permiten que la conducción de los asuntos públicos del país sigan en manos del bloque obradorista y sigan siendo efectivamente transformadores de la sociedad.</p>
-    <p>Aunque no la define concretamente, Marx sitúa la conciencia en un lugar central y paradójico dentro del proceso de transformación social. En el devenir de la historia, las sociedades tienden siempre hacia la agudización de las contradicciones entre las fuerzas productivas con las relaciones sociales de producción que éstas posibilitan. La relación entre la conciencia y la dialéctica que confronta las viejas y nuevas relaciones en la sociedad entra así en una paradoja.</p>
-    <p>Es a través del partido político que el sujeto colectivo revolucionario se hace del aparato del Estado y comienza su pugna por la transformación de la sociedad. El triunfo electoral de Morena en 2018 constituye el momento paradójico de la conciencia colectiva y popular mexicana. El partido tiene la tarea de volver a iniciar el proceso cotidianamente; mantener vigente el momento paradójico de la conciencia, hacer que la voluntad organizada siga transformando la realidad material.</p>`
-  },
-  tricontinental: {
-    outlet: 'Instituto Tricontinental de Investigación Social',
-    title: 'La falsa GenZ y el fascismo mexicano',
-    meta: 'Rodrigo Guillot · 31 de diciembre de 2025 · Boletín Nuestra América',
-    url: 'https://thetricontinental.org/es/boletin-na-genz-fascismo-mexico/',
-    body: `<p>En noviembre del 2025, la derecha mexicana convocó a una marcha simultánea en todas las ciudades capitales de México, bajo la bandera del anime One Piece, que fue usada en el pasado reciente por manifestantes nepalíes, mayoritariamente jóvenes, para protestar contra medidas restrictivas de su gobierno. La apuesta por una imagen extranjera y descontextualizada de la realidad mexicana parece bizarra porque lo es. Se trata de un síntoma de la falta de causas concretas e identidades propias que experimentan los sectores reaccionarios en México desde la llegada de la Cuarta Transformación en 2018.</p>
-    <p>El carácter de las protestas contra el gobierno progresista de México durante el sexenio de Claudia Sheinbaum viró como lo hizo el escenario geopolítico. En un mundo donde las derechas han apostado con éxito por la vía del fascismo, la política de identidades xenófobas, y el llamado a la sociedad de libre mercado a ultranza, la derecha mexicana abandonó el discurso de defensa institucional y optó por el de la libertad.</p>
-    <p>El magnate Ricardo Salinas Pliego tituló a las marchas de noviembre como "marcha de la generación Z". Para movilizar la conversación pública en torno a ella, utilizó un equipo de influencers pagados, cuentas falsas en la red social X/Twitter, y opinadores empleados directamente por su consorcio mediático, que durante semanas hablaron de la bravata como si fuera un movimiento orgánico surgido en el seno de la sociedad civil.</p>
-    <p>El resultado fue que el 15 de noviembre, en distintas ciudades del país, se reunieron para marchar distintas agrupaciones y sectores opositores al gobierno mexicano, sin una causa común o discurso unificado, salvo el hecho de llamar a derrocar a la presidenta Claudia Sheinbaum. No obstante, en el Zócalo de la Ciudad de México, grupos de personas encapuchadas y armadas con herramientas metálicas y cadenas, agredieron físicamente a integrantes de la policía.</p>
-    <p>La oposición mexicana consideró sin duda el ensayo como un éxito. En un contexto nacional en que los partidos Acción Nacional y Revolucionario Institucional llaman abiertamente a la intervención estadounidense con el pretexto del narcotráfico, el recrudecimiento de la derecha y su viraje hacia posiciones fascistas y abiertamente violentas solamente puede ser entendido como una táctica funcional a la estrategia intervencionista de los Estados Unidos.</p>
-    <p>El partido de la Cuarta Transformación tiene la necesidad histórica de superar al Estado en términos de la conciencia política colectiva y al mismo tiempo defender al Estado nacional-popular de los embates de la derecha. No se presume una tarea fácil, pero en eso consiste la revolución de las conciencias.</p>`
-  },
-  pd1: {
-    outlet: "People's Dispatch",
-    title: 'The era of Northern hegemony over Mexico is coming to an end',
-    meta: 'Rodrigo Guillot · June 29, 2022',
-    url: 'https://peoplesdispatch.org/2022/06/29/the-era-of-northern-hegemony-over-mexico-is-coming-to-an-end/',
-    body: `<p>In 2010, Cuba's former President Fidel Castro said: "López Obrador will be the person with the most moral and political authority in Mexico when the system collapses and, with it, the empire." Despite the wide lead he had in all the polls before the elections, Obrador's victory in 2018 took almost everyone by surprise.</p>
-    <p>The only noteworthy Mexican public diplomacy initiative undertaken by Obrador during the first three years of his six-year term was to advocate for the Comprehensive Development Plan for Central America. The initiative addressed both issues: the attacks faced by migrants from Central America in the United States and the real needs of the people who are compelled to migrate. The structural causes of migration—poverty, inequality and insecurity—framed the discussion.</p>
-    <p>The increase in Obrador's activity relating to international diplomacy has been gradual and well-calculated. Before Obrador, foreign policy matters were discussed behind closed doors. Now, Obrador uses his press conference to provide the public with the historical and political reasons for Mexico's position on, for instance, the US blockade of Cuba and its economic war against Venezuela, the violent anti-immigrant policy of the US and the war between Russia and Ukraine.</p>
-    <p>US President Joe Biden announced that the US and the Organization of American States (OAS) would host the Summit of the Americas in Los Angeles. Before the Summit began, Obrador announced that Mexico would not attend it because the US decision to not invite Cuba, Nicaragua and Venezuela violated the principle of non-intervention. Obrador's decision was followed by both Bolivia and Honduras.</p>
-    <p>The hegemony of the OAS had begun to decline after the CELAC summit in 2021 but seems to have reached its end with these latest developments. The general mood in Latin America is that the US should not waste its time interfering south of its border but should, instead, spend its energy trying to resolve its cascading internal crises.</p>`
-  },
-  pd2: {
-    outlet: "People's Dispatch",
-    title: "Mexico's President gives Joe Biden a big history lesson",
-    meta: 'Rodrigo Guillot · July 27, 2022',
-    url: 'https://peoplesdispatch.org/2022/07/27/mexicos-president-gives-joe-biden-a-big-history-lesson/',
-    body: `<p>Mexico's President Andrés Manuel López Obrador (AMLO) visited the United States on July 12 and offered five proposals to US President Joe Biden. These proposals are based on AMLO's in-depth knowledge of Mexican history and his reading of the economic crisis in the United States, which seems to be losing its edge as a global leader.</p>
-    <p>The five proposals: Mexico allowing US consumers to fill gasoline tanks on the Mexican side of the border; more than 600 miles of gas pipelines to benefit 3 million Americans; elimination of red tape and tariffs on food and consumer goods; import substitution to reduce inflation; and the organization of migration of workers northward with temporary work visas.</p>
-    <p>In his speech in the Oval Office, López Obrador recalled that when former US President Franklin D. Roosevelt came to power after the economic crash of 1929, he promoted state intervention through the New Deal. FDR's term coincided with that of Mexico's President Lázaro Cárdenas, remembered for nationalizing oil in 1938. López Obrador has done something similar with public investment in sovereign development projects.</p>
-    <p>AMLO closed his White House speech urging Biden to be bold: "I know that your adversaries—the conservatives—are going to be screaming all over the place, even to Heaven… But without a daring, a bold program of development and well-being, it will not be possible to solve problems. The way out is not through conservatism. The way out is through transformation."</p>
-    <p>López Obrador has not only established himself as the political reference point for the Latin American left but has also been leading the process of integration in the south of the region. Latin America and the Caribbean are increasingly being seen as equals to the United States, backing progressive processes such as those in Bolivia, Brazil, Colombia, and Honduras.</p>`
-  },
-  spr1: {
-    outlet: 'SPR Informa',
-    title: 'El tsunami progresista y la advertencia de las nuevas derechas',
-    meta: 'Rodrigo Guillot · 2022 · SPR Informa',
-    url: 'https://www.sprinforma.mx/noticia/el-tsunami-progresista-y-la-advertencia-de-las-nuevas-derechas',
-    body: `<p>La ola progresista que comenzó con la victoria de López Obrador en México ha llegado a romper límites históricos para nuestra región. Al inicio del sexenio en México, Morena encontró una región casi completamente a la derecha. Argentina gobernada por Macri y Brasil por Bolsonaro, un Chile golpeado profundamente por Piñeira y Colombia por el uribismo. Hoy, un poco más allá de la mitad del sexenio lopezobradorista, el panorama latinoamericano es completamente distinto.</p>
-    <p>La victoria de Alberto Fernández y Cristina Fernández de Kirchner en Argentina despertó la esperanza de que Brasil echara del poder a Bolsonaro, uniendo a las tres economías más grandes de la región bajo el signo de la izquierda. También Bolivia nos regaló una lección hermosa. El Movimiento al Socialismo derrotó al golpe militar con organización y movilización política.</p>
-    <p>De manera casi simultánea, Chile y Colombia estallaron en movilizaciones masivas. Ambos países se enfrentaron a derechas sólidamente institucionalizadas y de vocación sanguinaria, y las derrotaron. Chile derribó la Constitución heredada del pinochetismo, y Colombia nunca ha tenido, hasta Petro, un gobierno de izquierda.</p>
-    <p>Sin embargo, en casi todos estos procesos podemos avistar el nacimiento de un nuevo fenómeno peligroso: las derechas parecen ir encontrando nuevas formas de organización y discurso para disputar el poder a nuestros progresismos. Argentina fue testigo de ésto con la emergencia de figuras como la de Javier Milei.</p>
-    <p>La lección es clara. Estamos obligados a comprender las nuevas adaptaciones de la derecha, que muestran éxito en apelar a la juventud y sabe capitalizar el descontento de las poblaciones contra la política, la corrupción y las formas tradicionales. Debemos estudiar al neofascismo, y mantenernos alerta y en formación constante.</p>`
-  },
-  spr2: {
-    outlet: 'SPR Informa',
-    title: 'La razón y la historia asisten a López Obrador en Washington',
-    meta: 'Rodrigo Guillot · 2022 · SPR Informa',
-    url: 'https://www.sprinforma.mx/noticia/la-razon-y-la-historia-asisten-a-lopez-obrador-en-washington',
-    body: `<p>Conocedor de la complejidad de la historia de México y de sus relaciones con Estados Unidos, López Obrador usó la historia para demostrar que sus propuestas a Joe Biden, además de corresponder a la actual crisis económica de Estados Unidos, ponen en el centro la soberanía mexicana y la contrahegemonía de nuestra política exterior.</p>
-    <p>Las cinco propuestas incluyen: duplicar el apoyo a estadounidenses que cargan gasolina en México; aprovechar más de 1,000 kilómetros de gasoductos mexicanos; eliminar aranceles a alimentos para abaratar la canasta básica; crear un plan de inversión mixta; y regular el flujo migratorio y garantizar los derechos de las personas migrantes.</p>
-    <p>Desde la oficina del presidente Biden, AMLO hace recordar el momento en que Franklin D. Roosevelt asume el poder y plantea un programa de reactivación económica tutelado por el Estado. La economía mixta propuesta en el New Deal fue la forma de combatir la crisis económica causada por la caída de la Bolsa de Valores de 1929.</p>
-    <p>Roosevelt coincidirá con Cárdenas como presidente de México. A pesar de que hechos como la Expropiación Petrolera de 1939 no gustaron a Estados Unidos, la relación entre ambos presidentes fue cordial y respetuosa. El balance de fuerzas y la vulnerabilidad estratégica causada por la Segunda Guerra Mundial hicieron que la Casa Blanca mantuviera su línea de respeto a nuestra soberanía.</p>
-    <p>La lección histórica es sencilla: solamente mediante el respeto a las decisiones de la soberanía mexicana, reconociendo la necesidad que Estados Unidos tiene de cooperar en igualdad de condiciones con México, y atreviéndose a desafiar a los movimientos de la ultraderecha, nuestro vecino del norte saldrá de la crisis. En otras palabras, López Obrador invita a Estados Unidos a correrse a la izquierda.</p>`
-  },
-  spr3: {
-    outlet: 'SPR Informa',
-    title: 'El lawfare contra Cristina',
-    meta: 'Rodrigo Guillot · 24 de agosto de 2022 · SPR Informa',
-    url: 'https://www.sprinforma.mx/noticia/el-lawfare-contra-cristina',
-    body: `<p>Cristina Fernández, ex-presidenta y actual vicepresidenta de Argentina es víctima, como ya lo había sido, de una campaña de lawfare. Dos fiscales argentinos piden que se le encarcele por doce años, y se le inhabilite políticamente de por vida. Este ha sido el último paso de una campaña que inició en 2019, acusándola de asociación ilícita y desvío de fondos presuntamente cometidos durante su presidencia (2007-2015).</p>
-    <p>El término de lawfare ha ido ganando popularidad en América Latina, sobre todo a partir de la primera oleada progresista, pues casi todos los liderazgos de la izquierda de nuestro continente han padecido de esta estrategia. Consiste en el linchamiento mediático y jurídico de liderazgos populares, militantes, periodistas y funcionarios de gobierno.</p>
-    <p>Las campañas mediáticas buscan ser tan poderosas que, para cuando un juez corrupto dicte sentencia contra estos liderazgos, la población en general considere que es legítimo encarcelarlos. El lawfare apunta también a deshumanizar a las personas falsamente acusadas, a sembrar desconfianza hacia ellas incluso dentro de sus propios movimientos sociales.</p>
-    <p>Esta estrategia toma auge en nuestro continente a partir de la primera ola progresista. La sufrieron compañeras y compañeros como Rafael Correa, Evo Morales, Lula Da Silva, Dilma Roussef, Cristina Fernández de Kirchner, Manuel Zelaya, Fernando Lugo, entre otros.</p>
-    <p>No es casual que la derecha argentina desate una campaña mediático-jurídica contra una de las principales líderes nacionales del país del sur. El lawfare es una estrategia coordinada por los Estados Unidos. De los resultados electorales de Argentina en 2023 dependerá fundamentalmente si el hito histórico de reunir tres presidentes latinoamericanos progresistas dura al menos cuatro años.</p>`
-  },
-  spr4: {
-    outlet: 'SPR Informa',
-    title: 'Las encuestas indican que Brasil deberá ir a segunda vuelta',
-    meta: 'Rodrigo Guillot · 2022 · SPR Informa',
-    url: 'https://www.sprinforma.mx/noticia/las-encuestas-indican-que-brasil-debera-ir-a-segunda-vuelta',
-    body: `<p>De confirmarse las tendencias, el próximo domingo 2 de octubre Lula da Silva será declarado como el primer lugar de la primera vuelta en las elecciones presidenciales brasileñas. No obstante, después de la jornada electoral, Brasil no habrá declarado a su presidente aún.</p>
-    <p>El sistema electoral de segunda vuelta consiste en que, de no haber un candidato con más del 50% de las votaciones, los dos primeros lugares deberán volver a enfrentarse en una nueva jornada electoral. A pesar de que la distancia entre Lula y Bolsonaro es de alrededor del 10% al 20% en favor del primero, todas las proyecciones parecen indicar que Lula no alcanzará más del 50% de las votaciones.</p>
-    <p>Uno de los principales problemas del sistema de segunda vuelta es que obliga a las personas a votar por un candidato que no prefieren, permitiendo que el voto de castigo sea más importante que el de propuesta. Tanto Lula como Bolsonaro deberán acudir a alianzas con los demás candidatos y sectores que no votaron por ellos.</p>
-    <p>La estrategia del PT, que lanza a Lula, es combatir el abstencionismo y convencer a la población de que es necesario derrotar a Bolsonaro este mismo domingo, pues en caso de que esto no suceda los partidos de la derecha se reunirán alrededor del actual presidente.</p>
-    <p>Con la propuesta Declaración de la CELAC en Ciudad de México, las puertas a la construcción de mecanismos de cooperación política y económica en la región de América Latina se vuelven una posibilidad por primera vez en la historia. De ganar Lula, las tres grandes economías de América Latina tendrán un gobierno progresista por primera ocasión en la historia.</p>`
-  },
-  spr5: {
-    outlet: 'SPR Informa',
-    title: 'Lula y la ultraderecha latinoamericana',
-    meta: 'Rodrigo Guillot · 2022 · SPR Informa',
-    url: 'https://www.sprinforma.mx/noticia/lula-y-la-ultraderecha-latinoamericana',
-    body: `<p>El pequeño margen con que Lula da Silva será presidente de Brasil nos alerta sobre una situación repetida en diferentes países de América Latina. Si bien, desde el 2018, las fuerzas progresistas tienden a ganar las elecciones en nuestro continente, las derechas violentas, radicales, fascistas, acrecientan su presencia en el escenario político y disputan de cerca el poder en nuestros países.</p>
-    <p>Así fue en Argentina, donde recientemente vimos el intento de asesinato de la vicepresidenta Cristina Fernández; en Bolivia, donde a pesar de derrotar un golpe militar de estado, el MAS sigue teniendo que lidiar con jornadas de violencia racista en las calles; o en Perú y Colombia, donde los presidentes electos obtuvieron una victoria cerrada.</p>
-    <p>De la misma manera que en 2020 decíamos que Trump salió de la Casa Blanca pero el trumpismo continúa en las calles, debemos darnos cuenta de que la ultraderecha latinoamericana sigue siendo una fuerza viva, poderosa y activa. Las pulsiones de odio afloran en los tiempos de crisis.</p>
-    <p>Si las derechas han aprendido que al perder el poder es conveniente alejarse del centro, avivando las pasiones violentas de los electorados, nuestro diagnóstico debe ser el mismo, pero en sentido contrario: radicalizar las didácticas y profundizar la conciencia popular.</p>
-    <p>Con México y Brasil consolidados a la izquierda, las dos economías más importantes del continente tienen una oportunidad histórica de impulsar el desarrollo económico regional, incluyente, plural y constructor de bienestar para América Latina. Para México, la estrategia debe ser popularizar los movimientos.</p>`
-  },
-  spr6: {
-    outlet: 'SPR Informa',
-    title: 'El genocidio woke del Estado de Israel',
-    meta: 'Rodrigo Guillot · 18 de octubre de 2023 · SPR Informa',
-    url: 'https://www.sprinforma.mx/noticia/el-genocidio-woke-del-estado-de-israel',
-    body: `<p>La generalidad de los medios corporativos nacionales e internacionales se han sumado al operativo de desinformación contra la población global, defendiendo al régimen de limpieza étnica que Israel lleva a cabo en contra del pueblo palestino.</p>
-    <p>No solamente porque al mencionar los ataques de Hamás omiten describir las varias décadas de desplazamiento forzoso, asesinato de menores de edad, bombardeo contra poblaciones civiles, arrestos y encarcelamientos injustificados o kilómetros de muro impuesto a la población palestina.</p>
-    <p>El elemento central de la operación mediática en esta coyuntura ha sido el chantaje y la auto victimización. Del mismo modo que los discursos "políticamente correctos" imposibilitan la crítica a personas individuales que pertenecen a un grupo social que sufre injusticias, el centro del discurso que justifica las atrocidades del Estado de Israel reside en que el pueblo judío fue perseguido por el régimen nazi alemán del siglo pasado.</p>
-    <p>La intentona mediática para lavar la cara de los criminales de guerra fue, no obstante, un fracaso. En muchas ciudades del mundo, destacadamente en Europa y Estados Unidos, multitudes han salido a las calles a defender la integridad del pueblo de Palestina y denunciar la barbarie en su contra.</p>
-    <p>La usurpación de la condición de víctima es en muchas ocasiones redituable políticamente. No obstante, existe algo más poderoso que el miedo: la dignidad de la rabia. Solo la organización popular y la honestidad intelectual lograrán combatir la infodemia y el avance colonial.</p>`
-  },
-  spr7: {
-    outlet: 'SPR Informa',
-    title: 'Advierten académicos condiciones para Lawfare en México',
-    meta: 'Rodrigo Guillot · 2022 · SPR Informa',
-    url: 'https://www.sprinforma.mx/noticia/advierten-academicos-condiciones-para-lawfare-en-mexico',
-    body: `<p>Durante el cierre del Seminario "Lawfare en América Latina: características, impacto y proyección" de la UACM del Valle, los académicos Georgette Ramírez Kuri y Aníbal García Fernández, del Observatorio de Lawfare en América Latina del Centro Estratégico Latinoamericano de Geopolítica, advirtieron que en México se construyen condiciones para ejecutar lawfare en contra de la Cuarta Transformación.</p>
-    <p>El término lawfare se refiere a la instrumentalización de las instituciones del poder judicial y los medios corporativos de comunicación para impedir o terminar mediante el mal uso de los mecanismos jurídicos tradicionales el avance de proyectos progresistas en América Latina.</p>
-    <p>Ramírez Kuri advirtió que existe un "lawfare potencial" en México, dado que el poder judicial ha buscado participar en la política mexicana. En nuestro país, este poder ha construido una red en complicidad de organizaciones de la sociedad civil, Organismos Constitucionales Autónomos y medios corporativos de comunicación para incidir en la toma de decisiones públicas.</p>
-    <p>Por su parte, Aníbal García señaló también la complicidad entre organizaciones como el IMCO y medios nacionales e internacionales de comunicación y miembros del poder judicial. Esta organización, junto a otras, recibe fondos de la USAID, agencia estadounidense que promueve el interés geopolítico del vecino del norte.</p>
-    <p>Los académicos advirtieron que, a pesar de no existir aún una judicialización del presidente de la República, la derecha mexicana se ha dedicado a construir redes de financiamiento, división del trabajo judicial, mediatización y ataque político a las intenciones transformadoras en México.</p>`
-  },
-  sdp1: {
-    outlet: 'SDP Noticias',
-    title: 'La ética del presidente: deslindarse de su familia',
-    meta: 'Rodrigo Guillot · 21 de agosto de 2020 · SDP Noticias',
-    url: 'https://www.sdpnoticias.com/columnas/la-etica-del-presidente-deslindarse-de-su-familia.html',
-    body: `<p>La actitud ética del político de nuestro siglo debe llevarlo a deslindarse de su familia y de sus actos. Sin erradicar la herencia de poder e impunidad, no se puede construir una ciudadanía igualitaria para todas las personas.</p>
-    <p>Aunque en la historia de México hay excepciones, la regla parece ser clara y contundente: el poder político en México ha sido cuestión de herencia familiar hasta la fecha. Esto es un problema que genera desigualdad en los mecanismos de sucesión del poder y es, por consecuencia, una de las causas que generan desigualdad social y económica.</p>
-    <p>Para comprobar que el sistema político mexicano sigue siendo sujeto de las estructuras familiares de unos cuantos grupos de personas, basta con señalar a los últimos dos presidentes de México. A Peña Nieto lo respaldaron ambos lados de su familia. Felipe Calderón Hinojosa es hijo de Luis Calderón Vega, uno de los fundadores del Partido Acción Nacional.</p>
-    <p>Entendiendo esta realidad estructural, podemos darnos cuenta por qué suena tan extraño que un presidente de México se deslinde abiertamente de su familia y las acciones que cometan, incluso sus hermanos. Así lo hizo Andrés Manuel desde el día uno de su presidencia.</p>
-    <p>Andrés Manuel es un político hijo del pueblo, no de familia rica o poderosa. Él más que nadie en la clase política mexicana entiende el daño que se le hace a la colectividad cuando se deja el aparato del Estado a merced de las alianzas de clanes familiares. La actitud ética de deslindarse de su familia va a contracorriente de toda la clase política, y como todo gesto fundacional, encuentra resistencias en la cultura del pasado.</p>`
-  },
-  sdp2: {
-    outlet: 'SDP Noticias',
-    title: 'Protestas en Estados Unidos: un significado en disputa',
-    meta: 'Rodrigo Guillot · 2 de junio de 2020 · SDP Noticias',
-    url: 'https://www.sdpnoticias.com/columnas/protestas-en-estados-unidos-un-significado-en-disputa.html',
-    body: `<p>Lo verdaderamente relevante de las movilizaciones políticas no es la emocionalidad vivida por los manifestantes en el espacio público, ni los momentos de éxtasis compartidos por las multitudes. La efervescencia es más bien un vehículo que permite condensar en un corto periodo de espacio-tiempo toda una serie de valores, ideologías, deseos y consignas que se identifican entre sí gracias a la coyuntura.</p>
-    <p>Lo verdaderamente relevante de estos momentos extáticos es, en realidad, el resultado de su disolución; lo que queda en el aire una vez que se disuelven las concentraciones masivas. Eso que queda es el remanente de la disputa entre todos los elementos confluyentes en la coyuntura, el resultado de la disputa entre los significados de las acciones materiales.</p>
-    <p>La noche entre el primero y segundo de junio, el mundo fue testigo de un verdadero acontecimiento simbólico cuyo significado aún está en disputa. Me refiero a las potentes manifestaciones desencadenadas después del asesinato racista de George Floyd a manos de la policía estadounidense y a la imagen de la Casa Blanca con las luces apagadas que dio la vuelta al mundo.</p>
-    <p>¿Están siendo anti-Trump las protestas, anti-establishment; anti-violencia policial o anti-sistema político estadounidense? El peligro que corren los protestantes es que sus esfuerzos sean absorbidos en retrospectiva por la inminente lucha electoral entre Biden y Trump.</p>
-    <p>El COVID-19 ha acelerado los procesos de interconectividad global, y quizá también ha acelerado la caída hegemónica de los Estados Unidos, tan débiles, que encuentran más representación política en los pueblos del mundo que en su propio sistema de partidos.</p>`
-  },
-  sdp3: {
-    outlet: 'SDP Noticias',
-    title: '¿Golpe de estado en el Capitolio?',
-    meta: 'Rodrigo Guillot · 6 de enero de 2021 · SDP Noticias',
-    url: 'https://www.sdpnoticias.com/columnas/capitolio-golpe-de-estado-donald-trump-protesta-eleccion-eu.html',
-    body: `<p>La invasión del Capitolio por parte de grupos abiertamente fascistas que defienden a Trump contra el alegado fraude electoral es un intento de la ultraderecha estadounidense de retener el poder o al menos conseguir mejores condiciones para encabezar la oposición al reconocido como presidente electo Joe Biden.</p>
-    <p>Llama la atención la facilidad con la que los manifestantes ingresaron al recinto. ¿Vemos una alianza de una parte de los altos mandos de las fuerzas armadas con Trump? Lo cierto es que las movilizaciones son una demostración de que las fuerzas desatadas y abanderadas por Trump y buena parte del Partido Republicano no fueron derrotadas en las urnas.</p>
-    <p>Tomar postura entre los dos bandos no es una elección deseable; por un lado el fascismo abierto de las huestes de Trump es detestable por su xenofobia, racismo y machismo. Por otro lado es innegable que el poder económico y mediático que apoya al presuntamente electo Joe Biden ha jugado de manera antidemocrática en diferentes episodios.</p>
-    <p>Se trata de dos bandos electorales que disputan agresivamente el poder tanto en las calles como en las instituciones estatales y económicas-mediáticas. Ambos se acusan mutuamente de orquestar un golpe de estado y ambos usan las fuerzas sociales e institucionales a su alcance para aferrarse al poder.</p>
-    <p>La lección más importante es que el país que se jacta de exportar democracia e interviene países alrededor del mundo demuestra que su modelo es insuficiente, ilegítimo y productor de desigualdad y descontento. El antiguo hegemón del mundo está en plena decadencia.</p>`
-  },
-  sdp4: {
-    outlet: 'SDP Noticias',
-    title: 'Andrés Manuel y su movimiento: la muerte del Padre',
-    meta: 'Rodrigo Guillot · 8 de septiembre de 2020 · SDP Noticias',
-    url: 'https://www.sdpnoticias.com/columnas/andres-manuel-y-su-movimiento-la-muerte-del-padre.html',
-    body: `<p>El Movimiento Regeneración Nacional necesita institucionalizarse. Esta necesidad es ante todo un asunto estratégico; un movimiento es un conjunto de fuerzas sin organización central, y por ello, no puede alcanzar los objetivos que unen a sus miembros. Los movimientos necesitan organización para fluir o detenerse según sea necesario.</p>
-    <p>Freud describe la transición del estado salvaje a la civilización con una metáfora que hace sentido para describir la transición que requiere Morena: el mito de la horda primitiva. En el mito de Freud, el Padre primitivo es quién regula el acceso de los hijos al placer sexual y al alimento. Los hijos matan al padre y hacen de él un tótem; una institución simbólica que sirve como guía moral post mortem.</p>
-    <p>La ruta para institucionalizar el movimiento en un partido político es la misma: matar simbólicamente al Padre; es decir, deshacerse del poder de cohesión que su persona ejerce dentro de la institución. Andrés lo tiene claro, por eso ha buscado reducir el poder presidencial.</p>
-    <p>Andrés está en un dilema porque los miembros de su movimiento no han logrado dos cosas: emanciparse del liderazgo personal y establecer una escala de valores propia del obradorismo. El dilema está en intervenir — con miras a mantener la unidad del movimiento — o dejarlo a la deriva.</p>
-    <p>Quienes verdaderamente defienden el obradorismo tienen la obligación de asumir y comunicar la muerte del Padre; su impotencia y sus limitaciones como ser humano. Sólo por esta vía se puede elevar al Padre al nivel de mandato simbólico. Andrés lo sabe: su carrera está cimentada en el rompimiento con el estatus quo y sus líderes personales.</p>`
-  },
-  sdp5: {
-    outlet: 'SDP Noticias',
-    title: 'Ojalá que Alejandro Encinas ponga paz en Morena',
-    meta: 'Rodrigo Guillot · 22 de agosto de 2020 · SDP Noticias',
-    url: 'https://www.sdpnoticias.com/columnas/ojala-que-alejandro-encinas-ponga-paz-en-morena.html',
-    body: `<p>Sin pretender esbozar una crítica personalizada, usaré sus nombres para esquematizar mi pensamiento. Me refiero a las dos personalidades más sonadas para contender en la encuesta por la presidencia de Morena. Ninguno de los dos — Bertha Luján y Mario Delgado — logró satisfactoriamente hacerse elegible por mayoría amplia entre la militancia durante las pugnas que antecedieron a la intromisión del Tribunal Electoral en los procesos internos de Morena.</p>
-    <p>De un lado de la moneda, tenemos al perfil político que se auto-comprende como la élite, cercana al poder desde siempre y que no acostumbra caminar las calles o hacer vida de partido. Desde esta visión, la política prioriza las acciones de gobierno y el cabildeo. Le llamaremos personalidad pragmática.</p>
-    <p>De otro lado, tenemos al perfil político de calle y militancia que es reticente a negociar con los sectores de la derecha. Se forjó en las calles y su debilidad es la carencia de institucionalidad. Le llamaremos la personalidad idealista.</p>
-    <p>Con las elecciones de 2021 a la puerta, urge que el partido se unifique detrás de un liderazgo que no se cuelgue en ningún extremo. Ni el idealismo a ultranza, ni el pragmatismo a ultranza — que no hace más que ver por sus propios intereses.</p>
-    <p>Con el acompañamiento y los buenos resultados que ha dado al movimiento de Ayotzinapa desde la Secretaría de Gobernación, y con la carga histórica que tiene haber sido el presidente del PRD, me parece que Alejandro Encinas es la opción atinada para combinar ambos el pragmatismo y el idealismo que caracterizan al movimiento y al presidente.</p>`
-  },
-  sdp6: {
-    outlet: 'SDP Noticias',
-    title: 'El coronavirus como crisis del capitalismo global: explicación a Byung-Chul Han de lo que Zizek dijo en realidad',
-    meta: 'Rodrigo Guillot · 2 de abril de 2020 · SDP Noticias',
-    url: 'https://www.sdpnoticias.com/columnas/el-coronavirus-como-crisis-del-capitalismo-global-explicacion-a-byung-chul-han-de-lo-que-zizek-dijo-en-realidad.html',
-    body: `<p>La crisis del COVID-19, al menos en la historia contemporánea, no tiene punto de comparación. Vivimos un momento agudo y peligroso que saca a relucir la esencia de las personas. La pandemia contiene dentro de sí misma el potencial de que a partir de ella surja, al menos, una crítica profunda al capitalismo global.</p>
-    <p>Algunos críticos de Zizek no entienden que éste no concibe la reorganización global como una consecuencia natural de la crisis. Más bien, su idea es que con ella se vuelve posible superar la inmovilidad política de las izquierdas herederas de la derrota de la Unión Soviética. Uno de estos críticos es el coreano Byung-Chul Han, que dice que "Zizek afirma que el virus ha asestado al capitalismo un golpe mortal."</p>
-    <p>El error del norcoreano viene de una mala lectura del ensayo de Zizek, que compara al coronavirus con la "técnica del corazón explosivo de la palma de cinco puntos", un golpe de artes marciales en la ficción de Kill Bill. La metáfora es importante porque, según ella, si después de recibir los cinco golpes uno se quedara sentado, seguiría vivo.</p>
-    <p>La propuesta del esloveno es que la crisis que experimenta el sistema capitalista global es similar a los cinco golpes. Lo que no entiende Han de la metáfora de Zizek es que, aún habiendo recibido el golpe, el capitalismo global puede sobrevivir; depende de nosotros hacerlo caminar para completar el proceso de su muerte.</p>`
-  },
-  sdp7: {
-    outlet: 'SDP Noticias',
-    title: 'El coronavirus como crisis del capitalismo global (II): el aislamiento social como acontecimiento político',
-    meta: 'Rodrigo Guillot · 7 de abril de 2020 · SDP Noticias',
-    url: 'https://www.sdpnoticias.com/columnas/el-coronavirus-como-crisis-del-capitalismo-global-ii-el-aislamiento-social-como-acontecimiento-politico.html',
-    body: `<p>Otro pensador que analiza la situación originada por el COVID-19 como crisis del capitalismo es Giorgio Agamben, que se dice sorprendido por la facilidad con la que la gente dejó su cotidianeidad para aislarse en cuarentena. El italiano lanza la hipótesis de que "las condiciones de vida de las personas se habían vuelto tales que una señal repentina fue suficiente para que aparecieran como lo que ya eran; es decir, intolerables, como una plaga."</p>
-    <p>Byung-Chul Han, en cambio, piensa que la gente se encerró en casa porque experimentó pánico. La idea de que "cualquier otra persona podría contagiarme" se vuelve insoportable porque el orden ideológico posmoderno no prepara al sujeto social para enfrentarse a un otro negativo.</p>
-    <p>Ambos autores difieren en la razón por la que el cuerpo social aceptó de buena gana el aislamiento social, pero parece claro que tanto Han como Agamben coinciden en la idea de que no es normal que las medidas de seguridad adoptadas por los gobiernos hayan sido tan bien recibidas por las clases medias en occidente.</p>
-    <p>Para Zizek, un acontecimiento refiere a un evento "que parece suceder de repente y que interrumpe el curso normal de las cosas". Sabemos que estamos ante lo que Zizek llamaría un acontecimiento justamente porque no podemos dar con las causas del efecto que queremos explicar. El "golpe a lo Kill Bill al capitalismo" es, precisamente, un acontecimiento.</p>
-    <p>La salida del horror de lo Real reside en el acto, que Hannah Arendt entiende como una nueva significación de la realidad. Hacer la revolución es darse cuenta de que lo Real esinexplicable y preferir tomar acción políticamente para transformar el mundo y crear una nueva realidad.</p>`
-  }
-};
-
-function openModal(id) {
-  const a = articles[id];
-  if (!a) return;
-  document.getElementById('modal-outlet').textContent = a.outlet;
-  document.getElementById('modal-title').textContent = a.title;
-  document.getElementById('modal-meta').textContent = a.meta;
-  document.getElementById('modal-body').innerHTML = a.body;
-  document.getElementById('modal-link').href = a.url;
-  document.getElementById('modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function closeModalOutside(e) {
-  if (e.target === document.getElementById('modal-overlay')) closeModal();
-}
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
@@ -569,6 +313,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
 </script>
 </body>
 </html>
