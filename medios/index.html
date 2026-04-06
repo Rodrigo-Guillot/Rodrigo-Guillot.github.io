@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rodrigo Guillot López en medios — apariciones en televisión, radio y plataformas digitales. Análisis político, relaciones internacionales, comunicación política y movimiento estudiantil universitario.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231A1A1A'/><text y='.9em' font-size='80' x='10'>♞</text><style>text{fill:%23C0392B}</style></svg>">
+<title>Rodrigo Guillot López — Medios</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream-light: #FDFAF5;
+  --cream-dark: #F0EBE3;
+  --ink: #1A1A1A;
+  --red: #C0392B;
+  --wine: #7B1A2A;
+  --muted: #7A6E65;
+  --line: #DDD6CC;
+  --white: #FFFFFF;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--cream-light); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
+
+/* LANG BAR */
+.lang-bar { position: fixed; top: 0; right: 0; z-index: 200; padding: 1rem 2rem; display: flex; gap: 1rem; background: transparent; }
+.lang-btn { background: none; border: 1px solid var(--muted); color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.8rem; cursor: pointer; transition: all 0.2s; }
+.lang-btn.active { background: var(--ink); border-color: var(--ink); color: var(--cream-light); }
+
+/* HEADER */
+.page-header { background: var(--ink); padding: 5rem 0 4rem; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+.header-inner { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 3rem; }
+.header-photo { display: flex; justify-content: center; }
+.header-left h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 700; line-height: 1.0; letter-spacing: -0.02em; color: var(--cream-light); }
+.header-left .name-last { color: var(--red); font-style: italic; font-weight: 400; }
+.header-left .subtitle { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(253,250,245,0.4); margin-top: 1rem; }
+.header-left .nav-links { display: flex; gap: 2rem; margin-top: 2rem; }
+.header-left .nav-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(253,250,245,0.5); text-decoration: none; border-bottom: 1px solid rgba(253,250,245,0.2); padding-bottom: 2px; transition: all 0.2s; }
+.header-left .nav-links a:hover, .header-left .nav-links a.active { color: var(--cream-light); border-color: var(--red); }
+.header-right .section-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1rem, 1.5vw, 1.2rem); color: rgba(253,250,245,0.6); line-height: 1.6; border-left: 2px solid var(--red); padding-left: 1.5rem; }
+
+.profile-photo { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 2px solid var(--wine); }
+.profile-photo-placeholder { width: 200px; height: 200px; border-radius: 50%; border: 2px dashed rgba(253,250,245,0.3); display: flex; align-items: center; justify-content: center; }
+.profile-photo-placeholder span { font-size: 0.6rem; color: rgba(253,250,245,0.4); text-align: center; }
+
+/* SECTION */
+.section { padding: 5rem 0; }
+.section-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+.section-number { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--line); line-height: 1; font-weight: 400; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; }
+.section-note { font-size: 0.85rem; color: var(--muted); margin-bottom: 2.5rem; }
+
+/* GRID */
+.grid-4 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+/* CARD */
+.card { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--white); border: 1px solid var(--line); transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
+.card:hover { border-color: var(--red); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+.card-thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: var(--cream-dark); display: block; }
+.card-thumb-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--ink); display: flex; align-items: center; justify-content: center; }
+.card-thumb-placeholder span { font-size: 2rem; color: var(--red); }
+.card-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; flex-grow: 1; }
+.card-outlet { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); }
+.card-title { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 400; line-height: 1.4; color: var(--ink); }
+.card-date { font-size: 0.72rem; color: var(--wine); }
+.card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem; }
+.tag { font-size: 0.58rem; letter-spacing: 0.08em; color: var(--muted); border: 1px solid var(--line); padding: 0.15rem 0.5rem; }
+
+/* FOOTER */
+footer { padding: 2rem 4rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); background: var(--cream-light); }
+
+@media (max-width: 768px) {
+  .header-inner { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .container { padding: 0 2rem; }
+  footer { flex-direction: column; gap: 1rem; }
+}
+@media (max-width: 480px) {
+  .grid-4 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+  <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+<header class="page-header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="header-left">
+        <h1>Rodrigo<br><span class="name-last">Guillot</span></h1>
+        <p class="subtitle" data-es="En medios" data-en="In the media">En medios</p>
+        <nav class="nav-links">
+          <a href="../publicaciones" data-es="Publicaciones" data-en="Publications">Publicaciones</a>
+          <a href="../consultoria" data-es="Consultoría" data-en="Consulting">Consultoría</a>
+          <a href="#" class="active" data-es="Medios" data-en="Media">Medios</a>
+        </nav>
+      </div>
+      <div class="header-photo">
+        <img src="../fotografia-rodrigoguillot.jpg" alt="Rodrigo Guillot" class="profile-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="profile-photo-placeholder" style="display:none"><span>foto próximamente</span></div>
+      </div>
+      <div class="header-right">
+        <p class="section-quote" data-es="La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas." data-en="Political communication is the daily work of reading society, understanding its shifts, and building a solid connection between institutions, leaders, and the people they serve.">La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title" data-es="Archivo audiovisual" data-en="Audiovisual archive">Archivo audiovisual</h2>
+    </div>
+    <p class="section-note" data-es="2018–2023 · Televisión, radio y plataformas digitales" data-en="2018–2023 · Television, radio and digital platforms">2018–2023 · Televisión, radio y plataformas digitales</p>
+
+    <div class="grid-4">
+
+      <!-- 1 -->
+      <a class="card" href="https://www.youtube.com/watch?v=sA5ccPSHAik" target="_blank">
+        <img class="card-thumb" src="https://img.youtube.com/vi/sA5ccPSHAik/mqdefault.jpg" alt="La mañanera ha sido la cristalización de una estrategia de AMLO" onerror="this.style.display='none'">
+        <div class="card-body">
+          <span class="card-outlet">Sin Censura TV</span>
+          <h3 class="card-title">La mañanera ha sido la cristalización de una estrategia de AMLO</h3>
+          <span class="card-date">13 abril 2023</span>
+          <div class="card-tags">
+            <span class="tag">comunicación política</span>
+            <span class="tag">AMLO</span>
+            <span class="tag">conferencia matutina</span>
+            <span class="tag">Cuarta Transformación</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 2 -->
+      <a class="card" href="https://www.youtube.com/watch?v=1fxmSV9vsuQ" target="_blank">
+        <img class="card-thumb" src="https://img.youtube.com/vi/1fxmSV9vsuQ/mqdefault.jpg" alt="La Política Exterior de México es contrahegemónica" onerror="this.style.display='none'">
+        <div class="card-body">
+          <span class="card-outlet">INFP Morena</span>
+          <h3 class="card-title">La Política Exterior de México es contrahegemónica</h3>
+          <span class="card-date">5 septiembre 2022</span>
+          <div class="card-tags">
+            <span class="tag">política exterior</span>
+            <span class="tag">hegemonía</span>
+            <span class="tag">Gramsci</span>
+            <span class="tag">América Latina</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 3 -->
+      <a class="card" href="https://www.youtube.com/watch?v=JZFeVv52Rtg" target="_blank">
+        <img class="card-thumb" src="https://img.youtube.com/vi/JZFeVv52Rtg/mqdefault.jpg" alt="Subjetividad, fascismo y disputa ideológica" onerror="this.style.display='none'">
+        <div class="card-body">
+          <span class="card-outlet">INFP Morena</span>
+          <h3 class="card-title">Subjetividad, fascismo y disputa ideológica</h3>
+          <span class="card-date">11 julio 2022</span>
+          <div class="card-tags">
+            <span class="tag">fascismo</span>
+            <span class="tag">subjetividad</span>
+            <span class="tag">Gramsci</span>
+            <span class="tag">marxismo</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 4 -->
+      <a class="card" href="https://www.youtube.com/watch?v=l5jDclVxtoc" target="_blank">
+        <img class="card-thumb" src="https://img.youtube.com/vi/l5jDclVxtoc/mqdefault.jpg" alt="¿Qué son los cisnes negros?" onerror="this.style.display='none'">
+        <div class="card-body">
+          <span class="card-outlet">La 4TV</span>
+          <h3 class="card-title">¿Qué son los cisnes negros? Rodrigo Guillot nos explica.</h3>
+          <span class="card-date">26 mayo 2022</span>
+          <div class="card-tags">
+            <span class="tag">cisnes negros</span>
+            <span class="tag">pandemia</span>
+            <span class="tag">política internacional</span>
+            <span class="tag">progresismo</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 5 -->
+      <a class="card" href="https://www.youtube.com/watch?v=gAGZaDzciSo" target="_blank">
+        <img class="card-thumb" src="https://img.youtube.com/vi/gAGZaDzciSo/mqdefault.jpg" alt="La lección es que tenemos que aprender de los procesos de Bolivia y Chile" onerror="this.style.display='none'">
+        <div class="card-body">
+          <span class="card-outlet">Sin Censura TV</span>
+          <h3 class="card-title">La lección es que tenemos que aprender de los procesos de Bolivia y Chile</h3>
+          <span class="card-date">26 octubre 2020</span>
+          <div class="card-tags">
+            <span class="tag">Bolivia</span>
+            <span class="tag">Chile</span>
+            <span class="tag">progresismo</span>
+            <span class="tag">América Latina</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 6 -->
+      <a class="card" href="https://www.youtube.com/watch?v=WXVNfOtDWyg" target="_blank">
+        <img class="card-thumb" src="https://img.youtube.com/vi/WXVNfOtDWyg/mqdefault.jpg" alt="Juicio a ex presidentes, cultura política y defensa de la 4T" onerror="this.style.display='none'">
+        <div class="card-body">
+          <span class="card-outlet">Sin Línea Mx</span>
+          <h3 class="card-title">Juicio a ex presidentes, cultura política y defensa de la 4T — con Gerardo Fernández Noroña</h3>
+          <span class="card-date">26 agosto 2020</span>
+          <div class="card-tags">
+            <span class="tag">consulta popular</span>
+            <span class="tag">expresidentes</span>
+            <span class="tag">Cuarta Transformación</span>
+            <span class="tag">Fernández Noroña</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 7 -->
+      <a class="card" href="https://www.youtube.com/watch?v=S0iS64wM_Lg" target="_blank">
+        <img class="card-thumb" src="https://img.youtube.com/vi/S0iS64wM_Lg/mqdefault.jpg" alt="Organización política y cultural en la pandemia" onerror="this.style.display='none'">
+        <div class="card-body">
+          <span class="card-outlet">Sin Línea Mx</span>
+          <h3 class="card-title">Organización política y cultural en la pandemia — con Paco Ignacio Taibo II</h3>
+          <span class="card-date">26 julio 2020</span>
+          <div class="card-tags">
+            <span class="tag">pandemia</span>
+            <span class="tag">Paco Ignacio Taibo II</span>
+            <span class="tag">Bernie Sanders</span>
+            <span class="tag">movilizaciones sociales</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 8 -->
+      <a class="card" href="https://www.youtube.com/watch?v=FI4G0UsInak" target="_blank">
+        <img class="card-thumb" src="https://img.youtube.com/vi/FI4G0UsInak/mqdefault.jpg" alt="México contra las armas que cruzan desde Estados Unidos" onerror="this.style.display='none'">
+        <div class="card-body">
+          <span class="card-outlet">Sin Censura TV</span>
+          <h3 class="card-title">México contra las armas que cruzan desde Estados Unidos</h3>
+          <span class="card-date">15 julio 2020</span>
+          <div class="card-tags">
+            <span class="tag">tráfico de armas</span>
+            <span class="tag">diplomacia</span>
+            <span class="tag">crimen organizado</span>
+            <span class="tag">soberanía</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 9 -->
+      <a class="card" href="https://www.youtube.com/watch?v=33ohBNWul8w" target="_blank">
+        <img class="card-thumb" src="https://img.youtube.com/vi/33ohBNWul8w/mqdefault.jpg" alt="Golpe de Estado en Bolivia es una lección que México debe aprender" onerror="this.style.display='none'">
+        <div class="card-body">
+          <span class="card-outlet">Sin Censura Media</span>
+          <h3 class="card-title">Golpe de Estado en Bolivia es una lección que México debe aprender</h3>
+          <span class="card-date">25 noviembre 2019</span>
+          <div class="card-tags">
+            <span class="tag">Bolivia</span>
+            <span class="tag">golpe de Estado</span>
+            <span class="tag">Evo Morales</span>
+            <span class="tag">América Latina</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 10 -->
+      <a class="card" href="https://www.youtube.com/watch?v=QIiRjXHpf4w" target="_blank">
+        <img class="card-thumb" src="https://img.youtube.com/vi/QIiRjXHpf4w/mqdefault.jpg" alt="Carta a Donald Trump" onerror="this.style.display='none'">
+        <div class="card-body">
+          <span class="card-outlet">Grabación propia</span>
+          <h3 class="card-title">Carta a Donald Trump</h3>
+          <span class="card-date">21 junio 2018</span>
+          <div class="card-tags">
+            <span class="tag">Donald Trump</span>
+            <span class="tag">migración</span>
+            <span class="tag">soberanía</span>
+            <span class="tag">activismo</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 11 -->
+      <a class="card" href="https://www.youtube.com/watch?v=LDh_0BoOJJY" target="_blank">
+        <img class="card-thumb" src="https://img.youtube.com/vi/LDh_0BoOJJY/mqdefault.jpg" alt="El problema de la política cultural del PRI y del PAN" onerror="this.style.display='none'">
+        <div class="card-body">
+          <span class="card-outlet">Foro TV</span>
+          <h3 class="card-title">El problema de la política cultural del PRI y del PAN</h3>
+          <span class="card-date">6 julio 2018</span>
+          <div class="card-tags">
+            <span class="tag">política cultural</span>
+            <span class="tag">presupuesto</span>
+            <span class="tag">PRI</span>
+            <span class="tag">PAN</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 12 -->
+      <a class="card" href="https://www.youtube.com/watch?v=bvwFM7Xf9tM" target="_blank">
+        <img class="card-thumb" src="https://img.youtube.com/vi/bvwFM7Xf9tM/mqdefault.jpg" alt="UNAM: Profesoras y alumnos debaten el conflicto estudiantil" onerror="this.style.display='none'">
+        <div class="card-body">
+          <span class="card-outlet">Aristegui Noticias</span>
+          <h3 class="card-title">UNAM: Profesoras y alumnos debaten el conflicto estudiantil y sus demandas</h3>
+          <span class="card-date">5 septiembre 2018</span>
+          <div class="card-tags">
+            <span class="tag">UNAM</span>
+            <span class="tag">conflicto estudiantil</span>
+            <span class="tag">Aristegui Noticias</span>
+            <span class="tag">movimiento universitario</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 13 -->
+      <a class="card" href="https://www.youtube.com/watch?v=Uk_YYBXFP8I" target="_blank">
+        <img class="card-thumb" src="https://img.youtube.com/vi/Uk_YYBXFP8I/mqdefault.jpg" alt="No vamos a descansar hasta tener una UNAM segura" onerror="this.style.display='none'">
+        <div class="card-body">
+          <span class="card-outlet">Imagen Radio</span>
+          <h3 class="card-title">No vamos a descansar hasta tener una UNAM segura</h3>
+          <span class="card-date">5 septiembre 2018</span>
+          <div class="card-tags">
+            <span class="tag">UNAM</span>
+            <span class="tag">liderazgo estudiantil</span>
+            <span class="tag">Imagen Radio</span>
+            <span class="tag">movimiento universitario</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Rodrigo Guillot López</span>
+  <span data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</span>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.querySelectorAll('[data-es]').forEach(el => {
+    const val = lang === 'es' ? el.dataset.es : el.dataset.en;
+    if (!val) return;
+    el.textContent = val;
+  });
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.documentElement.lang = lang;
+}
+</script>
+</body>
+</html>
