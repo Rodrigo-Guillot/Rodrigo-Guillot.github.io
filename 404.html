@@ -3,21 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Rodrigo Guillot López — especialista en comunicación política e institucional. Asesor legislativo, director de campañas y analista político.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231A1A1A'/><text y='.9em' font-size='80' x='10'>♞</text><style>text{fill:%23C0392B}</style></svg>">
+<meta name="description" content="Rodrigo Guillot López — especialista en comunicación política e institucional. Analista político, asesor legislativo y director de campañas. Ciudad de México.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231A1510'/><text y='.9em' font-size='80' x='10'>♞</text><style>text{fill:%23B8860B}</style></svg>">
 <title>Rodrigo Guillot López</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 
 /* ─── VARIABLES ─────────────────────────────────────────────────────── */
 :root {
-  --cream-light: #FDFAF5;
-  --cream-dark:  #F0EBE3;
-  --ink:         #1A1A1A;
-  --red:         #C0392B;
-  --wine:        #7B1A2A;
-  --muted:       #7A6E65;
-  --line:        #DDD6CC;
+  --parchment:   #FDFAF5;
+  --parchment-d: #F0E8D6;
+  --sand:        #DDC9A3;
+  --sand-dark:   #C8B48A;
+  --ink:         #2A1A1F;
+  --crimson:     #9F2241;
+  --wine:        #691C32;
+  --gold:        #BC955C;
+  --gold-light:  #D4AA72;
+  --green:       #235B4E;
+  --green-dark:  #10312B;
+  --muted:       #7A6660;
+  --line:        #D8C9B0;
   --white:       #FFFFFF;
 }
 
@@ -25,9 +31,9 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  background: var(--cream-light);
+  background: var(--parchment);
   color: var(--ink);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Serif 4', serif;
   font-weight: 300;
   line-height: 1.7;
   overflow-x: hidden;
@@ -39,264 +45,352 @@ body {
   padding: 1rem 2rem; display: flex; gap: 1rem;
   transition: background 0.3s, box-shadow 0.3s;
 }
-.lang-bar.scrolled {
-  background: var(--cream-light);
-  box-shadow: 0 1px 0 var(--line);
-}
+.lang-bar.scrolled { background: var(--parchment); box-shadow: 0 1px 0 var(--line); }
 .lang-btn {
-  background: none;
-  border: 1px solid rgba(253,250,245,0.4);
-  color: rgba(253,250,245,0.6);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 0.35rem 0.8rem; cursor: pointer; transition: all 0.25s;
+  background: none; border: 1px solid rgba(26,21,16,0.25);
+  color: rgba(26,21,16,0.45);
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.3rem 0.75rem; cursor: pointer; transition: all 0.2s;
 }
-.lang-btn.active { background: var(--cream-light); border-color: var(--cream-light); color: var(--ink); }
+.lang-btn.active { background: var(--ink); border-color: var(--ink); color: var(--parchment); }
 .lang-bar.scrolled .lang-btn { border-color: var(--line); color: var(--muted); }
-.lang-bar.scrolled .lang-btn.active { background: var(--ink); border-color: var(--ink); color: var(--cream-light); }
+.lang-bar.scrolled .lang-btn.active { background: var(--ink); border-color: var(--ink); color: var(--parchment); }
 
-/* ─── SECTIONS (show/hide) ───────────────────────────────────────────── */
+/* ─── PAGES ──────────────────────────────────────────────────────────── */
 .page { display: none; }
-.page.active { display: block; }
+.page.active { display: block; animation: pageEnter 0.35s ease both; }
+@keyframes pageEnter { from { opacity: 0; } to { opacity: 1; } }
 
+/* ─── SCROLL REVEAL ──────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
 
-.sections-band { background: var(--cream-dark); }
+/* ─── SHARED HEADER ──────────────────────────────────────────────────── */
+.page-header {
+  background: var(--wine);
+  border-bottom: 3px solid var(--gold);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 4rem;
+  display: grid;
+  grid-template-columns: auto 160px 1fr;
+  align-items: center;
+  gap: 2.5rem;
+  height: 200px;
+}
+.header-left h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.2rem; font-weight: 700;
+  line-height: 1.0; letter-spacing: -0.02em;
+  color: var(--parchment);
+  cursor: pointer;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.header-left h1:hover { color: var(--sand); }
+.header-left .name-last { color: var(--gold-light); font-style: italic; font-weight: 300; }
+.header-left .page-label {
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(253,250,245,0.5); margin-top: 0.75rem;
+  font-family: 'Source Serif 4', serif;
+}
+.nav-links { display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: nowrap; white-space: nowrap; }
+.nav-links button {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(253,250,245,0.5); background: none; border: none;
+  border-bottom: 1px solid transparent; padding-bottom: 2px;
+  cursor: pointer; transition: all 0.2s;
+}
+.nav-links button:hover { color: var(--parchment); }
+.nav-links button.active { color: var(--gold-light); border-bottom-color: var(--gold); }
+.header-photo { display: flex; justify-content: center; align-items: center; width: 160px; }
+.profile-photo {
+  width: 140px; height: 140px;
+  border-radius: 50%; object-fit: cover;
+  border: 2px solid var(--gold);
+  display: block;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.profile-photo:hover { border-color: var(--gold-light); box-shadow: 0 0 0 4px rgba(188,149,92,0.25); }
+.profile-photo-placeholder {
+  width: 180px; height: 180px; border-radius: 50%;
+  border: 2px dashed rgba(188,149,92,0.4);
+  display: flex; align-items: center; justify-content: center;
+}
+.profile-photo-placeholder span { font-size: 0.6rem; color: rgba(105,28,50,0.5); text-align: center; }
+.header-right { display: flex; align-items: center; }
+.page-quote {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 1.05rem; color: rgba(253,250,245,0.85); line-height: 1.6;
+  border-left: 2px solid var(--gold); padding-left: 1.5rem;
+  transition: color 0.4s;
+}
+.page-quote:hover { color: var(--parchment); }
+
+/* ─── CONTAINER ──────────────────────────────────────────────────────── */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+
+/* ─── LANDING ────────────────────────────────────────────────────────── */
+.about-band {
+  background: var(--parchment);
+  padding: 4rem 0 4.5rem;
+  border-bottom: 3px solid var(--wine);
+}
+.about-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 4rem;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: center;
+}
+.about-text-block {}
+.about-eyebrow {
+  font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--wine); margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.about-eyebrow::before {
+  content: ''; display: inline-block;
+  width: 2rem; height: 1px; background: var(--wine);
+}
+.about-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 300;
+  color: var(--ink); line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+.about-headline em { color: var(--wine); font-style: italic; }
+.about-bio {
+  font-size: 0.95rem; color: var(--ink);
+  line-height: 1.85; font-weight: 300;
+}
+.about-formation {
+  margin-top: 1.5rem; padding-top: 1.5rem;
+  border-top: 1px solid rgba(105,28,50,0.2);
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.about-formation-item {
+  font-size: 0.82rem; color: var(--ink);
+  font-weight: 300; padding-left: 1rem; position: relative;
+  opacity: 0.75;
+}
+.about-formation-item::before {
+  content: ''; position: absolute; left: 0; top: 0.5em;
+  width: 4px; height: 4px; border-radius: 50%; background: var(--green);
+}
+.about-quote-block {
+  border-left: 2px solid var(--wine);
+  padding-left: 2rem;
+}
+.about-quote-block blockquote {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 300;
+  color: var(--wine); line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.about-quote-block cite {
+  font-family: 'Source Serif 4', serif; font-style: italic;
+  font-size: 0.8rem; color: var(--muted);
+}
+
+.sections-band { background: var(--sand); }
 .sections-grid {
   max-width: 1100px; margin: 0 auto;
   display: grid; grid-template-columns: repeat(3, 1fr);
 }
 .section-card {
-  padding: 3rem 4rem; border-right: 1px solid var(--line);
+  padding: 3rem 3.5rem; border-right: 1px solid var(--line);
   text-decoration: none; color: inherit;
   transition: background 0.3s; display: flex; flex-direction: column; gap: 1rem;
   cursor: pointer; background: none; border-top: none; border-bottom: none; border-left: none;
-  font-family: inherit; text-align: left;
+  font-family: inherit; text-align: left; position: relative; overflow: hidden;
 }
+.section-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 3px; background: var(--crimson);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.section-card:hover::before { transform: scaleX(1); }
 .section-card:last-child { border-right: none; }
-.section-card:hover { background: var(--cream-light); }
-.card-number { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--line); line-height: 1; font-weight: 400; }
-.card-title  { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
-.card-desc   { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
-.card-arrow  { font-size: 1.2rem; color: var(--red); margin-top: auto; }
+.section-card:hover { background: var(--parchment); }
+.card-number { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: rgba(105,28,50,0.2); line-height: 1; font-weight: 300; }
+.card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--wine); letter-spacing: -0.01em; }
+.card-desc { font-size: 0.85rem; color: var(--ink); opacity: 0.75; line-height: 1.6; }
+.card-arrow { font-size: 1.1rem; color: var(--crimson); margin-top: auto; transition: transform 0.2s; }
+.section-card:hover .card-arrow { transform: translateX(4px); }
 
-/* ─── SHARED PAGE HEADER ─────────────────────────────────────────────
-   Este bloque define el header compartido por publicaciones,
-   consultoría y medios. NADA en este bloque es relativo al viewport.
-   ─────────────────────────────────────────────────────────────────── */
-.page-header { background: var(--ink); }
-.header-inner {
-  max-width: 1100px; margin: 0 auto; padding: 0 4rem;
-  display: grid;
-  grid-template-columns: 1fr 200px 1fr;
-  align-items: center;
-  gap: 3rem;
-  height: 220px;      /* altura fija */
-}
-.header-left h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem;    /* tamaño fijo */
-  font-weight: 700; line-height: 1.0; letter-spacing: -0.02em;
-  color: var(--cream-light);
-}
-.header-left .name-last { color: var(--red); font-style: italic; font-weight: 400; }
-.header-left .page-label {
-  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(253,250,245,0.4); margin-top: 0.75rem;
-}
-.nav-links {
-  display: flex; gap: 1.5rem; margin-top: 1.5rem;
-  flex-wrap: nowrap; white-space: nowrap;
-}
-.nav-links button {
-  font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
-  color: rgba(253,250,245,0.45); background: none; border: none;
-  border-bottom: 1px solid transparent; padding-bottom: 2px;
-  cursor: pointer; transition: all 0.2s; font-family: inherit;
-}
-.nav-links button:hover { color: var(--cream-light); }
-.nav-links button.active { color: var(--cream-light); border-bottom-color: var(--red); }
-.header-photo {
-  display: flex; justify-content: center; align-items: center;
-  width: 200px;
-}
-.profile-photo {
-  width: 180px; height: 180px;  /* tamaño fijo */
-  border-radius: 50%; object-fit: cover;
-  border: 2px solid var(--wine); display: block;
-}
-.profile-photo-placeholder {
-  width: 180px; height: 180px;
-  border-radius: 50%; border: 2px dashed rgba(253,250,245,0.2);
-  display: flex; align-items: center; justify-content: center;
-}
-.profile-photo-placeholder span { font-size: 0.6rem; color: rgba(253,250,245,0.3); text-align: center; }
-.header-right { display: flex; align-items: center; }
-.page-quote {
-  font-family: 'Playfair Display', serif; font-style: italic;
-  font-size: 1rem; color: var(--cream-light); line-height: 1.6;
-  border-left: 2px solid var(--red); padding-left: 1.5rem;
+/* ─── PAGE INTRO ─────────────────────────────────────────────────────── */
+.page-intro { background: var(--parchment); padding: 3.5rem 0 2.5rem; border-bottom: 1px solid var(--line); }
+.page-intro-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem; font-weight: 700;
+  line-height: 1.0; letter-spacing: -0.02em; color: var(--ink);
 }
 
 /* ─── PUBLICACIONES ──────────────────────────────────────────────────── */
-.section-light { background: var(--white);      padding: 2rem 0; }
-.section-dark  { background: var(--cream-dark); padding: 2rem 0; }
-.container { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+.section-light { background: var(--white); padding: 2.5rem 0; }
+.section-dark  { background: var(--parchment-d); padding: 2.5rem 0; }
 .section-header {
   display: flex; align-items: baseline; gap: 2rem;
   margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line);
 }
-.section-title  { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 400; }
-.section-count  { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; margin-top: 0.3rem; }
-.section-note   { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; font-style: italic; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 400; }
+.section-count { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; margin-top: 0.3rem; }
+.section-note  { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; font-style: italic; }
 
 .thesis-card {
   display: block; text-decoration: none; color: inherit;
   border: 1px solid var(--line); padding: 2.5rem; background: var(--white);
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s; position: relative; overflow: hidden;
 }
-.thesis-card:hover { border-color: var(--red); }
-.thesis-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 1rem; }
-.thesis-title { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 700; line-height: 1.3; color: var(--ink); margin-bottom: 0.75rem; }
+.thesis-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 3px; background: var(--crimson);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+}
+.thesis-card:hover::before { transform: scaleX(1); }
+.thesis-card:hover { border-color: var(--crimson); box-shadow: 0 4px 20px rgba(159,34,65,0.08); }
+.thesis-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--crimson); display: block; margin-bottom: 1rem; font-family: 'Source Serif 4', serif; }
+.thesis-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 700; line-height: 1.3; color: var(--ink); margin-bottom: 0.75rem; }
 .thesis-meta  { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
-.thesis-desc  { font-size: 0.9rem; color: var(--ink); line-height: 1.7; margin-bottom: 1.25rem; }
-.thesis-link  { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); border-bottom: 1px solid var(--red); padding-bottom: 1px; }
+.thesis-desc  { font-size: 0.9rem; color: var(--ink); line-height: 1.7; margin-bottom: 1.25rem; font-weight: 300; }
+.thesis-link  { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--crimson); border-bottom: 1px solid var(--crimson); padding-bottom: 1px; }
 
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .art-card {
   display: flex; flex-direction: column;
   text-decoration: none; color: inherit;
   background: var(--white); border: 1px solid var(--line); padding: 1.75rem;
-  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  transition: border-color 0.3s, transform 0.25s, box-shadow 0.3s;
+  position: relative; overflow: hidden;
 }
-.art-card:hover { border-color: var(--red); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
-.art-outlet  { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem; }
-.art-title   { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; line-height: 1.4; color: var(--ink); margin-bottom: 0.75rem; }
-.art-excerpt { font-size: 0.85rem; color: var(--muted); line-height: 1.65; flex-grow: 1; margin-bottom: 1.25rem; }
+.art-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 3px; background: var(--crimson);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+}
+.art-card:hover::before { transform: scaleX(1); }
+.art-card:hover { border-color: var(--crimson); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(159,34,65,0.08); }
+.art-outlet  { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--crimson); margin-bottom: 0.6rem; font-family: 'Source Serif 4', serif; }
+.art-title   { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; line-height: 1.4; color: var(--ink); margin-bottom: 0.75rem; }
+.art-excerpt { font-size: 0.83rem; color: var(--muted); line-height: 1.65; flex-grow: 1; margin-bottom: 1.25rem; font-weight: 300; }
 .art-footer  { border-top: 1px solid var(--line); padding-top: 0.9rem; display: flex; flex-direction: column; gap: 0.4rem; }
-.art-date    { font-size: 0.75rem; color: var(--wine); }
-.art-cta     { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); text-decoration: none; width: fit-content; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+.art-date    { font-size: 0.72rem; color: var(--wine); }
+.art-cta     { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--crimson); text-decoration: none; width: fit-content; border-bottom: 1px solid currentColor; padding-bottom: 1px; transition: color 0.2s; }
+.art-cta:hover { color: var(--gold); }
 
 .section-toggle {
   display: flex; align-items: center; gap: 1rem;
   background: none; border: none; cursor: pointer;
   font-family: inherit; padding: 0; width: 100%; text-align: left;
 }
-.toggle-icon { font-size: 1.2rem; color: var(--muted); transition: transform 0.3s, color 0.2s; margin-left: auto; }
+.toggle-icon { font-size: 1.1rem; color: var(--muted); transition: transform 0.3s; margin-left: auto; }
 .toggle-icon.open { transform: rotate(180deg); }
-.section-body { overflow: hidden; transition: max-height 0.5s ease, opacity 0.4s ease; max-height: 0; opacity: 0; }
+.section-body { overflow: hidden; transition: max-height 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease; max-height: 0; opacity: 0; }
 .section-body.open { max-height: 9999px; opacity: 1; padding-top: 1.5rem; }
 
-/* ─── INTRO DE PÁGINA (idéntico en las tres subpáginas) ──────────────
-   Fondo cream-dark, padding fijo, título Playfair 4rem + subtítulo
-   opcional en itálico. Solo el texto cambia entre páginas.
-   ──────────────────────────────────────────────────────────────────── */
-.page-intro {
-  background: var(--cream-dark);
-  padding: 3rem 0 2.5rem;
-  border-bottom: 1px solid var(--line);
-}
-.page-intro-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem;
-  font-weight: 700;
-  line-height: 1.0;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-}
-.page-intro-sub {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--muted);
-  line-height: 1.6;
-  margin-top: 1rem;
-  max-width: 680px;
-}
-
 /* ─── CONSULTORÍA ────────────────────────────────────────────────────── */
-.services-section { background: var(--cream-dark); padding: 3rem 0 4rem; }
-.services-table {
-  width: 100%;
-  border: 1px solid var(--line);
-  border-collapse: collapse;
-}
-.service-row {
+.services-section { background: var(--parchment-d); padding: 3rem 0 4rem; }
+.services-layout {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  border-bottom: 1px solid var(--line);
-  align-items: start;
+  grid-template-columns: 240px 1fr;
+  gap: 0;
+  border: 1px solid var(--line);
 }
+.services-sidebar {
+  padding: 2rem 1.75rem;
+  border-right: 1px solid var(--line);
+  background: var(--wine);
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.sidebar-label {
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold-light); font-family: 'Source Serif 4', serif;
+}
+.sidebar-text {
+  font-size: 0.82rem; color: rgba(250,246,239,0.65);
+  line-height: 1.7; font-weight: 300;
+}
+.sidebar-link {
+  font-size: 0.75rem; letter-spacing: 0.08em;
+  color: var(--gold-light); text-decoration: none;
+  border-bottom: 1px solid rgba(230,209,148,0.4);
+  padding-bottom: 1px; width: fit-content;
+  margin-top: auto;
+  transition: color 0.2s, border-color 0.2s;
+}
+.sidebar-link:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+.services-table { width: 100%; }
+.service-row { display: grid; grid-template-columns: 260px 1fr; border-bottom: 1px solid var(--line); align-items: start; }
 .service-row:last-child { border-bottom: none; }
 .service-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.4;
-  color: var(--ink);
-  padding: 1.5rem 2rem;
-  border-right: 1px solid var(--line);
-  align-self: stretch;
-  display: flex;
-  align-items: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; font-weight: 600; line-height: 1.4; color: var(--ink);
+  padding: 1.5rem 2rem; border-right: 1px solid var(--line);
+  align-self: stretch; display: flex; align-items: center;
 }
-.service-chips {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  padding: 1.5rem 2rem;
-}
-.service-chip {
-  font-size: 0.9rem;
-  color: var(--ink);
-  padding-left: 1rem;
-  position: relative;
-  line-height: 1.4;
-}
+.service-chips { display: flex; flex-direction: column; gap: 0.6rem; padding: 1.5rem 2rem; }
+.service-chip { font-size: 0.9rem; color: var(--ink); padding-left: 1rem; position: relative; line-height: 1.4; font-weight: 300; }
 .service-chip::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--red);
+  content: ''; position: absolute; left: 0; top: 0.55em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--crimson);
 }
 
-/* ─── MEDIOS ─────────────────────────────────────────────────────────── */
-.medios-section { background: var(--cream-dark); padding: 4rem 0; }
+/* ─── AUDIOVISUAL ────────────────────────────────────────────────────── */
+.medios-section { background: var(--parchment-d); padding: 4rem 0; }
 .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .video-card {
   background: var(--white); border: 1px solid var(--line);
   text-decoration: none; color: inherit; display: flex; flex-direction: column;
-  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  transition: border-color 0.3s, transform 0.25s, box-shadow 0.3s;
+  position: relative; overflow: hidden;
 }
-.video-card:hover { border-color: var(--red); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
-.video-thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--ink); }
-.video-body  { padding: 1.25rem 1.5rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
-.video-outlet { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem; }
-.video-title  { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 400; line-height: 1.4; color: var(--ink); flex: 1; margin-bottom: 0.75rem; }
-.video-date   { font-size: 0.75rem; color: var(--wine); }
+.video-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 3px; background: var(--crimson);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+}
+.video-card:hover::before { transform: scaleX(1); }
+.video-card:hover { border-color: var(--crimson); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(159,34,65,0.08); }
+.video-thumb  { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--ink); }
+.video-body   { padding: 1.25rem 1.5rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
+.video-outlet { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--crimson); margin-bottom: 0.5rem; font-family: 'Source Serif 4', serif; }
+.video-title  { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400; line-height: 1.4; color: var(--ink); flex: 1; margin-bottom: 0.75rem; }
+.video-date   { font-size: 0.72rem; color: var(--wine); }
 .video-tags   { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
-.video-tag    { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); padding: 0.15rem 0.5rem; }
+.video-tag    { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); padding: 0.15rem 0.5rem; }
 
 /* ─── CONTACTO ───────────────────────────────────────────────────────── */
-.contact-section { background: var(--ink); padding: 6rem 0; }
+.contact-section { background: var(--wine); padding: 6rem 0; }
 .contact-inner   { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-.contact-text    { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 400; font-style: italic; line-height: 1.5; color: var(--cream-light); }
-.contact-text em { color: var(--red); font-style: normal; font-weight: 500; }
-.contact-links   { display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-text    { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; font-style: italic; line-height: 1.5; color: var(--parchment); }
+.contact-text em { color: var(--gold-light); font-style: normal; font-weight: 600; }
+.contact-subtext { font-size: 0.9rem; color: rgba(253,250,245,0.6); line-height: 1.7; margin-top: 1.25rem; font-weight: 300; }
+.contact-links   { display: flex; flex-direction: column; gap: 1.75rem; }
 .contact-item    { display: flex; flex-direction: column; gap: 0.25rem; }
-.contact-label   { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(253,250,245,0.4); }
-.contact-value   { font-size: 0.95rem; color: var(--cream-light); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 1px; transition: border-color 0.2s; }
-.contact-value:hover { border-color: var(--red); }
+.contact-label   { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); opacity: 0.85; }
+.contact-value   { font-size: 0.95rem; color: var(--parchment); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 1px; transition: border-color 0.2s, color 0.2s; }
+.contact-value:hover { border-bottom-color: var(--gold); color: var(--gold-light); }
 
 /* ─── FOOTER ─────────────────────────────────────────────────────────── */
 footer {
   padding: 2rem 4rem; border-top: 1px solid var(--line);
   display: flex; justify-content: space-between;
-  font-size: 0.75rem; color: var(--muted);
-  background: var(--cream-light);
+  font-size: 0.72rem; color: var(--muted);
+  background: var(--parchment);
+  font-family: 'Source Serif 4', serif;
 }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────────────── */
@@ -305,6 +399,10 @@ footer {
   .header-photo { width: 100%; order: -1; }
   .grid-3, .video-grid { grid-template-columns: repeat(2, 1fr); }
   .service-row { grid-template-columns: 200px 1fr; }
+  .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .services-layout { grid-template-columns: 1fr; }
+  .services-sidebar { border-right: none; border-bottom: 1px solid var(--line); }
 }
 @media (max-width: 700px) {
   .grid-3, .video-grid { grid-template-columns: 1fr; }
@@ -312,9 +410,9 @@ footer {
   .service-title { border-right: none; border-bottom: 1px solid var(--line); align-items: flex-start; }
   .sections-grid { grid-template-columns: 1fr; }
   .section-card  { border-right: none; border-bottom: 1px solid var(--line); }
-  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
   .container { padding: 0 1.5rem; }
-  footer { flex-direction: column; gap: 0.5rem; }
+  .about-inner { padding: 0 1.5rem; }
+  footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem; }
 }
 
 </style>
@@ -322,13 +420,44 @@ footer {
 <body>
 
 <!-- ─── LANG BAR ─────────────────────────────────────────────────────── -->
-<div class="lang-bar">
+<div class="lang-bar" id="langBar">
   <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
   <button class="lang-btn"        id="btn-en" onclick="setLang('en')">EN</button>
 </div>
 
+<!-- ─── HEADER TEMPLATE ──────────────────────────────────────────────── -->
+<template id="tpl-header">
+  <header class="page-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <h1 onclick="showSection('inicio')">Rodrigo <span class="name-last">Guillot</span></h1>
+        <p class="page-label" data-label="true"></p>
+        <nav class="nav-links">
+          <button onclick="showSection('inicio')"        data-nav="inicio"        data-es="Inicio"        data-en="Home">Inicio</button>
+          <button onclick="showSection('publicaciones')" data-nav="publicaciones" data-es="Publicaciones" data-en="Publications">Publicaciones</button>
+          <button onclick="showSection('medios')"        data-nav="medios"        data-es="Audiovisual"   data-en="Audiovisual">Audiovisual</button>
+          <button onclick="showSection('consultoria')"   data-nav="consultoria"   data-es="Consultoría"   data-en="Consulting">Consultoría</button>
+        </nav>
+      </div>
+      <div class="header-photo">
+        <img src="fotografia-rodrigoguillot.jpg" alt="Rodrigo Guillot" class="profile-photo"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="profile-photo-placeholder" style="display:none"><span>foto</span></div>
+      </div>
+      <div class="header-right">
+        <p class="page-quote"
+           data-es="La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas."
+           data-en="Political communication is the daily work of reading society, understanding its shifts, and building a solid connection between institutions, leaders, and the people they serve.">
+          La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.
+        </p>
+      </div>
+    </div>
+  </header>
+</template>
+
+
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- PÁGINA: INICIO                                                      -->
+<!-- INICIO                                                              -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <div id="page-inicio" class="page active"
      data-label-es="Comunicación política · Análisis · Consultoría"
@@ -336,32 +465,62 @@ footer {
 
   <!-- header inyectado por JS -->
 
+  <!-- SOBRE MÍ -->
+  <div class="about-band">
+    <div class="about-inner">
+      <div class="about-text-block reveal">
+        <p class="about-eyebrow" data-es="Rodrigo Guillot López" data-en="Rodrigo Guillot López">Rodrigo Guillot López</p>
+        <h2 class="about-headline"
+            data-es="Internacionalista especializado en <em>comunicación política</em> e institucional"
+            data-en="International relations specialist in <em>political communication</em> and institutional affairs">
+          Internacionalista especializado en <em>comunicación política</em> e institucional
+        </h2>
+        <p class="about-bio"
+           data-es="Más de cinco años de experiencia en entornos legislativos, gubernamentales y de salud pública en México. He operado en el Senado de la República, la Cámara de Diputados, el Congreso de la Ciudad de México e instituciones de gobierno local. Licenciado en Relaciones Internacionales por la UNAM."
+           data-en="Over five years of experience in legislative, governmental and public health environments in Mexico. I have worked in the Senate of the Republic, the Chamber of Deputies, the Mexico City Congress and local government institutions. B.A. in International Relations, UNAM.">
+          Más de cinco años de experiencia en entornos legislativos, gubernamentales y de salud pública en México. He operado en el Senado de la República, la Cámara de Diputados, el Congreso de la Ciudad de México e instituciones de gobierno local. Licenciado en Relaciones Internacionales por la UNAM.
+        </p>
+        <div class="about-formation">
+          <p class="about-formation-item" data-es="Lic. en Relaciones Internacionales — FCPyS, UNAM" data-en="B.A. in International Relations — FCPyS, UNAM">Lic. en Relaciones Internacionales — FCPyS, UNAM</p>
+          <p class="about-formation-item" data-es="Diploma Superior en Formación Política — CLACSO" data-en="Graduate Diploma in Political Formation — CLACSO">Diploma Superior en Formación Política — CLACSO</p>
+          <p class="about-formation-item" data-es="Diploma en Marketing Político y Campañas Electorales — ACOP / Asuntos Digitales" data-en="Diploma in Political Marketing and Electoral Campaigns — ACOP / Asuntos Digitales">Diploma en Marketing Político y Campañas Electorales — ACOP / Asuntos Digitales</p>
+        </div>
+      </div>
+      <div class="about-quote-block reveal reveal-delay-2">
+        <blockquote
+          data-es="La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas."
+          data-en="Political communication is the daily work of reading society, understanding its shifts, and building a solid connection between institutions, leaders, and the people they serve.">
+          La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.
+        </blockquote>
+        <cite data-es="— Rodrigo Guillot López" data-en="— Rodrigo Guillot López">— Rodrigo Guillot López</cite>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVEGACIÓN -->
   <div class="sections-band">
     <div class="sections-grid">
-
-      <button class="section-card" onclick="showSection('publicaciones')">
+      <button class="section-card reveal" onclick="showSection('publicaciones')">
         <span class="card-number">01</span>
         <h2 class="card-title" data-es="Publicaciones" data-en="Publications">Publicaciones</h2>
         <p class="card-desc"
-           data-es="Archivo de textos publicados en Revista Memoria, Instituto Tricontinental, People's Dispatch, SPR Informa y SDP Noticias."
-           data-en="Archive of texts published in Revista Memoria, Tricontinental Institute, People's Dispatch, SPR Informa and SDP Noticias.">
-          Archivo de textos publicados en Revista Memoria, Instituto Tricontinental, People's Dispatch, SPR Informa y SDP Noticias.
+           data-es="Archivo de textos en Revista Memoria, Instituto Tricontinental, People's Dispatch, SPR Informa y SDP Noticias."
+           data-en="Archive of texts in Revista Memoria, Tricontinental Institute, People's Dispatch, SPR Informa and SDP Noticias.">
+          Archivo de textos en Revista Memoria, Instituto Tricontinental, People's Dispatch, SPR Informa y SDP Noticias.
         </p>
         <span class="card-arrow">→</span>
       </button>
-
-      <button class="section-card" onclick="showSection('medios')">
+      <button class="section-card reveal reveal-delay-1" onclick="showSection('medios')">
         <span class="card-number">02</span>
         <h2 class="card-title" data-es="Audiovisual" data-en="Audiovisual">Audiovisual</h2>
         <p class="card-desc"
-           data-es="Archivo audiovisual de apariciones en televisión, radio y plataformas digitales. 2018–2023."
-           data-en="Audiovisual archive of appearances on television, radio and digital platforms. 2018–2023.">
-          Archivo audiovisual de apariciones en televisión, radio y plataformas digitales. 2018–2023.
+           data-es="Archivo de apariciones en televisión, radio y plataformas digitales. 2018–2023."
+           data-en="Archive of appearances on television, radio and digital platforms. 2018–2023.">
+          Archivo de apariciones en televisión, radio y plataformas digitales. 2018–2023.
         </p>
         <span class="card-arrow">→</span>
       </button>
-
-      <button class="section-card" onclick="showSection('consultoria')">
+      <button class="section-card reveal reveal-delay-2" onclick="showSection('consultoria')">
         <span class="card-number">03</span>
         <h2 class="card-title" data-es="Consultoría" data-en="Consulting">Consultoría</h2>
         <p class="card-desc"
@@ -371,56 +530,40 @@ footer {
         </p>
         <span class="card-arrow">→</span>
       </button>
-
     </div>
   </div>
+
+  <!-- CONTACTO -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-inner reveal">
+        <div>
+          <p class="contact-text"
+             data-es="Disponible para <em>colaboraciones</em>, <em>consultoría</em> y proyectos en México y América Latina."
+             data-en="Available for <em>collaborations</em>, <em>consulting</em> and projects in Mexico and Latin America.">
+            Disponible para <em>colaboraciones</em>, <em>consultoría</em> y proyectos en México y América Latina.
+          </p>
+        </div>
+        <div class="contact-links">
+          <div class="contact-item"><span class="contact-label">Email</span><a class="contact-value" href="mailto:rodrigoguillot@politicas.unam.mx">rodrigoguillot@politicas.unam.mx</a></div>
+          <div class="contact-item"><span class="contact-label">LinkedIn</span><a class="contact-value" href="https://linkedin.com/in/rodrigoguillot" target="_blank">linkedin.com/in/rodrigoguillot</a></div>
+          <div class="contact-item"><span class="contact-label">GitHub</span><a class="contact-value" href="https://github.com/Rodrigo-Guillot" target="_blank">github.com/Rodrigo-Guillot</a></div>
+          <div class="contact-item"><span class="contact-label" data-es="Consultoría" data-en="Consulting">Consultoría</span><a class="contact-value" href="https://hegemonicalab.github.io" target="_blank">Hegemónica Lab →</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <span>© 2026 Rodrigo Guillot López</span>
     <span data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</span>
   </footer>
 
-</div><!-- /page-inicio -->
+</div><!-- /inicio -->
 
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- HEADER COMPARTIDO (se inserta dinámicamente por JS)                -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<template id="tpl-header">
-  <header class="page-header">
-    <div class="header-inner">
-
-      <div class="header-left">
-        <h1 onclick="showSection('inicio')" style="cursor:pointer;">Rodrigo<br><span class="name-last">Guillot</span></h1>
-        <p class="page-label" data-label="true"></p>
-        <nav class="nav-links">
-          <button onclick="showSection('publicaciones')" data-nav="publicaciones" data-es="Publicaciones" data-en="Publications">Publicaciones</button>
-          <button onclick="showSection('medios')"       data-nav="medios"        data-es="Audiovisual"   data-en="Audiovisual">Audiovisual</button>
-          <button onclick="showSection('consultoria')"  data-nav="consultoria"   data-es="Consultoría"   data-en="Consulting">Consultoría</button>
-        </nav>
-      </div>
-
-      <div class="header-photo">
-        <img src="fotografia-rodrigoguillot.jpg" alt="Rodrigo Guillot" class="profile-photo"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="profile-photo-placeholder" style="display:none"><span>foto</span></div>
-      </div>
-
-      <div class="header-right">
-        <p class="page-quote"
-           data-es="La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas."
-           data-en="Political communication is the daily work of reading society, understanding its shifts, and building a solid connection between institutions, leaders, and the people they serve.">
-          La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.
-        </p>
-      </div>
-
-    </div>
-  </header>
-</template>
-
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- PÁGINA: PUBLICACIONES                                               -->
+<!-- PUBLICACIONES                                                       -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <div id="page-publicaciones" class="page"
      data-label-es="Archivo de publicaciones"
@@ -448,19 +591,11 @@ footer {
       </button>
       <div style="border-bottom:1px solid var(--line);margin-bottom:2.5rem;"></div>
       <div class="section-body open">
-        <a class="thesis-card" href="https://tesiunam.dgb.unam.mx/F/SC4EAPK5NKTG26UBYKQGHDJXTJFNDD2MJ1Q8RLPLUJNM6LDMKT-07750?func=full-set-set&set_number=003710&set_entry=000001&format=999" target="_blank">
+        <a class="thesis-card reveal" href="https://tesiunam.dgb.unam.mx/F/SC4EAPK5NKTG26UBYKQGHDJXTJFNDD2MJ1Q8RLPLUJNM6LDMKT-07750?func=full-set-set&set_number=003710&set_entry=000001&format=999" target="_blank">
           <span class="thesis-label" data-es="Tesis de licenciatura — FCPyS, UNAM · 2022" data-en="Bachelor's Thesis — FCPyS, UNAM · 2022">Tesis de licenciatura — FCPyS, UNAM · 2022</span>
-          <h3 class="thesis-title"
-              data-es="La política exterior del Estado mexicano ante el golpe de Estado en Bolivia (2019-2020) y el posicionamiento de la Cuarta Transformación ante la coyuntura latinoamericana"
-              data-en="Mexican Foreign Policy in Response to the Coup d'État in Bolivia (2019-2020) and the Fourth Transformation's Position on the Latin American Conjuncture">
-            La política exterior del Estado mexicano ante el golpe de Estado en Bolivia (2019-2020) y el posicionamiento de la Cuarta Transformación ante la coyuntura latinoamericana
-          </h3>
+          <h3 class="thesis-title" data-es="La política exterior del Estado mexicano ante el golpe de Estado en Bolivia (2019-2020) y el posicionamiento de la Cuarta Transformación ante la coyuntura latinoamericana" data-en="Mexican Foreign Policy in Response to the Coup d'État in Bolivia (2019-2020) and the Fourth Transformation's Position on the Latin American Conjuncture">La política exterior del Estado mexicano ante el golpe de Estado en Bolivia (2019-2020) y el posicionamiento de la Cuarta Transformación ante la coyuntura latinoamericana</h3>
           <p class="thesis-meta" data-es="Rodrigo Guillot López · Especialización en Política Exterior Mexicana" data-en="Rodrigo Guillot López · Specialization in Mexican Foreign Policy">Rodrigo Guillot López · Especialización en Política Exterior Mexicana</p>
-          <p class="thesis-desc"
-             data-es="Investigación sobre el posicionamiento diplomático de México ante el golpe de Estado en Bolivia de 2019, analizado en el marco de la política exterior de la Cuarta Transformación y la segunda ola progresista en América Latina."
-             data-en="Research on Mexico's diplomatic positioning in response to the 2019 coup d'état in Bolivia, analyzed within the framework of the Fourth Transformation's foreign policy and the second progressive wave in Latin America.">
-            Investigación sobre el posicionamiento diplomático de México ante el golpe de Estado en Bolivia de 2019, analizado en el marco de la política exterior de la Cuarta Transformación y la segunda ola progresista en América Latina.
-          </p>
+          <p class="thesis-desc" data-es="Investigación sobre el posicionamiento diplomático de México ante el golpe de Estado en Bolivia de 2019, analizado en el marco de la política exterior de la Cuarta Transformación y la segunda ola progresista en América Latina." data-en="Research on Mexico's diplomatic positioning in response to the 2019 coup d'état in Bolivia, analyzed within the framework of the Fourth Transformation's foreign policy and the second progressive wave in Latin America.">Investigación sobre el posicionamiento diplomático de México ante el golpe de Estado en Bolivia de 2019, analizado en el marco de la política exterior de la Cuarta Transformación y la segunda ola progresista en América Latina.</p>
           <span class="thesis-link" data-es="Consultar en repositorio UNAM →" data-en="View in UNAM repository →">Consultar en repositorio UNAM →</span>
         </a>
       </div>
@@ -482,27 +617,18 @@ footer {
       <div style="border-bottom:1px solid var(--line);margin-bottom:2.5rem;"></div>
       <div class="section-body">
         <div class="grid-3">
-
-          <a class="art-card" href="https://thetricontinental.org/es/boletin-na-genz-fascismo-mexico/" target="_blank">
+          <a class="art-card reveal" href="https://thetricontinental.org/es/boletin-na-genz-fascismo-mexico/" target="_blank">
             <span class="art-outlet">Instituto Tricontinental de Investigación Social</span>
             <h3 class="art-title">La falsa GenZ y el fascismo mexicano</h3>
-            <p class="art-excerpt">En noviembre del 2025, la derecha mexicana convocó a una marcha simultánea en todas las ciudades capitales de México, bajo la bandera del anime One Piece, que fue usada en el pasado reciente por manifestantes nepalíes, mayoritariamente jóvenes, para protestar contra medidas restrictivas de su gobierno. La apuesta por una imagen extranjera y descontextualizada de la realidad mexicana parece bizarra porque lo es...</p>
-            <div class="art-footer">
-              <span class="art-date">Dic 2025 · Boletín Nuestra América</span>
-              <span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
-            </div>
+            <p class="art-excerpt">En noviembre del 2025, la derecha mexicana convocó a una marcha simultánea en todas las ciudades capitales de México, bajo la bandera del anime One Piece, que fue usada en el pasado reciente por manifestantes nepalíes, mayoritariamente jóvenes...</p>
+            <div class="art-footer"><span class="art-date">Dic 2025 · Boletín Nuestra América</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div>
           </a>
-
-          <a class="art-card" href="https://revistamemoria.mx/?p=4580" target="_blank">
+          <a class="art-card reveal reveal-delay-1" href="https://revistamemoria.mx/?p=4580" target="_blank">
             <span class="art-outlet">Revista Memoria — CEMOS</span>
             <h3 class="art-title">Revolución de las conciencias: pueblo, partido, Estado</h3>
-            <p class="art-excerpt">Uno de los conceptos fundamentales que Andrés Manuel acuñó durante su gesta política para construir, defender y caracterizar el proceso que hoy conocemos como la Cuarta Transformación es el de la revolución de las conciencias. Con él, el expresidente solía hacer referencia al proceso mediante el cuál la mayoría popular logró identificar, señalar, combatir organizadamente y derrotar por la vía de las elecciones al régimen neoliberal...</p>
-            <div class="art-footer">
-              <span class="art-date">Nov 2025 · No. 298</span>
-              <span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span>
-            </div>
+            <p class="art-excerpt">Uno de los conceptos fundamentales que Andrés Manuel acuñó durante su gesta política para construir, defender y caracterizar el proceso que hoy conocemos como la Cuarta Transformación es el de la revolución de las conciencias...</p>
+            <div class="art-footer"><span class="art-date">Nov 2025 · No. 298</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div>
           </a>
-
         </div>
       </div>
     </div>
@@ -524,56 +650,13 @@ footer {
       <div class="section-body">
         <p class="section-note" data-es="Medio de difusión del Gobierno de México" data-en="Official media outlet of the Government of Mexico">Medio de difusión del Gobierno de México</p>
         <div class="grid-3">
-
-          <a class="art-card" href="https://www.sprinforma.mx/noticia/el-genocidio-woke-del-estado-de-israel" target="_blank">
-            <span class="art-outlet">SPR Informa</span>
-            <h3 class="art-title">El genocidio woke del Estado de Israel</h3>
-            <p class="art-excerpt">La generalidad de los medios corporativos nacionales e internacionales se han sumado al operativo de desinformación contra la población global, defendiendo al régimen de limpieza étnica que Israel lleva a cabo en contra del pueblo palestino. No solamente porque al mencionar los ataques de Hamás omiten describir las varias décadas de desplazamiento forzoso...</p>
-            <div class="art-footer"><span class="art-date">Oct 2023</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://www.sprinforma.mx/noticia/advierten-academicos-condiciones-para-lawfare-en-mexico" target="_blank">
-            <span class="art-outlet">SPR Informa</span>
-            <h3 class="art-title">Advierten académicos condiciones para Lawfare en México</h3>
-            <p class="art-excerpt">Durante el cierre del Seminario "Lawfare en América Latina: características, impacto y proyección" de la UACM del Valle, los académicos Georgette Ramírez Kuri y Aníbal García Fernández advirtieron que en México se construyen condiciones para ejecutar lawfare en contra de la Cuarta Transformación...</p>
-            <div class="art-footer"><span class="art-date">Oct 2023</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://www.sprinforma.mx/noticia/la-verdadera-privatizacion-de-pemex-en-tiempos-del-neoliberalismo" target="_blank">
-            <span class="art-outlet">SPR Informa</span>
-            <h3 class="art-title">La verdadera privatización de Pemex en tiempos del neoliberalismo</h3>
-            <p class="art-excerpt">Con la reforma energética de 2013 y las Rondas de Licitación que la siguieron, el Estado mexicano entregó a empresas privadas el petróleo que pertenece a la nación. Sin embargo, la privatización de facto de la paraestatal tiene una historia mucho más larga y compleja...</p>
-            <div class="art-footer"><span class="art-date">Sep 2022</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://www.sprinforma.mx/noticia/que-es-el-fascismo-y-por-que-hay-que-nombrarlo" target="_blank">
-            <span class="art-outlet">SPR Informa</span>
-            <h3 class="art-title">Qué es el fascismo y por qué hay que nombrarlo</h3>
-            <p class="art-excerpt">Durante los últimos años, el término fascismo ha sido objeto de uso y abuso tanto en México como en el resto del mundo. Su uso político en el discurso de los movimientos sociales obliga a preguntarnos cuál es su significado y cuál es su utilidad analítica en el contexto de la cuarta transformación...</p>
-            <div class="art-footer"><span class="art-date">Ago 2022</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://www.sprinforma.mx/noticia/el-frente-amplio-la-oposicion-mexicana-y-su-estrategia-hacia-2024" target="_blank">
-            <span class="art-outlet">SPR Informa</span>
-            <h3 class="art-title">El Frente Amplio, la oposición mexicana y su estrategia hacia 2024</h3>
-            <p class="art-excerpt">El Frente Amplio por México concentra a PRI, PAN y PRD, los principales partidos de la oposición al gobierno de la cuarta transformación. Su formación, en el contexto de la elección intermedia de 2021, fue una respuesta organizada a la hegemonía electoral de Morena...</p>
-            <div class="art-footer"><span class="art-date">Jul 2022</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://www.sprinforma.mx/noticia/frente-a-la-guerra-la-doctrina-de-politica-exterior-de-mexico" target="_blank">
-            <span class="art-outlet">SPR Informa</span>
-            <h3 class="art-title">Frente a la guerra, la doctrina de política exterior de México</h3>
-            <p class="art-excerpt">La guerra en Ucrania pone a prueba los principios de política exterior de México, especialmente la no intervención, la autodeterminación de los pueblos y la solución pacífica de controversias. El canciller Marcelo Ebrard y el presidente López Obrador han llamado al diálogo y al cese al fuego...</p>
-            <div class="art-footer"><span class="art-date">Mar 2022</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://www.sprinforma.mx/noticia/morena-y-los-retos-de-la-democracia-interna" target="_blank">
-            <span class="art-outlet">SPR Informa</span>
-            <h3 class="art-title">Morena y los retos de la democracia interna</h3>
-            <p class="art-excerpt">El proceso de selección interna de Morena para la candidatura presidencial de 2024 ha puesto en evidencia los desafíos que enfrenta el partido del gobierno para construir una democracia interna genuina. Las tensiones entre distintos sectores del movimiento son una señal de madurez política...</p>
-            <div class="art-footer"><span class="art-date">Feb 2022</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
+          <a class="art-card reveal" href="https://www.sprinforma.mx/noticia/el-genocidio-woke-del-estado-de-israel" target="_blank"><span class="art-outlet">SPR Informa</span><h3 class="art-title">El genocidio woke del Estado de Israel</h3><p class="art-excerpt">La generalidad de los medios corporativos nacionales e internacionales se han sumado al operativo de desinformación contra la población global...</p><div class="art-footer"><span class="art-date">Oct 2023</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal reveal-delay-1" href="https://www.sprinforma.mx/noticia/advierten-academicos-condiciones-para-lawfare-en-mexico" target="_blank"><span class="art-outlet">SPR Informa</span><h3 class="art-title">Advierten académicos condiciones para Lawfare en México</h3><p class="art-excerpt">Durante el cierre del Seminario "Lawfare en América Latina: características, impacto y proyección" de la UACM del Valle...</p><div class="art-footer"><span class="art-date">Oct 2023</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal reveal-delay-2" href="https://www.sprinforma.mx/noticia/la-verdadera-privatizacion-de-pemex-en-tiempos-del-neoliberalismo" target="_blank"><span class="art-outlet">SPR Informa</span><h3 class="art-title">La verdadera privatización de Pemex en tiempos del neoliberalismo</h3><p class="art-excerpt">Con la reforma energética de 2013 y las Rondas de Licitación que la siguieron, el Estado mexicano entregó a empresas privadas el petróleo que pertenece a la nación...</p><div class="art-footer"><span class="art-date">Sep 2022</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal" href="https://www.sprinforma.mx/noticia/que-es-el-fascismo-y-por-que-hay-que-nombrarlo" target="_blank"><span class="art-outlet">SPR Informa</span><h3 class="art-title">Qué es el fascismo y por qué hay que nombrarlo</h3><p class="art-excerpt">Durante los últimos años, el término fascismo ha sido objeto de uso y abuso tanto en México como en el resto del mundo...</p><div class="art-footer"><span class="art-date">Ago 2022</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal reveal-delay-1" href="https://www.sprinforma.mx/noticia/el-frente-amplio-la-oposicion-mexicana-y-su-estrategia-hacia-2024" target="_blank"><span class="art-outlet">SPR Informa</span><h3 class="art-title">El Frente Amplio, la oposición mexicana y su estrategia hacia 2024</h3><p class="art-excerpt">El Frente Amplio por México concentra a PRI, PAN y PRD, los principales partidos de la oposición al gobierno de la cuarta transformación...</p><div class="art-footer"><span class="art-date">Jul 2022</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal reveal-delay-2" href="https://www.sprinforma.mx/noticia/frente-a-la-guerra-la-doctrina-de-politica-exterior-de-mexico" target="_blank"><span class="art-outlet">SPR Informa</span><h3 class="art-title">Frente a la guerra, la doctrina de política exterior de México</h3><p class="art-excerpt">La guerra en Ucrania pone a prueba los principios de política exterior de México, especialmente la no intervención...</p><div class="art-footer"><span class="art-date">Mar 2022</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal" href="https://www.sprinforma.mx/noticia/morena-y-los-retos-de-la-democracia-interna" target="_blank"><span class="art-outlet">SPR Informa</span><h3 class="art-title">Morena y los retos de la democracia interna</h3><p class="art-excerpt">El proceso de selección interna de Morena para la candidatura presidencial de 2024 ha puesto en evidencia los desafíos que enfrenta el partido...</p><div class="art-footer"><span class="art-date">Feb 2022</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
         </div>
       </div>
     </div>
@@ -594,56 +677,13 @@ footer {
       <div style="border-bottom:1px solid var(--line);margin-bottom:2.5rem;"></div>
       <div class="section-body">
         <div class="grid-3">
-
-          <a class="art-card" href="https://www.sdpnoticias.com/columnas/el-pensamiento-gramsciano-en-la-4t-con-que-hegemonia-gobernara-morena.html" target="_blank">
-            <span class="art-outlet">SDP Noticias</span>
-            <h3 class="art-title">El pensamiento gramsciano en la 4T: ¿con qué hegemonía gobernará Morena?</h3>
-            <p class="art-excerpt">Que el pensamiento político de Antonio Gramsci ha penetrado en la forma de hacer política de la izquierda latinoamericana es una afirmación que pocos cuestionarían. En México, algunos elementos del discurso de la 4T tienen una coherencia con el análisis del teórico italiano...</p>
-            <div class="art-footer"><span class="art-date">Sep 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://www.sdpnoticias.com/columnas/la-encuesta-de-morena-entre-lujan-y-delgado-y-el-problema-de-la-democracia-interna.html" target="_blank">
-            <span class="art-outlet">SDP Noticias</span>
-            <h3 class="art-title">La encuesta de Morena, entre Luján y Delgado, y el problema de la democracia interna</h3>
-            <p class="art-excerpt">Sin pretender esbozar una crítica personalizada, usaré sus nombres para esquematizar mi pensamiento. Me refiero a las dos personalidades más sonadas para contender en la encuesta por la presidencia de Morena. Ninguno de los dos —Bertha Luján y Mario Delgado— logró satisfactoriamente hacerse elegible por mayoría amplia entre la militancia...</p>
-            <div class="art-footer"><span class="art-date">Ago 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://www.sdpnoticias.com/columnas/la-etica-del-presidente-deslindarse-de-su-familia.html" target="_blank">
-            <span class="art-outlet">SDP Noticias</span>
-            <h3 class="art-title">La ética del presidente: deslindarse de su familia</h3>
-            <p class="art-excerpt">La actitud ética del político de nuestro siglo debe llevarlo a deslindarse de su familia y de sus actos. Sin erradicar la herencia de poder e impunidad, no se puede construir una ciudadanía igualitaria para todas las personas. Aunque en la historia de México hay excepciones, la regla parece ser clara y contundente...</p>
-            <div class="art-footer"><span class="art-date">Ago 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://www.sdpnoticias.com/columnas/protestas-en-estados-unidos-un-significado-en-disputa.html" target="_blank">
-            <span class="art-outlet">SDP Noticias</span>
-            <h3 class="art-title">Protestas en Estados Unidos: un significado en disputa</h3>
-            <p class="art-excerpt">Lo verdaderamente relevante de las movilizaciones políticas no es la emocionalidad vivida por los manifestantes en el espacio público, ni los momentos de éxtasis compartidos por las multitudes; la efervescencia es más bien un vehículo que permite condensar en un corto periodo de espacio-tiempo toda una serie de valores, ideologías, deseos y consignas...</p>
-            <div class="art-footer"><span class="art-date">Jun 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://www.sdpnoticias.com/columnas/el-coronavirus-como-crisis-del-capitalismo-global-ii-el-aislamiento-social-como-acontecimiento-politico.html" target="_blank">
-            <span class="art-outlet">SDP Noticias</span>
-            <h3 class="art-title">El coronavirus como crisis del capitalismo global (II): el aislamiento social como acontecimiento político</h3>
-            <p class="art-excerpt">Otro pensador que analiza la situación originada por el COVID-19 como crisis del capitalismo es Giorgio Agamben, que se dice sorprendido por la facilidad con la que la gente dejó su cotidianeidad para aislarse en cuarentena. El italiano lanza la hipótesis de que las condiciones de vida de las personas se habían vuelto intolerables, como una plaga...</p>
-            <div class="art-footer"><span class="art-date">Abr 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://www.sdpnoticias.com/columnas/el-coronavirus-como-crisis-del-capitalismo-global-explicacion-a-byung-chul-han-de-lo-que-zizek-dijo-en-realidad.html" target="_blank">
-            <span class="art-outlet">SDP Noticias</span>
-            <h3 class="art-title">El coronavirus como crisis del capitalismo global: explicación a Byung-Chul Han de lo que Zizek dijo en realidad</h3>
-            <p class="art-excerpt">La crisis del COVID-19, al menos en la historia contemporánea, no tiene punto de comparación. Vivimos un momento agudo y peligroso que saca a relucir la esencia de las personas, como cualquier coyuntura. En otros espacios he dicho que la pandemia contiene dentro de sí misma el potencial de que a partir de ella surja una crítica profunda al capitalismo global...</p>
-            <div class="art-footer"><span class="art-date">Abr 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://www.sdpnoticias.com/columnas/amlo-sin-perder-el-norte.html" target="_blank">
-            <span class="art-outlet">SDP Noticias</span>
-            <h3 class="art-title">AMLO sin perder el norte</h3>
-            <p class="art-excerpt">A diferencia de lo que intentaron hacer creer algunos sectores del progresismo latinoamericano, la llegada de López Obrador al poder no implicó una capitulación ante el imperialismo ni una traición a los principios de la izquierda mexicana...</p>
-            <div class="art-footer"><span class="art-date">Ene 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
+          <a class="art-card reveal" href="https://www.sdpnoticias.com/columnas/el-pensamiento-gramsciano-en-la-4t-con-que-hegemonia-gobernara-morena.html" target="_blank"><span class="art-outlet">SDP Noticias</span><h3 class="art-title">El pensamiento gramsciano en la 4T: ¿con qué hegemonía gobernará Morena?</h3><p class="art-excerpt">Que el pensamiento político de Antonio Gramsci ha penetrado en la forma de hacer política de la izquierda latinoamericana es una afirmación que pocos cuestionarían...</p><div class="art-footer"><span class="art-date">Sep 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal reveal-delay-1" href="https://www.sdpnoticias.com/columnas/la-encuesta-de-morena-entre-lujan-y-delgado-y-el-problema-de-la-democracia-interna.html" target="_blank"><span class="art-outlet">SDP Noticias</span><h3 class="art-title">La encuesta de Morena, entre Luján y Delgado, y el problema de la democracia interna</h3><p class="art-excerpt">Sin pretender esbozar una crítica personalizada, usaré sus nombres para esquematizar mi pensamiento...</p><div class="art-footer"><span class="art-date">Ago 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal reveal-delay-2" href="https://www.sdpnoticias.com/columnas/la-etica-del-presidente-deslindarse-de-su-familia.html" target="_blank"><span class="art-outlet">SDP Noticias</span><h3 class="art-title">La ética del presidente: deslindarse de su familia</h3><p class="art-excerpt">La actitud ética del político de nuestro siglo debe llevarlo a deslindarse de su familia y de sus actos...</p><div class="art-footer"><span class="art-date">Ago 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal" href="https://www.sdpnoticias.com/columnas/protestas-en-estados-unidos-un-significado-en-disputa.html" target="_blank"><span class="art-outlet">SDP Noticias</span><h3 class="art-title">Protestas en Estados Unidos: un significado en disputa</h3><p class="art-excerpt">Lo verdaderamente relevante de las movilizaciones políticas no es la emocionalidad vivida por los manifestantes en el espacio público...</p><div class="art-footer"><span class="art-date">Jun 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal reveal-delay-1" href="https://www.sdpnoticias.com/columnas/el-coronavirus-como-crisis-del-capitalismo-global-ii-el-aislamiento-social-como-acontecimiento-politico.html" target="_blank"><span class="art-outlet">SDP Noticias</span><h3 class="art-title">El coronavirus como crisis del capitalismo global (II): el aislamiento social como acontecimiento político</h3><p class="art-excerpt">Otro pensador que analiza la situación originada por el COVID-19 como crisis del capitalismo es Giorgio Agamben...</p><div class="art-footer"><span class="art-date">Abr 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal reveal-delay-2" href="https://www.sdpnoticias.com/columnas/el-coronavirus-como-crisis-del-capitalismo-global-explicacion-a-byung-chul-han-de-lo-que-zizek-dijo-en-realidad.html" target="_blank"><span class="art-outlet">SDP Noticias</span><h3 class="art-title">El coronavirus como crisis del capitalismo global: explicación a Byung-Chul Han de lo que Zizek dijo en realidad</h3><p class="art-excerpt">La crisis del COVID-19, al menos en la historia contemporánea, no tiene punto de comparación...</p><div class="art-footer"><span class="art-date">Abr 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal" href="https://www.sdpnoticias.com/columnas/amlo-sin-perder-el-norte.html" target="_blank"><span class="art-outlet">SDP Noticias</span><h3 class="art-title">AMLO sin perder el norte</h3><p class="art-excerpt">A diferencia de lo que intentaron hacer creer algunos sectores del progresismo latinoamericano, la llegada de López Obrador al poder no implicó una capitulación...</p><div class="art-footer"><span class="art-date">Ene 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
         </div>
       </div>
     </div>
@@ -664,21 +704,8 @@ footer {
       <div style="border-bottom:1px solid var(--line);margin-bottom:2.5rem;"></div>
       <div class="section-body">
         <div class="grid-3">
-
-          <a class="art-card" href="https://peoplesdispatch.org/2022/07/27/mexicos-president-gives-joe-biden-a-big-history-lesson/" target="_blank">
-            <span class="art-outlet">People's Dispatch</span>
-            <h3 class="art-title">Mexico's President gives Joe Biden a big history lesson</h3>
-            <p class="art-excerpt">Mexico's President Andrés Manuel López Obrador visited the United States on July 12 and offered five proposals to US President Joe Biden. These proposals are based on AMLO's in-depth knowledge of Mexican history and his reading of the economic crisis in the United States, which seems to be losing its edge as a global leader...</p>
-            <div class="art-footer"><span class="art-date">Jul 2022</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Read original article →</span></div>
-          </a>
-
-          <a class="art-card" href="https://peoplesdispatch.org/2022/06/29/the-era-of-northern-hegemony-over-mexico-is-coming-to-an-end/" target="_blank">
-            <span class="art-outlet">People's Dispatch</span>
-            <h3 class="art-title">The era of Northern hegemony over Mexico is coming to an end</h3>
-            <p class="art-excerpt">In 2010, Cuba's former President Fidel Castro said: "López Obrador will be the person with the most moral and political authority in Mexico when the system collapses and, with it, the empire." Despite the wide lead he had in all the polls before the elections, Obrador's victory in 2018 took almost everyone by surprise...</p>
-            <div class="art-footer"><span class="art-date">Jun 2022</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Read original article →</span></div>
-          </a>
-
+          <a class="art-card reveal" href="https://peoplesdispatch.org/2022/07/27/mexicos-president-gives-joe-biden-a-big-history-lesson/" target="_blank"><span class="art-outlet">People's Dispatch</span><h3 class="art-title">Mexico's President gives Joe Biden a big history lesson</h3><p class="art-excerpt">Mexico's President Andrés Manuel López Obrador visited the United States on July 12 and offered five proposals to US President Joe Biden...</p><div class="art-footer"><span class="art-date">Jul 2022</span><span class="art-cta">Read original article →</span></div></a>
+          <a class="art-card reveal reveal-delay-1" href="https://peoplesdispatch.org/2022/06/29/the-era-of-northern-hegemony-over-mexico-is-coming-to-an-end/" target="_blank"><span class="art-outlet">People's Dispatch</span><h3 class="art-title">The era of Northern hegemony over Mexico is coming to an end</h3><p class="art-excerpt">In 2010, Cuba's former President Fidel Castro said: "López Obrador will be the person with the most moral and political authority in Mexico when the system collapses..."</p><div class="art-footer"><span class="art-date">Jun 2022</span><span class="art-cta">Read original article →</span></div></a>
         </div>
       </div>
     </div>
@@ -699,77 +726,16 @@ footer {
       <div style="border-bottom:1px solid var(--line);margin-bottom:2.5rem;"></div>
       <div class="section-body">
         <div class="grid-3">
-
-          <a class="art-card" href="https://sinlineamx.com/la-victoria-en-colombia-y-las-ultraderechas-que-amenazan-nuestra-region/" target="_blank">
-            <span class="art-outlet">Sin Línea Mx</span>
-            <h3 class="art-title">La victoria en Colombia y las ultraderechas que amenazan nuestra región</h3>
-            <p class="art-excerpt">La nueva ola progresista, que comenzó en México con la victoria del presidente López Obrador, ha conquistado fronteras consideradas infranqueables. Cuando entró al poder, Morena encontró una región dominada por la derecha. Hoy, un poco más allá de la mitad del sexenio lopezobradorista, el panorama latinoamericano es completamente distinto...</p>
-            <div class="art-footer"><span class="art-date">Jun 2022</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://sinlineamx.com/11-de-septiembre-de-chile-a-afganistan/" target="_blank">
-            <span class="art-outlet">Sin Línea Mx</span>
-            <h3 class="art-title">11 de septiembre: de Chile a Afganistán</h3>
-            <p class="art-excerpt">Tanto el asesinato del presidente chileno Salvador Allende en 1973 como el ataque a las torres gemelas de Nueva York en 2001 son eventos que marcan el inicio de una época para el mundo. Una casualidad macabra sitúa ambos sucesos el mismo día, un 11 de septiembre...</p>
-            <div class="art-footer"><span class="art-date">Sep 2021</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://sinlineamx.com/la-oposicion-de-ultraizquierda-o-del-marxismo-dresseriano/" target="_blank">
-            <span class="art-outlet">Sin Línea Mx</span>
-            <h3 class="art-title">La oposición de ultraizquierda (o del marxismo-dresseriano)</h3>
-            <p class="art-excerpt">En México, como en el resto de América Latina, los movimientos sociales de izquierda mantienen un constante debate abierto sobre las mejores formas de luchar para construir un mundo diferente. Pero, ¿qué pasa cuando, disfrazado de crítica, el discurso y la práctica política de algún sector favorece sistemáticamente a la derecha más reaccionaria?...</p>
-            <div class="art-footer"><span class="art-date">Abr 2021</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://sinlineamx.com/de-latinus-a-articulo-19-financiamientos-oscuros-y-ongs-intervencionistas/" target="_blank">
-            <span class="art-outlet">Sin Línea Mx</span>
-            <h3 class="art-title">De Latinus a Artículo 19: financiamientos oscuros y ONGs intervencionistas</h3>
-            <p class="art-excerpt">Conforme las elecciones federales de este año se acercan, el bloque conservador aumenta sus esfuerzos por descarrilar el proceso de la Cuarta Transformación. Uno a uno, sus intentos se desnudan como movimientos desesperados, coletazos de la antigua maquinaria dinosaurica que se quedó sin aceite...</p>
-            <div class="art-footer"><span class="art-date">Abr 2021</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://sinlineamx.com/joe-biden-genocidio-politicamente-correcto/" target="_blank">
-            <span class="art-outlet">Sin Línea Mx</span>
-            <h3 class="art-title">Joe Biden: genocidio políticamente correcto</h3>
-            <p class="art-excerpt">El bombardeo del ejército gringo a la alianza Siria-Irán solamente sorprendió a los ingenuos. Tampoco es sorpresa que los medios de comunicación y activistas de la llamada sociedad civil escondieron la noticia y no le dedicaron un análisis más meritorio...</p>
-            <div class="art-footer"><span class="art-date">Feb 2021</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://sinlineamx.com/una-victoria-en-bolivia-y-una-leccion-para-mexico/" target="_blank">
-            <span class="art-outlet">Sin Línea Mx</span>
-            <h3 class="art-title">Una victoria para Bolivia, una lección para México</h3>
-            <p class="art-excerpt">Lo que vimos ayer en Bolivia es un hecho histórico. El pueblo resistió prácticamente un año, desde que el ejército y los grupos de la derecha más reaccionaria del país diera un golpe de estado contra el compañero Evo Morales. La dictadura golpista impuso un régimen de represión a los movimientos desde el día uno...</p>
-            <div class="art-footer"><span class="art-date">Oct 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://sinlineamx.com/petroleo-y-medicina-la-politica-exterior-de-mexico-en-tiempos-del-covid-19/" target="_blank">
-            <span class="art-outlet">Sin Línea Mx</span>
-            <h3 class="art-title">Petróleo y medicina: la política exterior de México en tiempos del COVID-19</h3>
-            <p class="art-excerpt">El conflicto internacional es una ventana de oportunidad para que México construya relaciones sólidas con la comunidad internacional. Nuestra política exterior es una de las más paradigmáticas en el mundo: como parte de la región de Norteamérica, mantenemos relaciones económicas y políticas con nuestro vecino del Norte...</p>
-            <div class="art-footer"><span class="art-date">Abr 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://sinlineamx.com/sigue-viva-la-guerra-fria/" target="_blank">
-            <span class="art-outlet">Sin Línea Mx</span>
-            <h3 class="art-title">¿Sigue viva la guerra fría?</h3>
-            <p class="art-excerpt">Durante la guerra fría, las potencias hegemónicas de la URSS y Estados Unidos se enfrentaron entre sí disputándose la dominancia del sistema internacional. Ambos países aplicaron diferentes estrategias para, siempre de manera indirecta, combatir a su homólogo y buscar ampliar su influencia en diferentes regiones del mundo...</p>
-            <div class="art-footer"><span class="art-date">Nov 2019</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://sinlineamx.com/mexico-al-csonu-liderazgo-regional-en-america-latina-y-el-caribe/" target="_blank">
-            <span class="art-outlet">Sin Línea Mx</span>
-            <h3 class="art-title">México al CSONU: liderazgo regional en América Latina y El Caribe</h3>
-            <p class="art-excerpt">Contrario a las predicciones de la oposición mexicana, la política exterior del nuevo gobierno ha rendido frutos positivos para México; así lo demuestra el apoyo anunciado por Andrés Manuel, del lado de Juan Ramón de la Fuente, con el que México buscará un espacio en el Consejo de Seguridad de la ONU...</p>
-            <div class="art-footer"><span class="art-date">Jul 2019</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
-          <a class="art-card" href="https://sinlineamx.com/amlo-con-bloomberg-ganchos-al-higado-del-sistema-neoliberal/" target="_blank">
-            <span class="art-outlet">Sin Línea Mx</span>
-            <h3 class="art-title">AMLO con Bloomberg: ganchos al hígado del sistema neoliberal</h3>
-            <p class="art-excerpt">La entrevista del presidente con el editor en jefe de Bloomberg permitió que Andrés se dirigiera a los poderes económicos internacionales, pero también a la opinión pública dentro de Estados Unidos y a los diferentes actores de la vida interna del vecino del norte...</p>
-            <div class="art-footer"><span class="art-date">Jul 2019</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original article →">Ver texto original →</span></div>
-          </a>
-
+          <a class="art-card reveal" href="https://sinlineamx.com/la-victoria-en-colombia-y-las-ultraderechas-que-amenazan-nuestra-region/" target="_blank"><span class="art-outlet">Sin Línea Mx</span><h3 class="art-title">La victoria en Colombia y las ultraderechas que amenazan nuestra región</h3><p class="art-excerpt">La nueva ola progresista, que comenzó en México con la victoria del presidente López Obrador, ha conquistado fronteras consideradas infranqueables...</p><div class="art-footer"><span class="art-date">Jun 2022</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal reveal-delay-1" href="https://sinlineamx.com/11-de-septiembre-de-chile-a-afganistan/" target="_blank"><span class="art-outlet">Sin Línea Mx</span><h3 class="art-title">11 de septiembre: de Chile a Afganistán</h3><p class="art-excerpt">Tanto el asesinato del presidente chileno Salvador Allende en 1973 como el ataque a las torres gemelas de Nueva York en 2001 son eventos que marcan el inicio de una época...</p><div class="art-footer"><span class="art-date">Sep 2021</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal reveal-delay-2" href="https://sinlineamx.com/la-oposicion-de-ultraizquierda-o-del-marxismo-dresseriano/" target="_blank"><span class="art-outlet">Sin Línea Mx</span><h3 class="art-title">La oposición de ultraizquierda (o del marxismo-dresseriano)</h3><p class="art-excerpt">En México, como en el resto de América Latina, los movimientos sociales de izquierda mantienen un constante debate abierto sobre las mejores formas de luchar...</p><div class="art-footer"><span class="art-date">Abr 2021</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal" href="https://sinlineamx.com/de-latinus-a-articulo-19-financiamientos-oscuros-y-ongs-intervencionistas/" target="_blank"><span class="art-outlet">Sin Línea Mx</span><h3 class="art-title">De Latinus a Artículo 19: financiamientos oscuros y ONGs intervencionistas</h3><p class="art-excerpt">Conforme las elecciones federales de este año se acercan, el bloque conservador aumenta sus esfuerzos por descarrilar el proceso de la Cuarta Transformación...</p><div class="art-footer"><span class="art-date">Abr 2021</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal reveal-delay-1" href="https://sinlineamx.com/joe-biden-genocidio-politicamente-correcto/" target="_blank"><span class="art-outlet">Sin Línea Mx</span><h3 class="art-title">Joe Biden: genocidio políticamente correcto</h3><p class="art-excerpt">El bombardeo del ejército gringo a la alianza Siria-Irán solamente sorprendió a los ingenuos...</p><div class="art-footer"><span class="art-date">Feb 2021</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal reveal-delay-2" href="https://sinlineamx.com/una-victoria-en-bolivia-y-una-leccion-para-mexico/" target="_blank"><span class="art-outlet">Sin Línea Mx</span><h3 class="art-title">Una victoria para Bolivia, una lección para México</h3><p class="art-excerpt">Lo que vimos ayer en Bolivia es un hecho histórico. El pueblo resistió prácticamente un año...</p><div class="art-footer"><span class="art-date">Oct 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal" href="https://sinlineamx.com/petroleo-y-medicina-la-politica-exterior-de-mexico-en-tiempos-del-covid-19/" target="_blank"><span class="art-outlet">Sin Línea Mx</span><h3 class="art-title">Petróleo y medicina: la política exterior de México en tiempos del COVID-19</h3><p class="art-excerpt">El conflicto internacional es una ventana de oportunidad para que México construya relaciones sólidas con la comunidad internacional...</p><div class="art-footer"><span class="art-date">Abr 2020</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal reveal-delay-1" href="https://sinlineamx.com/sigue-viva-la-guerra-fria/" target="_blank"><span class="art-outlet">Sin Línea Mx</span><h3 class="art-title">¿Sigue viva la guerra fría?</h3><p class="art-excerpt">Durante la guerra fría, las potencias hegemónicas de la URSS y Estados Unidos se enfrentaron entre sí disputándose la dominancia del sistema internacional...</p><div class="art-footer"><span class="art-date">Nov 2019</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal reveal-delay-2" href="https://sinlineamx.com/mexico-al-csonu-liderazgo-regional-en-america-latina-y-el-caribe/" target="_blank"><span class="art-outlet">Sin Línea Mx</span><h3 class="art-title">México al CSONU: liderazgo regional en América Latina y El Caribe</h3><p class="art-excerpt">Contrario a las predicciones de la oposición mexicana, la política exterior del nuevo gobierno ha rendido frutos positivos para México...</p><div class="art-footer"><span class="art-date">Jul 2019</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
+          <a class="art-card reveal" href="https://sinlineamx.com/amlo-con-bloomberg-ganchos-al-higado-del-sistema-neoliberal/" target="_blank"><span class="art-outlet">Sin Línea Mx</span><h3 class="art-title">AMLO con Bloomberg: ganchos al hígado del sistema neoliberal</h3><p class="art-excerpt">La entrevista del presidente con el editor en jefe de Bloomberg permitió que Andrés se dirigiera a los poderes económicos internacionales...</p><div class="art-footer"><span class="art-date">Jul 2019</span><span class="art-cta" data-es="Ver texto original →" data-en="Read original →">Ver texto original →</span></div></a>
         </div>
       </div>
     </div>
@@ -778,8 +744,11 @@ footer {
   <!-- CONTACTO -->
   <section class="contact-section">
     <div class="container">
-      <div class="contact-inner">
-        <p class="contact-text" data-es="Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación." data-en="For <em>collaborations</em>, <em>consultancy</em>, or simply a conversation.">Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación.</p>
+      <div class="contact-inner reveal">
+        <div>
+          <p class="contact-text" data-es="Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación." data-en="For <em>collaborations</em>, <em>consulting</em>, or simply a conversation.">Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación.</p>
+          
+        </div>
         <div class="contact-links">
           <div class="contact-item"><span class="contact-label">Email</span><a class="contact-value" href="mailto:rodrigoguillot@politicas.unam.mx">rodrigoguillot@politicas.unam.mx</a></div>
           <div class="contact-item"><span class="contact-label">LinkedIn</span><a class="contact-value" href="https://linkedin.com/in/rodrigoguillot" target="_blank">linkedin.com/in/rodrigoguillot</a></div>
@@ -788,107 +757,12 @@ footer {
       </div>
     </div>
   </section>
-
-  <footer>
-    <span>© 2026 Rodrigo Guillot López</span>
-    <span data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</span>
-  </footer>
-
-</div><!-- /page-publicaciones -->
+  <footer><span>© 2026 Rodrigo Guillot López</span><span data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</span></footer>
+</div><!-- /publicaciones -->
 
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- PÁGINA: CONSULTORÍA                                                 -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<div id="page-consultoria" class="page"
-     data-label-es="Servicios de consultoría"
-     data-label-en="Consulting services">
-
-  <!-- header inyectado por JS -->
-
-  <div class="page-intro">
-    <div class="container">
-      <h2 class="page-intro-title" data-es="Consultoría" data-en="Consulting">Consultoría</h2>
-    </div>
-  </div>
-
-  <section class="services-section">
-    <div class="container">
-      <div class="services-table">
-
-        <div class="service-row">
-          <h3 class="service-title" data-es="Asesoría en comunicación política e institucional" data-en="Political & institutional communication">Asesoría en comunicación política e institucional</h3>
-          <div class="service-chips">
-            <span class="service-chip" data-es="Arquitectura del mensaje público" data-en="Public message architecture">Arquitectura del mensaje público</span>
-            <span class="service-chip" data-es="Estrategia narrativa institucional" data-en="Institutional narrative strategy">Estrategia narrativa institucional</span>
-            <span class="service-chip" data-es="Posicionamiento gubernamental" data-en="Governmental positioning">Posicionamiento gubernamental</span>
-          </div>
-        </div>
-
-        <div class="service-row">
-          <h3 class="service-title" data-es="Estrategia de comunicación legislativa" data-en="Legislative communication strategy">Estrategia de comunicación legislativa</h3>
-          <div class="service-chips">
-            <span class="service-chip" data-es="Comunicación legislativa" data-en="Legislative communication">Comunicación legislativa</span>
-            <span class="service-chip" data-es="Narrativa parlamentaria" data-en="Parliamentary narrative">Narrativa parlamentaria</span>
-            <span class="service-chip" data-es="Imagen territorializada" data-en="Territorial image">Imagen territorializada</span>
-          </div>
-        </div>
-
-        <div class="service-row">
-          <h3 class="service-title" data-es="Análisis político y coyuntural" data-en="Political & conjunctural analysis">Análisis político y coyuntural</h3>
-          <div class="service-chips">
-            <span class="service-chip" data-es="Inteligencia política" data-en="Political intelligence">Inteligencia política</span>
-            <span class="service-chip" data-es="Diagnóstico de coyuntura" data-en="Conjunctural diagnosis">Diagnóstico de coyuntura</span>
-            <span class="service-chip" data-es="Análisis de ecosistema político" data-en="Political ecosystem analysis">Análisis de ecosistema político</span>
-          </div>
-        </div>
-
-        <div class="service-row">
-          <h3 class="service-title" data-es="Comunicación de campaña" data-en="Campaign communication">Comunicación de campaña</h3>
-          <div class="service-chips">
-            <span class="service-chip" data-es="Estrategia electoral" data-en="Electoral strategy">Estrategia electoral</span>
-            <span class="service-chip" data-es="Campaña y territorio" data-en="Campaign & territory">Campaña y territorio</span>
-            <span class="service-chip" data-es="Comunicación en procesos electorales" data-en="Electoral process communication">Comunicación en procesos electorales</span>
-            <span class="service-chip" data-es="Capacitación para brigadas y redes" data-en="Brigade & social media training">Capacitación para brigadas y redes</span>
-          </div>
-        </div>
-
-        <div class="service-row">
-          <h3 class="service-title" data-es="Contenido editorial y análisis para medios" data-en="Editorial content & media analysis">Contenido editorial y análisis para medios</h3>
-          <div class="service-chips">
-            <span class="service-chip" data-es="Vocería pública" data-en="Public spokesmanship">Vocería pública</span>
-            <span class="service-chip" data-es="Posicionamiento editorial" data-en="Editorial positioning">Posicionamiento editorial</span>
-            <span class="service-chip" data-es="Construcción de voz pública" data-en="Public voice building">Construcción de voz pública</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="contact-section">
-    <div class="container">
-      <div class="contact-inner">
-        <p class="contact-text" data-es="Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación." data-en="For <em>collaborations</em>, <em>consultancy</em>, or simply a conversation.">Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación.</p>
-        <div class="contact-links">
-          <div class="contact-item"><span class="contact-label">Email</span><a class="contact-value" href="mailto:rodrigoguillot@politicas.unam.mx">rodrigoguillot@politicas.unam.mx</a></div>
-          <div class="contact-item"><span class="contact-label">LinkedIn</span><a class="contact-value" href="https://linkedin.com/in/rodrigoguillot" target="_blank">linkedin.com/in/rodrigoguillot</a></div>
-          <div class="contact-item"><span class="contact-label" data-es="Sitio web" data-en="Website">Sitio web</span><a class="contact-value" href="https://rodrigo-guillot.github.io" target="_blank">rodrigo-guillot.github.io</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <span>© 2026 Rodrigo Guillot López</span>
-    <span data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</span>
-  </footer>
-
-</div><!-- /page-consultoria -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- PÁGINA: MEDIOS                                                      -->
+<!-- AUDIOVISUAL                                                         -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <div id="page-medios" class="page"
      data-label-es="Archivo audiovisual"
@@ -896,291 +770,196 @@ footer {
 
   <!-- header inyectado por JS -->
 
-  <div class="page-intro">
-    <div class="container">
-      <h2 class="page-intro-title" data-es="Audiovisual" data-en="Audiovisual">Audiovisual</h2>
-    </div>
-  </div>
+  <div class="page-intro"><div class="container"><h2 class="page-intro-title" data-es="Audiovisual" data-en="Audiovisual">Audiovisual</h2></div></div>
 
   <section class="medios-section">
     <div class="container">
       <div class="video-grid">
-
-        <a class="video-card" href="https://youtu.be/sA5ccPSHAik" target="_blank">
-          <img class="video-thumb" src="https://img.youtube.com/vi/sA5ccPSHAik/mqdefault.jpg" alt="La mañanera ha sido la cristalización de una estrategia de AMLO">
-          <div class="video-body">
-            <span class="video-outlet">Sin Censura TV</span>
-            <p class="video-title">La mañanera ha sido la cristalización de una estrategia de AMLO</p>
-            <span class="video-date">13 abr 2023</span>
-            <div class="video-tags"><span class="video-tag">comunicación</span><span class="video-tag">AMLO</span></div>
-          </div>
-        </a>
-
-        <a class="video-card" href="https://youtu.be/1fxmSV9vsuQ" target="_blank">
-          <img class="video-thumb" src="https://img.youtube.com/vi/1fxmSV9vsuQ/mqdefault.jpg" alt="La Política Exterior de México es contrahegemónica">
-          <div class="video-body">
-            <span class="video-outlet">INFP Morena</span>
-            <p class="video-title">La Política Exterior de México es contrahegemónica</p>
-            <span class="video-date">5 sep 2022</span>
-            <div class="video-tags"><span class="video-tag">política exterior</span><span class="video-tag">México</span></div>
-          </div>
-        </a>
-
-        <a class="video-card" href="https://youtu.be/JZFeVv52Rtg" target="_blank">
-          <img class="video-thumb" src="https://img.youtube.com/vi/JZFeVv52Rtg/mqdefault.jpg" alt="Subjetividad, fascismo y disputa ideológica">
-          <div class="video-body">
-            <span class="video-outlet">INFP Morena</span>
-            <p class="video-title">Subjetividad, fascismo y disputa ideológica</p>
-            <span class="video-date">11 jul 2022</span>
-            <div class="video-tags"><span class="video-tag">ideología</span><span class="video-tag">fascismo</span></div>
-          </div>
-        </a>
-
-        <a class="video-card" href="https://youtu.be/l5jDclVxtoc" target="_blank">
-          <img class="video-thumb" src="https://img.youtube.com/vi/l5jDclVxtoc/mqdefault.jpg" alt="¿Qué son los cisnes negros?">
-          <div class="video-body">
-            <span class="video-outlet">La 4TV</span>
-            <p class="video-title">¿Qué son los cisnes negros?</p>
-            <span class="video-date">26 may 2022</span>
-            <div class="video-tags"><span class="video-tag">análisis</span><span class="video-tag">teoría política</span></div>
-          </div>
-        </a>
-
-        <a class="video-card" href="https://youtu.be/gAGZaDzciSo" target="_blank">
-          <img class="video-thumb" src="https://img.youtube.com/vi/gAGZaDzciSo/mqdefault.jpg" alt="La lección es que tenemos que aprender de Bolivia y Chile">
-          <div class="video-body">
-            <span class="video-outlet">Sin Censura TV</span>
-            <p class="video-title">La lección es que tenemos que aprender de Bolivia y Chile</p>
-            <span class="video-date">26 oct 2020</span>
-            <div class="video-tags"><span class="video-tag">Bolivia</span><span class="video-tag">Chile</span><span class="video-tag">América Latina</span></div>
-          </div>
-        </a>
-
-        <a class="video-card" href="https://youtu.be/WXVNfOtDWyg" target="_blank">
-          <img class="video-thumb" src="https://img.youtube.com/vi/WXVNfOtDWyg/mqdefault.jpg" alt="Juicio a ex presidentes con Fernández Noroña">
-          <div class="video-body">
-            <span class="video-outlet">Sin Línea Mx</span>
-            <p class="video-title">Juicio a ex presidentes... con Fernández Noroña</p>
-            <span class="video-date">26 ago 2020</span>
-            <div class="video-tags"><span class="video-tag">política</span><span class="video-tag">justicia</span></div>
-          </div>
-        </a>
-
-        <a class="video-card" href="https://youtu.be/S0iS64wM_Lg" target="_blank">
-          <img class="video-thumb" src="https://img.youtube.com/vi/S0iS64wM_Lg/mqdefault.jpg" alt="Organización política y cultural con Paco Ignacio Taibo II">
-          <div class="video-body">
-            <span class="video-outlet">Sin Línea Mx</span>
-            <p class="video-title">Organización política y cultural... con Paco Ignacio Taibo II</p>
-            <span class="video-date">26 jul 2020</span>
-            <div class="video-tags"><span class="video-tag">cultura</span><span class="video-tag">organización</span></div>
-          </div>
-        </a>
-
-        <a class="video-card" href="https://youtu.be/FI4G0UsInak" target="_blank">
-          <img class="video-thumb" src="https://img.youtube.com/vi/FI4G0UsInak/mqdefault.jpg" alt="México contra las armas que cruzan desde EU">
-          <div class="video-body">
-            <span class="video-outlet">Sin Censura TV</span>
-            <p class="video-title">México contra las armas que cruzan desde EU</p>
-            <span class="video-date">15 jul 2020</span>
-            <div class="video-tags"><span class="video-tag">seguridad</span><span class="video-tag">EU-México</span></div>
-          </div>
-        </a>
-
-        <a class="video-card" href="https://youtu.be/33ohBNWul8w" target="_blank">
-          <img class="video-thumb" src="https://img.youtube.com/vi/33ohBNWul8w/mqdefault.jpg" alt="Golpe de Estado en Bolivia es una lección que México debe aprender">
-          <div class="video-body">
-            <span class="video-outlet">Sin Censura Media</span>
-            <p class="video-title">Golpe de Estado en Bolivia es una lección que México debe aprender</p>
-            <span class="video-date">25 nov 2019</span>
-            <div class="video-tags"><span class="video-tag">Bolivia</span><span class="video-tag">golpe de Estado</span></div>
-          </div>
-        </a>
-
-        <a class="video-card" href="https://youtu.be/LDh_0BoOJJY" target="_blank">
-          <img class="video-thumb" src="https://img.youtube.com/vi/LDh_0BoOJJY/mqdefault.jpg" alt="El problema de la política cultural del PRI y del PAN">
-          <div class="video-body">
-            <span class="video-outlet">Foro TV</span>
-            <p class="video-title">El problema de la política cultural del PRI y del PAN</p>
-            <span class="video-date">6 jul 2018</span>
-            <div class="video-tags"><span class="video-tag">cultura</span><span class="video-tag">política</span></div>
-          </div>
-        </a>
-
-        <a class="video-card" href="https://youtu.be/Uk_YYBXFP8I" target="_blank">
-          <img class="video-thumb" src="https://img.youtube.com/vi/Uk_YYBXFP8I/mqdefault.jpg" alt="No vamos a descansar hasta tener una UNAM segura">
-          <div class="video-body">
-            <span class="video-outlet">Imagen Radio</span>
-            <p class="video-title">No vamos a descansar hasta tener una UNAM segura</p>
-            <span class="video-date">5 sep 2018</span>
-            <div class="video-tags"><span class="video-tag">UNAM</span><span class="video-tag">seguridad</span></div>
-          </div>
-        </a>
-
-        <a class="video-card" href="https://aristeguinoticias.com/0509/mexico/unam-profesoras-y-alumnos-debaten-el-conflicto-estudiantil-y-sus-demandas-video/" target="_blank">
-          <img class="video-thumb" src="https://img.youtube.com/vi/bvwFM7Xf9tM/mqdefault.jpg" alt="UNAM: Profesoras y alumnos debaten el conflicto estudiantil">
-          <div class="video-body">
-            <span class="video-outlet">Aristegui Noticias</span>
-            <p class="video-title">UNAM: Profesoras y alumnos debaten el conflicto estudiantil y sus demandas</p>
-            <span class="video-date">5 sep 2018</span>
-            <div class="video-tags"><span class="video-tag">UNAM</span><span class="video-tag">movimiento estudiantil</span></div>
-          </div>
-        </a>
-
-        <a class="video-card" href="https://youtu.be/QIiRjXHpf4w" target="_blank">
-          <img class="video-thumb" src="https://img.youtube.com/vi/QIiRjXHpf4w/mqdefault.jpg" alt="Carta a Donald Trump">
-          <div class="video-body">
-            <span class="video-outlet">Grabación propia</span>
-            <p class="video-title">Carta a Donald Trump</p>
-            <span class="video-date">21 jun 2018</span>
-            <div class="video-tags"><span class="video-tag">EU</span><span class="video-tag">Trump</span></div>
-          </div>
-        </a>
-
+        <a class="video-card reveal" href="https://youtu.be/sA5ccPSHAik" target="_blank"><img class="video-thumb" src="https://img.youtube.com/vi/sA5ccPSHAik/mqdefault.jpg" alt=""><div class="video-body"><span class="video-outlet">Sin Censura TV</span><p class="video-title">La mañanera ha sido la cristalización de una estrategia de AMLO</p><span class="video-date">13 abr 2023</span><div class="video-tags"><span class="video-tag">comunicación</span><span class="video-tag">AMLO</span></div></div></a>
+        <a class="video-card reveal reveal-delay-1" href="https://youtu.be/1fxmSV9vsuQ" target="_blank"><img class="video-thumb" src="https://img.youtube.com/vi/1fxmSV9vsuQ/mqdefault.jpg" alt=""><div class="video-body"><span class="video-outlet">INFP Morena</span><p class="video-title">La Política Exterior de México es contrahegemónica</p><span class="video-date">5 sep 2022</span><div class="video-tags"><span class="video-tag">política exterior</span></div></div></a>
+        <a class="video-card reveal reveal-delay-2" href="https://youtu.be/JZFeVv52Rtg" target="_blank"><img class="video-thumb" src="https://img.youtube.com/vi/JZFeVv52Rtg/mqdefault.jpg" alt=""><div class="video-body"><span class="video-outlet">INFP Morena</span><p class="video-title">Subjetividad, fascismo y disputa ideológica</p><span class="video-date">11 jul 2022</span><div class="video-tags"><span class="video-tag">ideología</span><span class="video-tag">fascismo</span></div></div></a>
+        <a class="video-card reveal" href="https://youtu.be/l5jDclVxtoc" target="_blank"><img class="video-thumb" src="https://img.youtube.com/vi/l5jDclVxtoc/mqdefault.jpg" alt=""><div class="video-body"><span class="video-outlet">La 4TV</span><p class="video-title">¿Qué son los cisnes negros?</p><span class="video-date">26 may 2022</span><div class="video-tags"><span class="video-tag">análisis</span></div></div></a>
+        <a class="video-card reveal reveal-delay-1" href="https://youtu.be/gAGZaDzciSo" target="_blank"><img class="video-thumb" src="https://img.youtube.com/vi/gAGZaDzciSo/mqdefault.jpg" alt=""><div class="video-body"><span class="video-outlet">Sin Censura TV</span><p class="video-title">La lección es que tenemos que aprender de Bolivia y Chile</p><span class="video-date">26 oct 2020</span><div class="video-tags"><span class="video-tag">Bolivia</span><span class="video-tag">Chile</span></div></div></a>
+        <a class="video-card reveal reveal-delay-2" href="https://youtu.be/WXVNfOtDWyg" target="_blank"><img class="video-thumb" src="https://img.youtube.com/vi/WXVNfOtDWyg/mqdefault.jpg" alt=""><div class="video-body"><span class="video-outlet">Sin Línea Mx</span><p class="video-title">Juicio a ex presidentes... con Fernández Noroña</p><span class="video-date">26 ago 2020</span><div class="video-tags"><span class="video-tag">política</span></div></div></a>
+        <a class="video-card reveal" href="https://youtu.be/S0iS64wM_Lg" target="_blank"><img class="video-thumb" src="https://img.youtube.com/vi/S0iS64wM_Lg/mqdefault.jpg" alt=""><div class="video-body"><span class="video-outlet">Sin Línea Mx</span><p class="video-title">Organización política y cultural... con Paco Ignacio Taibo II</p><span class="video-date">26 jul 2020</span><div class="video-tags"><span class="video-tag">cultura</span></div></div></a>
+        <a class="video-card reveal reveal-delay-1" href="https://youtu.be/FI4G0UsInak" target="_blank"><img class="video-thumb" src="https://img.youtube.com/vi/FI4G0UsInak/mqdefault.jpg" alt=""><div class="video-body"><span class="video-outlet">Sin Censura TV</span><p class="video-title">México contra las armas que cruzan desde EU</p><span class="video-date">15 jul 2020</span><div class="video-tags"><span class="video-tag">seguridad</span></div></div></a>
+        <a class="video-card reveal reveal-delay-2" href="https://youtu.be/33ohBNWul8w" target="_blank"><img class="video-thumb" src="https://img.youtube.com/vi/33ohBNWul8w/mqdefault.jpg" alt=""><div class="video-body"><span class="video-outlet">Sin Censura Media</span><p class="video-title">Golpe de Estado en Bolivia es una lección que México debe aprender</p><span class="video-date">25 nov 2019</span><div class="video-tags"><span class="video-tag">Bolivia</span></div></div></a>
+        <a class="video-card reveal" href="https://youtu.be/LDh_0BoOJJY" target="_blank"><img class="video-thumb" src="https://img.youtube.com/vi/LDh_0BoOJJY/mqdefault.jpg" alt=""><div class="video-body"><span class="video-outlet">Foro TV</span><p class="video-title">El problema de la política cultural del PRI y del PAN</p><span class="video-date">6 jul 2018</span><div class="video-tags"><span class="video-tag">cultura</span></div></div></a>
+        <a class="video-card reveal reveal-delay-1" href="https://youtu.be/Uk_YYBXFP8I" target="_blank"><img class="video-thumb" src="https://img.youtube.com/vi/Uk_YYBXFP8I/mqdefault.jpg" alt=""><div class="video-body"><span class="video-outlet">Imagen Radio</span><p class="video-title">No vamos a descansar hasta tener una UNAM segura</p><span class="video-date">5 sep 2018</span><div class="video-tags"><span class="video-tag">UNAM</span></div></div></a>
+        <a class="video-card reveal reveal-delay-2" href="https://aristeguinoticias.com/0509/mexico/unam-profesoras-y-alumnos-debaten-el-conflicto-estudiantil-y-sus-demandas-video/" target="_blank"><img class="video-thumb" src="https://img.youtube.com/vi/bvwFM7Xf9tM/mqdefault.jpg" alt=""><div class="video-body"><span class="video-outlet">Aristegui Noticias</span><p class="video-title">UNAM: Profesoras y alumnos debaten el conflicto estudiantil y sus demandas</p><span class="video-date">5 sep 2018</span><div class="video-tags"><span class="video-tag">UNAM</span></div></div></a>
+        <a class="video-card reveal" href="https://youtu.be/QIiRjXHpf4w" target="_blank"><img class="video-thumb" src="https://img.youtube.com/vi/QIiRjXHpf4w/mqdefault.jpg" alt=""><div class="video-body"><span class="video-outlet">Grabación propia</span><p class="video-title">Carta a Donald Trump</p><span class="video-date">21 jun 2018</span><div class="video-tags"><span class="video-tag">EU</span></div></div></a>
       </div>
     </div>
   </section>
 
   <section class="contact-section">
-    <div class="container">
-      <div class="contact-inner">
-        <p class="contact-text" data-es="Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación." data-en="For <em>collaborations</em>, <em>consultancy</em>, or simply a conversation.">Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación.</p>
-        <div class="contact-links">
-          <div class="contact-item"><span class="contact-label">Email</span><a class="contact-value" href="mailto:rodrigoguillot@politicas.unam.mx">rodrigoguillot@politicas.unam.mx</a></div>
-          <div class="contact-item"><span class="contact-label">LinkedIn</span><a class="contact-value" href="https://linkedin.com/in/rodrigoguillot" target="_blank">linkedin.com/in/rodrigoguillot</a></div>
-          <div class="contact-item"><span class="contact-label">GitHub</span><a class="contact-value" href="https://github.com/Rodrigo-Guillot" target="_blank">github.com/Rodrigo-Guillot</a></div>
-        </div>
+    <div class="container"><div class="contact-inner reveal">
+      <div><p class="contact-text" data-es="Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación." data-en="For <em>collaborations</em>, <em>consulting</em>, or simply a conversation.">Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación.</p></div>
+      <div class="contact-links">
+        <div class="contact-item"><span class="contact-label">Email</span><a class="contact-value" href="mailto:rodrigoguillot@politicas.unam.mx">rodrigoguillot@politicas.unam.mx</a></div>
+        <div class="contact-item"><span class="contact-label">LinkedIn</span><a class="contact-value" href="https://linkedin.com/in/rodrigoguillot" target="_blank">linkedin.com/in/rodrigoguillot</a></div>
       </div>
-    </div>
+    </div></div>
   </section>
-
-  <footer>
-    <span>© 2026 Rodrigo Guillot López</span>
-    <span data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</span>
-  </footer>
-
-</div><!-- /page-medios -->
+  <footer><span>© 2026 Rodrigo Guillot López</span><span data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</span></footer>
+</div><!-- /medios -->
 
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- CONSULTORÍA                                                         -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div id="page-consultoria" class="page"
+     data-label-es="Servicios de consultoría"
+     data-label-en="Consulting services">
+
+  <!-- header inyectado por JS -->
+
+  <div class="page-intro"><div class="container"><h2 class="page-intro-title" data-es="Consultoría" data-en="Consulting">Consultoría</h2></div></div>
+
+  <section class="services-section">
+    <div class="container reveal">
+      <div class="services-layout">
+        <div class="services-sidebar">
+          <p class="sidebar-label" data-es="Consultoría formal" data-en="Formal consulting">Consultoría formal</p>
+          <p class="sidebar-text"
+             data-es="Para proyectos de asesoría, estrategia y campaña con estructura formal de consultoría, visita Hegemónica Lab."
+             data-en="For advisory, strategy and campaign projects with a formal consulting structure, visit Hegemónica Lab.">
+            Para proyectos de asesoría, estrategia y campaña con estructura formal de consultoría, visita Hegemónica Lab.
+          </p>
+          <a class="sidebar-link" href="https://hegemonicalab.github.io" target="_blank">
+            Hegemónica Lab →
+          </a>
+        </div>
+        <div class="services-table">
+        <div class="service-row"><h3 class="service-title" data-es="Asesoría en comunicación política e institucional" data-en="Political & institutional communication">Asesoría en comunicación política e institucional</h3><div class="service-chips"><span class="service-chip" data-es="Arquitectura del mensaje público" data-en="Public message architecture">Arquitectura del mensaje público</span><span class="service-chip" data-es="Estrategia narrativa institucional" data-en="Institutional narrative strategy">Estrategia narrativa institucional</span><span class="service-chip" data-es="Posicionamiento gubernamental" data-en="Governmental positioning">Posicionamiento gubernamental</span></div></div>
+        <div class="service-row"><h3 class="service-title" data-es="Estrategia de comunicación legislativa" data-en="Legislative communication strategy">Estrategia de comunicación legislativa</h3><div class="service-chips"><span class="service-chip" data-es="Comunicación legislativa" data-en="Legislative communication">Comunicación legislativa</span><span class="service-chip" data-es="Narrativa parlamentaria" data-en="Parliamentary narrative">Narrativa parlamentaria</span><span class="service-chip" data-es="Imagen territorializada" data-en="Territorial image">Imagen territorializada</span></div></div>
+        <div class="service-row"><h3 class="service-title" data-es="Análisis político y coyuntural" data-en="Political & conjunctural analysis">Análisis político y coyuntural</h3><div class="service-chips"><span class="service-chip" data-es="Inteligencia política" data-en="Political intelligence">Inteligencia política</span><span class="service-chip" data-es="Diagnóstico de coyuntura" data-en="Conjunctural diagnosis">Diagnóstico de coyuntura</span><span class="service-chip" data-es="Análisis de ecosistema político" data-en="Political ecosystem analysis">Análisis de ecosistema político</span></div></div>
+        <div class="service-row"><h3 class="service-title" data-es="Comunicación de campaña" data-en="Campaign communication">Comunicación de campaña</h3><div class="service-chips"><span class="service-chip" data-es="Estrategia electoral" data-en="Electoral strategy">Estrategia electoral</span><span class="service-chip" data-es="Campaña y territorio" data-en="Campaign & territory">Campaña y territorio</span><span class="service-chip" data-es="Comunicación en procesos electorales" data-en="Electoral process communication">Comunicación en procesos electorales</span><span class="service-chip" data-es="Capacitación para brigadas y redes" data-en="Brigade & social media training">Capacitación para brigadas y redes</span></div></div>
+        <div class="service-row"><h3 class="service-title" data-es="Contenido editorial y análisis para medios" data-en="Editorial content & media analysis">Contenido editorial y análisis para medios</h3><div class="service-chips"><span class="service-chip" data-es="Vocería pública" data-en="Public spokesmanship">Vocería pública</span><span class="service-chip" data-es="Posicionamiento editorial" data-en="Editorial positioning">Posicionamiento editorial</span><span class="service-chip" data-es="Construcción de voz pública" data-en="Public voice building">Construcción de voz pública</span></div></div>
+      </div><!-- /services-table -->
+      </div><!-- /services-layout -->
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container"><div class="contact-inner reveal">
+      <div><p class="contact-text" data-es="Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación." data-en="For <em>collaborations</em>, <em>consulting</em>, or simply a conversation.">Para <em>colaboraciones</em>, <em>consultoría</em> o simplemente una conversación.</p></div>
+      <div class="contact-links">
+        <div class="contact-item"><span class="contact-label">Email</span><a class="contact-value" href="mailto:rodrigoguillot@politicas.unam.mx">rodrigoguillot@politicas.unam.mx</a></div>
+        <div class="contact-item"><span class="contact-label">LinkedIn</span><a class="contact-value" href="https://linkedin.com/in/rodrigoguillot" target="_blank">linkedin.com/in/rodrigoguillot</a></div>
+        <div class="contact-item"><span class="contact-label" data-es="Consultoría" data-en="Consulting">Consultoría</span><a class="contact-value" href="https://hegemonicalab.github.io" target="_blank">Hegemónica Lab →</a></div>
+      </div>
+    </div></div>
+  </section>
+  <footer><span>© 2026 Rodrigo Guillot López</span><span data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</span></footer>
+</div><!-- /consultoria -->
 <!-- JAVASCRIPT                                                          -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <script>
 
-// ─── Scroll-aware lang bar ────────────────────────────────────────────
-const langBar = document.querySelector('.lang-bar');
+const PAGES = ['inicio', 'publicaciones', 'medios', 'consultoria'];
+let currentLang = 'es';
+
+// ─── Scroll-aware lang bar
+const langBar = document.getElementById('langBar');
 window.addEventListener('scroll', () => {
-  // El header tiene 220px; pasado ese punto estamos en fondo claro
-  langBar.classList.toggle('scrolled', window.scrollY > 200);
+  langBar.classList.toggle('scrolled', window.scrollY > 80);
 }, { passive: true });
 
-// ─── Estado global ────────────────────────────────────────────────────
-let currentLang = 'es';
-const PAGES = ['inicio', 'publicaciones', 'consultoria', 'medios'];
+// ─── Scroll reveal con IntersectionObserver
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-// ─── Inyectar header en subpáginas ────────────────────────────────────
+function observeReveals() {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
+}
+
+// ─── Header injection
 function injectHeaders() {
   const tpl = document.getElementById('tpl-header');
-  ['inicio', 'publicaciones', 'consultoria', 'medios'].forEach(id => {
+  PAGES.forEach(id => {
     const page = document.getElementById('page-' + id);
     const clone = tpl.content.cloneNode(true);
     page.insertBefore(clone, page.firstChild);
   });
 }
 
-// ─── Mostrar sección ──────────────────────────────────────────────────
+// ─── Show section
 function showSection(id) {
-  // Normalizar 'inicio' → muestra landing
-  if (id === 'inicio') id = 'inicio';
-
   PAGES.forEach(p => {
     document.getElementById('page-' + p).classList.toggle('active', p === id);
   });
-
-  // Actualizar link activo en los headers inyectados
   document.querySelectorAll('[data-nav]').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.nav === id);
   });
-
-  // Actualizar label de la página activa (incluye inicio)
+  // Label
   const page = document.getElementById('page-' + id);
   const labelEl = page.querySelector('[data-label]');
   if (labelEl) {
-    labelEl.textContent = currentLang === 'es'
-      ? page.dataset.labelEs
-      : page.dataset.labelEn;
+    labelEl.textContent = currentLang === 'es' ? page.dataset.labelEs : page.dataset.labelEn;
   }
-
-  // URL limpia
-  const path = id === 'inicio' ? '/' : '/' + id;
-  history.pushState({ section: id }, '', path);
-
-  // Scroll top
+  history.pushState({ section: id }, '', id === 'inicio' ? '/' : '/' + id);
   window.scrollTo(0, 0);
-
-  // Aplicar idioma actual al header recién visible
   applyLang(currentLang);
+  setTimeout(observeReveals, 50);
 }
 
-// ─── Idioma ───────────────────────────────────────────────────────────
+// ─── Idioma
 function applyLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
-
   document.querySelectorAll('[data-es]').forEach(el => {
-    if (el.dataset.label === 'true') return; // lo maneja showSection
+    if (el.dataset.label === 'true') return;
     const val = lang === 'es' ? el.dataset.es : el.dataset.en;
     if (!val) return;
-    if (val.includes('<em>')) el.innerHTML = val;
+    if (val.includes('<em>') || val.includes('<span')) el.innerHTML = val;
     else el.textContent = val;
   });
-
-  // Labels de todas las páginas
-  ['inicio', 'publicaciones', 'consultoria', 'medios'].forEach(id => {
+  PAGES.forEach(id => {
     const page = document.getElementById('page-' + id);
     const labelEl = page.querySelector('[data-label]');
-    if (labelEl) {
-      labelEl.textContent = lang === 'es' ? page.dataset.labelEs : page.dataset.labelEn;
-    }
+    if (labelEl) labelEl.textContent = lang === 'es' ? page.dataset.labelEs : page.dataset.labelEn;
   });
-
   document.getElementById('btn-es').classList.toggle('active', lang === 'es');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 }
 
 function setLang(lang) { applyLang(lang); }
 
-// ─── Toggle de secciones de publicaciones ────────────────────────────
+// ─── Toggle secciones
 function toggleSection(btn) {
   const icon = btn.querySelector('.toggle-icon');
   const body = btn.parentElement.querySelector('.section-body');
   icon.classList.toggle('open');
   body.classList.toggle('open');
+  setTimeout(observeReveals, 100);
 }
 
-// ─── Manejar navegación del browser (atrás/adelante) ─────────────────
+// ─── Browser back/forward
 window.addEventListener('popstate', e => {
   if (e.state && e.state.section) showSection(e.state.section);
 });
 
-// ─── Leer URL inicial ─────────────────────────────────────────────────
-function resolveInitialSection() {
-  const path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
-  return PAGES.includes(path) ? path : 'inicio';
-}
-
-// ─── INIT ─────────────────────────────────────────────────────────────
+// ─── Init
 injectHeaders();
-const initial = resolveInitialSection();
+const initPath = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
+const initSection = PAGES.includes(initPath) ? initPath : 'inicio';
 PAGES.forEach(p => {
-  document.getElementById('page-' + p).classList.toggle('active', p === initial);
+  document.getElementById('page-' + p).classList.toggle('active', p === initSection);
 });
-// Aplicar label y nav activo para la sección inicial
-const initPage = document.getElementById('page-' + initial);
+const initPage = document.getElementById('page-' + initSection);
 const initLabel = initPage.querySelector('[data-label]');
 if (initLabel) initLabel.textContent = initPage.dataset.labelEs;
 document.querySelectorAll('[data-nav]').forEach(btn => {
-  btn.classList.toggle('active', btn.dataset.nav === initial);
+  btn.classList.toggle('active', btn.dataset.nav === initSection);
 });
+setTimeout(observeReveals, 100);
 
 </script>
 </body>
