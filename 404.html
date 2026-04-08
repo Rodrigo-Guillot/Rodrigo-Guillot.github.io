@@ -4,7 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Rodrigo Guillot López — especialista en comunicación política e institucional. Analista político, asesor legislativo y director de campañas. Ciudad de México.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231A1510'/><text y='.9em' font-size='80' x='10'>♞</text><style>text{fill:%23B8860B}</style></svg>">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231A1510'/><text y='.9em' font-size='80' x='10'>♞</text><style>text{fill:%23B8860B}
+/* --- FIXED HEADER VERSION (no shrinking / no mini-nav) --- */
+.page-header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:500;
+}
+
+body{
+  padding-top:100px; /* space for fixed header */
+}
+
+/* disable the shrinking header completely */
+.mini-nav{
+  display:none !important;
+}
+
+</style></svg>">
 <title>Rodrigo Guillot López</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
@@ -470,6 +489,25 @@ footer {
   .container { padding: 0 1.5rem; }
   .about-inner { padding: 0 1.5rem; }
   footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem; }
+}
+
+
+/* --- FIXED HEADER VERSION (no shrinking / no mini-nav) --- */
+.page-header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:500;
+}
+
+body{
+  padding-top:100px; /* space for fixed header */
+}
+
+/* disable the shrinking header completely */
+.mini-nav{
+  display:none !important;
 }
 
 </style>
