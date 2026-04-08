@@ -82,42 +82,35 @@ body {
 #page-inicio .reveal-delay-4 { transition-delay: 0.4s; }
 
 /* ─── SHARED HEADER ──────────────────────────────────────────────────── */
+/* ─── HEADER COMPLETO — visible solo al inicio ───────────────────────── */
 .page-header {
   background: var(--wine);
   border-bottom: 3px solid var(--gold);
-  position: sticky; top: 0; z-index: 100;
 }
 .header-inner {
   max-width: 1100px; margin: 0 auto; padding: 0 4rem;
-  display: grid;
-  grid-template-columns: auto 160px 1fr;
-  align-items: center;
-  gap: 2.5rem;
-  height: 200px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 100px;
 }
-.header-left h1 {
+.header-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 3.2rem; font-weight: 700;
-  line-height: 1.0; letter-spacing: -0.02em;
+  font-size: 1.8rem; font-weight: 700;
+  line-height: 1.0; letter-spacing: -0.01em;
   color: var(--parchment);
   cursor: pointer;
   transition: color 0.2s;
   white-space: nowrap;
+  background: none; border: none; padding: 0;
 }
-.header-left h1:hover { color: var(--sand); }
-.header-left .name-last { color: var(--gold-light); font-style: italic; font-weight: 300; }
-.header-left .page-label {
-  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(253,250,245,0.5); margin-top: 0.75rem;
-  font-family: 'Source Serif 4', serif;
-}
-.nav-links { display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: nowrap; white-space: nowrap; }
+.header-name:hover { color: var(--sand); }
+.header-name .name-last { color: var(--gold-light); font-style: italic; font-weight: 300; }
+.nav-links { display: flex; gap: 1.5rem; flex-wrap: nowrap; white-space: nowrap; }
 .nav-links button {
   font-family: 'Source Serif 4', serif;
   font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
   color: rgba(253,250,245,0.5); background: none; border: none;
   border-bottom: 1px solid transparent; padding-bottom: 2px;
-  cursor: pointer; transition: all 0.2s;
+  cursor: pointer; transition: color 0.2s, border-color 0.2s;
 }
 .nav-links button:hover { color: var(--parchment); }
 .nav-links button.active { color: var(--gold-light); border-bottom-color: var(--gold); }
@@ -125,13 +118,12 @@ body {
 .profile-photo {
   width: 140px; height: 140px;
   border-radius: 50%; object-fit: cover;
-  border: 2px solid var(--gold);
-  display: block;
+  border: 2px solid var(--gold); display: block;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 .profile-photo:hover { border-color: var(--gold-light); box-shadow: 0 0 0 4px rgba(188,149,92,0.25); }
 .profile-photo-placeholder {
-  width: 180px; height: 180px; border-radius: 50%;
+  width: 140px; height: 140px; border-radius: 50%;
   border: 2px dashed rgba(188,149,92,0.4);
   display: flex; align-items: center; justify-content: center;
 }
@@ -141,9 +133,42 @@ body {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
   font-size: 1.05rem; color: rgba(253,250,245,0.85); line-height: 1.6;
   border-left: 2px solid var(--gold); padding-left: 1.5rem;
-  transition: color 0.4s;
 }
-.page-quote:hover { color: var(--parchment); }
+
+/* ─── MINI-NAV — aparece al hacer scroll ─────────────────────────────── */
+.mini-nav {
+  display: none;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--wine);
+  border-bottom: 2px solid var(--gold);
+  height: 52px;
+}
+.mini-nav.visible { display: flex; }
+.mini-nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 100%;
+}
+.mini-nav-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--parchment); cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.mini-nav-name span { color: var(--gold-light); font-style: italic; font-weight: 300; }
+.mini-nav-name:hover { color: var(--sand); }
+.mini-nav-links { display: flex; gap: 1.5rem; }
+.mini-nav-links button {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(253,250,245,0.55); background: none; border: none;
+  border-bottom: 1px solid transparent; padding-bottom: 2px;
+  cursor: pointer; transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.mini-nav-links button:hover { color: var(--parchment); }
+.mini-nav-links button.active { color: var(--gold-light); border-bottom-color: var(--gold); }
 
 /* ─── CONTAINER ──────────────────────────────────────────────────────── */
 .container { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
@@ -156,9 +181,24 @@ body {
 }
 .about-inner {
   max-width: 1100px; margin: 0 auto; padding: 0 4rem;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 5rem; align-items: center;
+  display: grid; grid-template-columns: 280px 1fr;
+  gap: 4rem; align-items: start;
 }
+.about-photo-col {
+  display: flex; justify-content: center; align-items: flex-start;
+  padding-top: 0.5rem;
+}
+.about-photo-wrap {
+  width: 280px; height: 280px; border-radius: 50%;
+  border: 3px solid var(--wine);
+  background: var(--sand-dark);
+  overflow: hidden; flex-shrink: 0;
+}
+.about-photo {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.about-right-col { display: flex; flex-direction: column; gap: 2.5rem; }
 .about-text-block {}
 .about-eyebrow {
   font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
@@ -193,6 +233,17 @@ body {
 .about-formation-item::before {
   content: ''; position: absolute; left: 0; top: 0.5em;
   width: 4px; height: 4px; border-radius: 50%; background: var(--green);
+}
+.about-photo-wrap {
+  width: 120px; height: 120px; border-radius: 50%;
+  border: 2px solid var(--wine);
+  background: var(--sand-dark);
+  flex-shrink: 0; overflow: hidden;
+}
+.about-photo {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: opacity 0.2s;
 }
 .about-quote-block {
   border-left: 2px solid var(--wine);
@@ -400,11 +451,12 @@ footer {
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────────────── */
 @media (max-width: 1000px) {
-  .header-inner { grid-template-columns: 1fr; height: auto; padding: 2rem; }
-  .header-photo { width: 100%; order: -1; }
+  .header-inner { padding: 0 2rem; }
   .grid-3, .video-grid { grid-template-columns: repeat(2, 1fr); }
   .service-row { grid-template-columns: 200px 1fr; }
-  .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-photo-col { justify-content: flex-start; }
+  .about-quote-block { border-left: none; padding-left: 0; border-top: 2px solid var(--wine); padding-top: 1.5rem; }
   .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
   .services-layout { grid-template-columns: 1fr; }
   .services-sidebar { border-right: none; border-bottom: 1px solid var(--line); }
@@ -434,31 +486,29 @@ footer {
 <template id="tpl-header">
   <header class="page-header">
     <div class="header-inner">
-      <div class="header-left">
-        <h1 onclick="showSection('inicio')">Rodrigo <span class="name-last">Guillot</span></h1>
-        <p class="page-label" data-label="true"></p>
-        <nav class="nav-links">
-          <button onclick="showSection('inicio')"        data-nav="inicio"        data-es="Inicio"        data-en="Home">Inicio</button>
-          <button onclick="showSection('publicaciones')" data-nav="publicaciones" data-es="Publicaciones" data-en="Publications">Publicaciones</button>
-          <button onclick="showSection('medios')"        data-nav="medios"        data-es="Audiovisual"   data-en="Audiovisual">Audiovisual</button>
-          <button onclick="showSection('consultoria')"   data-nav="consultoria"   data-es="Consultoría"   data-en="Consulting">Consultoría</button>
-        </nav>
-      </div>
-      <div class="header-photo">
-        <img src="fotografia-rodrigoguillot.jpg" alt="Rodrigo Guillot" class="profile-photo"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="profile-photo-placeholder" style="display:none"><span>foto</span></div>
-      </div>
-      <div class="header-right">
-        <p class="page-quote"
-           data-es="La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas."
-           data-en="Political communication is the daily work of reading society, understanding its shifts, and building a solid connection between institutions, leaders, and the people they serve.">
-          La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.
-        </p>
-      </div>
+      <h1 class="header-name" onclick="showSection('inicio')">Rodrigo <span class="name-last">Guillot</span></h1>
+      <nav class="nav-links">
+        <button onclick="showSection('inicio')"        data-nav="inicio"        data-es="Inicio"        data-en="Home">Inicio</button>
+        <button onclick="showSection('publicaciones')" data-nav="publicaciones" data-es="Publicaciones" data-en="Publications">Publicaciones</button>
+        <button onclick="showSection('medios')"        data-nav="medios"        data-es="Audiovisual"   data-en="Audiovisual">Audiovisual</button>
+        <button onclick="showSection('consultoria')"   data-nav="consultoria"   data-es="Consultoría"   data-en="Consulting">Consultoría</button>
+      </nav>
     </div>
   </header>
 </template>
+
+<!-- ─── MINI-NAV GLOBAL ───────────────────────────────────────────────── -->
+<nav class="mini-nav" id="miniNav">
+  <div class="mini-nav-inner">
+    <span class="mini-nav-name" onclick="showSection('inicio')">Rodrigo <span>Guillot</span></span>
+    <div class="mini-nav-links" id="miniNavLinks">
+      <button onclick="showSection('inicio')"        data-mininav="inicio"        data-es="Inicio"        data-en="Home">Inicio</button>
+      <button onclick="showSection('publicaciones')" data-mininav="publicaciones" data-es="Publicaciones" data-en="Publications">Publicaciones</button>
+      <button onclick="showSection('medios')"        data-mininav="medios"        data-es="Audiovisual"   data-en="Audiovisual">Audiovisual</button>
+      <button onclick="showSection('consultoria')"   data-mininav="consultoria"   data-es="Consultoría"   data-en="Consulting">Consultoría</button>
+    </div>
+  </div>
+</nav>
 
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
@@ -473,31 +523,40 @@ footer {
   <!-- SOBRE MÍ -->
   <div class="about-band">
     <div class="about-inner">
-      <div class="about-text-block reveal">
-        <p class="about-eyebrow" data-es="Rodrigo Guillot López" data-en="Rodrigo Guillot López">Rodrigo Guillot López</p>
-        <h2 class="about-headline"
-            data-es="Internacionalista especializado en <em>comunicación política</em> e institucional"
-            data-en="International relations specialist in <em>political communication</em> and institutional affairs">
-          Internacionalista especializado en <em>comunicación política</em> e institucional
-        </h2>
-        <p class="about-bio"
-           data-es="Más de cinco años de experiencia en entornos legislativos, gubernamentales y de salud pública en México. He operado en el Senado de la República, la Cámara de Diputados, el Congreso de la Ciudad de México e instituciones de gobierno local. Licenciado en Relaciones Internacionales por la UNAM."
-           data-en="Over five years of experience in legislative, governmental and public health environments in Mexico. I have worked in the Senate of the Republic, the Chamber of Deputies, the Mexico City Congress and local government institutions. B.A. in International Relations, UNAM.">
-          Más de cinco años de experiencia en entornos legislativos, gubernamentales y de salud pública en México. He operado en el Senado de la República, la Cámara de Diputados, el Congreso de la Ciudad de México e instituciones de gobierno local. Licenciado en Relaciones Internacionales por la UNAM.
-        </p>
-        <div class="about-formation">
-          <p class="about-formation-item" data-es="Lic. en Relaciones Internacionales — FCPyS, UNAM" data-en="B.A. in International Relations — FCPyS, UNAM">Lic. en Relaciones Internacionales — FCPyS, UNAM</p>
-          <p class="about-formation-item" data-es="Diploma Superior en Formación Política — CLACSO" data-en="Graduate Diploma in Political Formation — CLACSO">Diploma Superior en Formación Política — CLACSO</p>
-          <p class="about-formation-item" data-es="Diploma en Marketing Político y Campañas Electorales — ACOP / Asuntos Digitales" data-en="Diploma in Political Marketing and Electoral Campaigns — ACOP / Asuntos Digitales">Diploma en Marketing Político y Campañas Electorales — ACOP / Asuntos Digitales</p>
+      <div class="about-photo-col reveal">
+        <div class="about-photo-wrap">
+          <img src="fotografia-rodrigoguillot.jpg" alt="Rodrigo Guillot" class="about-photo"
+               onerror="this.style.opacity='0'">
         </div>
       </div>
-      <div class="about-quote-block reveal reveal-delay-2">
-        <blockquote
-          data-es="La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas."
-          data-en="Political communication is the daily work of reading society, understanding its shifts, and building a solid connection between institutions, leaders, and the people they serve.">
-          La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.
-        </blockquote>
-        <cite data-es="— Rodrigo Guillot López" data-en="— Rodrigo Guillot López">— Rodrigo Guillot López</cite>
+
+      <div class="about-right-col reveal reveal-delay-1">
+        <div class="about-text-block">
+          <p class="about-eyebrow" data-es="Rodrigo Guillot López" data-en="Rodrigo Guillot López">Rodrigo Guillot López</p>
+          <h2 class="about-headline"
+              data-es="Internacionalista especializado en <em>comunicación política</em> e institucional"
+              data-en="International relations specialist in <em>political communication</em> and institutional affairs">
+            Internacionalista especializado en <em>comunicación política</em> e institucional
+          </h2>
+          <p class="about-bio"
+             data-es="Más de cinco años de experiencia en entornos legislativos, gubernamentales y de salud pública en México. He operado en el Senado de la República, la Cámara de Diputados, el Congreso de la Ciudad de México e instituciones de gobierno local. Licenciado en Relaciones Internacionales por la UNAM."
+             data-en="Over five years of experience in legislative, governmental and public health environments in Mexico. I have worked in the Senate of the Republic, the Chamber of Deputies, the Mexico City Congress and local government institutions. B.A. in International Relations, UNAM.">
+            Más de cinco años de experiencia en entornos legislativos, gubernamentales y de salud pública en México. He operado en el Senado de la República, la Cámara de Diputados, el Congreso de la Ciudad de México e instituciones de gobierno local. Licenciado en Relaciones Internacionales por la UNAM.
+          </p>
+          <div class="about-formation">
+            <p class="about-formation-item" data-es="Lic. en Relaciones Internacionales — FCPyS, UNAM" data-en="B.A. in International Relations — FCPyS, UNAM">Lic. en Relaciones Internacionales — FCPyS, UNAM</p>
+            <p class="about-formation-item" data-es="Diploma Superior en Formación Política — CLACSO" data-en="Graduate Diploma in Political Formation — CLACSO">Diploma Superior en Formación Política — CLACSO</p>
+            <p class="about-formation-item" data-es="Diploma en Marketing Político y Campañas Electorales — ACOP / Asuntos Digitales" data-en="Diploma in Political Marketing and Electoral Campaigns — ACOP / Asuntos Digitales">Diploma en Marketing Político y Campañas Electorales — ACOP / Asuntos Digitales</p>
+          </div>
+        </div>
+        <div class="about-quote-block">
+          <blockquote
+            data-es="La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas."
+            data-en="Political communication is the daily work of reading society, understanding its shifts, and building a solid connection between institutions, leaders, and the people they serve.">
+            La comunicación política es el trabajo cotidiano de comprensión de la sociedad y sus cambios para construir un vínculo sólido entre las instituciones, los liderazgos y las personas.
+          </blockquote>
+          <cite data-es="— Rodrigo Guillot López" data-en="— Rodrigo Guillot López">— Rodrigo Guillot López</cite>
+        </div>
       </div>
     </div>
   </div>
@@ -865,11 +924,13 @@ footer {
 const PAGES = ['inicio', 'publicaciones', 'medios', 'consultoria'];
 let currentLang = 'es';
 
-// ─── Scroll-aware lang bar
-const langBar = document.getElementById('langBar');
+// ─── Mini-nav al hacer scroll
 window.addEventListener('scroll', () => {
-  langBar.classList.toggle('scrolled', window.scrollY > 80);
+  const miniNav = document.getElementById('miniNav');
+  if (miniNav) miniNav.classList.toggle('visible', window.scrollY > 160);
 }, { passive: true });
+
+
 
 // ─── Scroll reveal con IntersectionObserver
 const revealObserver = new IntersectionObserver((entries) => {
@@ -902,6 +963,9 @@ function showSection(id) {
   });
   document.querySelectorAll('[data-nav]').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.nav === id);
+  });
+  document.querySelectorAll('[data-mininav]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.mininav === id);
   });
   // Label
   const page = document.getElementById('page-' + id);
