@@ -58,7 +58,7 @@ body {
 .lang-bar.scrolled .lang-btn.active { background: var(--ink); border-color: var(--ink); color: var(--parchment); }
 
 /* ─── PAGES ──────────────────────────────────────────────────────────── */
-.page { display: none; }
+.page { display: none; padding-top: 64px; }
 .page.active { display: block; }
 
 
@@ -82,28 +82,36 @@ body {
 #page-inicio .reveal-delay-4 { transition-delay: 0.4s; }
 
 /* ─── SHARED HEADER ──────────────────────────────────────────────────── */
-/* ─── HEADER COMPLETO — visible solo al inicio ───────────────────────── */
+/* ─── HEADER ─────────────────────────────────────────────────────────── */
 .page-header {
   background: var(--wine);
   border-bottom: 3px solid var(--gold);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
 }
 .header-inner {
   max-width: 1100px; margin: 0 auto; padding: 0 4rem;
   display: flex; align-items: center; justify-content: space-between;
-  height: 100px;
+  gap: 2rem; height: 64px;
+}
+.header-brand {
+  display: flex; flex-direction: column; gap: 0.15rem;
+  cursor: pointer; flex-shrink: 0;
+  background: none; border: none; padding: 0; text-align: left;
 }
 .header-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.8rem; font-weight: 700;
+  font-size: 1.4rem; font-weight: 700;
   line-height: 1.0; letter-spacing: -0.01em;
-  color: var(--parchment);
-  cursor: pointer;
+  color: var(--parchment); white-space: nowrap;
   transition: color 0.2s;
-  white-space: nowrap;
-  background: none; border: none; padding: 0;
 }
-.header-name:hover { color: var(--sand); }
+.header-brand:hover .header-name { color: var(--sand); }
 .header-name .name-last { color: var(--gold-light); font-style: italic; font-weight: 300; }
+.header-sub {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.52rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(253,250,245,0.5);
+}
 .nav-links { display: flex; gap: 1.5rem; flex-wrap: nowrap; white-space: nowrap; }
 .nav-links button {
   font-family: 'Source Serif 4', serif;
@@ -114,20 +122,16 @@ body {
 }
 .nav-links button:hover { color: var(--parchment); }
 .nav-links button.active { color: var(--gold-light); border-bottom-color: var(--gold); }
-.header-photo { display: flex; justify-content: center; align-items: center; width: 160px; }
-.profile-photo {
-  width: 140px; height: 140px;
-  border-radius: 50%; object-fit: cover;
-  border: 2px solid var(--gold); display: block;
-  transition: border-color 0.3s, box-shadow 0.3s;
+
+/* Compensar el espacio del header fijo */
+@media (max-width: 700px) {
+  .header-inner {
+    flex-direction: column; align-items: flex-start;
+    height: auto; padding: 0.85rem 1.5rem; gap: 0.6rem;
+  }
+  .nav-links { gap: 1rem; flex-wrap: wrap; }
+  .page { padding-top: 110px; }
 }
-.profile-photo:hover { border-color: var(--gold-light); box-shadow: 0 0 0 4px rgba(188,149,92,0.25); }
-.profile-photo-placeholder {
-  width: 140px; height: 140px; border-radius: 50%;
-  border: 2px dashed rgba(188,149,92,0.4);
-  display: flex; align-items: center; justify-content: center;
-}
-.profile-photo-placeholder span { font-size: 0.6rem; color: rgba(105,28,50,0.5); text-align: center; }
 .header-right { display: flex; align-items: center; }
 .page-quote {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
@@ -482,33 +486,21 @@ footer {
   <button class="lang-btn"        id="btn-en" onclick="setLang('en')">EN</button>
 </div>
 
-<!-- ─── HEADER TEMPLATE ──────────────────────────────────────────────── -->
-<template id="tpl-header">
-  <header class="page-header">
-    <div class="header-inner">
-      <h1 class="header-name" onclick="showSection('inicio')">Rodrigo <span class="name-last">Guillot</span></h1>
-      <nav class="nav-links">
-        <button onclick="showSection('inicio')"        data-nav="inicio"        data-es="Inicio"        data-en="Home">Inicio</button>
-        <button onclick="showSection('publicaciones')" data-nav="publicaciones" data-es="Publicaciones" data-en="Publications">Publicaciones</button>
-        <button onclick="showSection('medios')"        data-nav="medios"        data-es="Audiovisual"   data-en="Audiovisual">Audiovisual</button>
-        <button onclick="showSection('consultoria')"   data-nav="consultoria"   data-es="Consultoría"   data-en="Consulting">Consultoría</button>
-      </nav>
-    </div>
-  </header>
-</template>
-
-<!-- ─── MINI-NAV GLOBAL ───────────────────────────────────────────────── -->
-<nav class="mini-nav" id="miniNav">
-  <div class="mini-nav-inner">
-    <span class="mini-nav-name" onclick="showSection('inicio')">Rodrigo <span>Guillot</span></span>
-    <div class="mini-nav-links" id="miniNavLinks">
-      <button onclick="showSection('inicio')"        data-mininav="inicio"        data-es="Inicio"        data-en="Home">Inicio</button>
-      <button onclick="showSection('publicaciones')" data-mininav="publicaciones" data-es="Publicaciones" data-en="Publications">Publicaciones</button>
-      <button onclick="showSection('medios')"        data-mininav="medios"        data-es="Audiovisual"   data-en="Audiovisual">Audiovisual</button>
-      <button onclick="showSection('consultoria')"   data-mininav="consultoria"   data-es="Consultoría"   data-en="Consulting">Consultoría</button>
-    </div>
+<!-- ─── HEADER ÚNICO FIJO ────────────────────────────────────────────── -->
+<header class="page-header" id="siteHeader">
+  <div class="header-inner">
+    <button class="header-brand" onclick="showSection('inicio')">
+      <span class="header-name">Rodrigo <span class="name-last">Guillot</span></span>
+      <span class="header-sub">Internacionalista · Consultor</span>
+    </button>
+    <nav class="nav-links">
+      <button onclick="showSection('inicio')"        data-nav="inicio"        >Inicio</button>
+      <button onclick="showSection('publicaciones')" data-nav="publicaciones" >Publicaciones</button>
+      <button onclick="showSection('medios')"        data-nav="medios"        >Audiovisual</button>
+      <button onclick="showSection('consultoria')"   data-nav="consultoria"   >Consultoría</button>
+    </nav>
   </div>
-</nav>
+</header>
 
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
@@ -924,13 +916,6 @@ footer {
 const PAGES = ['inicio', 'publicaciones', 'medios', 'consultoria'];
 let currentLang = 'es';
 
-// ─── Mini-nav al hacer scroll
-window.addEventListener('scroll', () => {
-  const miniNav = document.getElementById('miniNav');
-  if (miniNav) miniNav.classList.toggle('visible', window.scrollY > 160);
-}, { passive: true });
-
-
 
 // ─── Scroll reveal con IntersectionObserver
 const revealObserver = new IntersectionObserver((entries) => {
@@ -946,16 +931,6 @@ function observeReveals() {
   document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
 }
 
-// ─── Header injection
-function injectHeaders() {
-  const tpl = document.getElementById('tpl-header');
-  PAGES.forEach(id => {
-    const page = document.getElementById('page-' + id);
-    const clone = tpl.content.cloneNode(true);
-    page.insertBefore(clone, page.firstChild);
-  });
-}
-
 // ─── Show section
 function showSection(id) {
   PAGES.forEach(p => {
@@ -964,15 +939,6 @@ function showSection(id) {
   document.querySelectorAll('[data-nav]').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.nav === id);
   });
-  document.querySelectorAll('[data-mininav]').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.mininav === id);
-  });
-  // Label
-  const page = document.getElementById('page-' + id);
-  const labelEl = page.querySelector('[data-label]');
-  if (labelEl) {
-    labelEl.textContent = currentLang === 'es' ? page.dataset.labelEs : page.dataset.labelEn;
-  }
   history.pushState({ section: id }, '', id === 'inicio' ? '/' : '/' + id);
   window.scrollTo(0, 0);
   applyLang(currentLang);
@@ -984,16 +950,10 @@ function applyLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-es]').forEach(el => {
-    if (el.dataset.label === 'true') return;
     const val = lang === 'es' ? el.dataset.es : el.dataset.en;
     if (!val) return;
     if (val.includes('<em>') || val.includes('<span')) el.innerHTML = val;
     else el.textContent = val;
-  });
-  PAGES.forEach(id => {
-    const page = document.getElementById('page-' + id);
-    const labelEl = page.querySelector('[data-label]');
-    if (labelEl) labelEl.textContent = lang === 'es' ? page.dataset.labelEs : page.dataset.labelEn;
   });
   document.getElementById('btn-es').classList.toggle('active', lang === 'es');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
@@ -1016,15 +976,11 @@ window.addEventListener('popstate', e => {
 });
 
 // ─── Init
-injectHeaders();
 const initPath = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
 const initSection = PAGES.includes(initPath) ? initPath : 'inicio';
 PAGES.forEach(p => {
   document.getElementById('page-' + p).classList.toggle('active', p === initSection);
 });
-const initPage = document.getElementById('page-' + initSection);
-const initLabel = initPage.querySelector('[data-label]');
-if (initLabel) initLabel.textContent = initPage.dataset.labelEs;
 document.querySelectorAll('[data-nav]').forEach(btn => {
   btn.classList.toggle('active', btn.dataset.nav === initSection);
 });
