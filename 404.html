@@ -5,22 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Rodrigo Guillot López — especialista en comunicación política e institucional. Analista político, asesor legislativo y director de campañas. Ciudad de México.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231A1510'/><text y='.9em' font-size='80' x='10'>♞</text><style>text{fill:%23B8860B}
-/* --- FIXED HEADER VERSION (no shrinking / no mini-nav) --- */
-.page-header{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:500;
-}
+/* --- MOBILE HEADER LAYOUT FIX --- */
+@media (max-width:700px){
 
-body{
-  padding-top:100px; /* space for fixed header */
-}
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    height:auto;
+    gap:0.6rem;
+    padding-top:1rem;
+    padding-bottom:1rem;
+  }
 
-/* disable the shrinking header completely */
-.mini-nav{
-  display:none !important;
+  .header-name{
+    font-size:1.5rem;
+    white-space:normal;
+  }
+
+  .nav-links{
+    width:100%;
+    flex-wrap:wrap;
+    gap:0.8rem;
+  }
+
+  .nav-links button{
+    font-size:0.55rem;
+  }
+
 }
 
 </style></svg>">
@@ -492,22 +504,34 @@ footer {
 }
 
 
-/* --- FIXED HEADER VERSION (no shrinking / no mini-nav) --- */
-.page-header{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:500;
-}
+/* --- MOBILE HEADER LAYOUT FIX --- */
+@media (max-width:700px){
 
-body{
-  padding-top:100px; /* space for fixed header */
-}
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    height:auto;
+    gap:0.6rem;
+    padding-top:1rem;
+    padding-bottom:1rem;
+  }
 
-/* disable the shrinking header completely */
-.mini-nav{
-  display:none !important;
+  .header-name{
+    font-size:1.5rem;
+    white-space:normal;
+  }
+
+  .nav-links{
+    width:100%;
+    flex-wrap:wrap;
+    gap:0.8rem;
+  }
+
+  .nav-links button{
+    font-size:0.55rem;
+  }
+
 }
 
 </style>
@@ -1071,28 +1095,3 @@ setTimeout(observeReveals, 100);
 </script>
 </body>
 </html>
-@media (max-width: 700px) {
-
-  .header-inner{
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    gap: 0.6rem;
-  }
-
-  .header-name{
-    font-size: 1.5rem;
-  }
-
-  .nav-links{
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-  }
-
-}
-.nav-links button{
-  font-size:0.55rem;
-}
