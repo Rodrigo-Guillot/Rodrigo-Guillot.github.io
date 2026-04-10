@@ -441,7 +441,7 @@ body {
 .contact-links   { display: flex; flex-direction: column; gap: 1.75rem; }
 .contact-item    { display: flex; flex-direction: column; gap: 0.25rem; }
 .contact-label   { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); opacity: 0.85; }
-.contact-value   { font-size: 0.95rem; color: var(--parchment); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 1px; transition: border-color 0.2s, color 0.2s; }
+.contact-value   { font-size: 0.95rem; color: var(--parchment); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 1px; transition: border-color 0.2s, color 0.2s; width: fit-content; }
 .contact-value:hover { border-bottom-color: var(--gold); color: var(--gold-light); }
 
 /* ─── FOOTER ─────────────────────────────────────────────────────────── */
@@ -491,7 +491,7 @@ footer {
   <div class="header-inner">
     <button class="header-brand" onclick="showSection('inicio')">
       <span class="header-name">Rodrigo <span class="name-last">Guillot</span></span>
-      <span class="header-sub" data-es="Internacionalista · Consultor" data-en="Internationalist · Consultant">Internacionalista · Consultor</span>
+      <span class="header-sub">Internacionalista · Consultor</span>
     </button>
     <nav class="nav-links">
       <button onclick="showSection('inicio')"        data-nav="inicio"        >Inicio</button>
